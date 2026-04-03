@@ -28,7 +28,7 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <Box py={16} px={6}>
+    <Box py={8} px={6}>
       <Heading textAlign="center" mb={10}>
         How Trigo Works
       </Heading>
