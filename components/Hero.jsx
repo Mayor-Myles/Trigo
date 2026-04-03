@@ -3,7 +3,7 @@
 
 // components/Hero.jsx
 import { Box, Heading, Text, Button, Stack } from "@chakra-ui/react";
-import Link from "next/router";
+import Link from "next/link";
 
 
 
