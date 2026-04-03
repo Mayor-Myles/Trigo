@@ -35,7 +35,7 @@ const HowItWorks = () => {
 
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
         {steps.map((step, index) => (
-          <VStack key={index} spacing={4}>
+          <VStack shadow="md" key={index} spacing={4}>
             <Box fontSize="40px" color="blue.500">
               <step.icon />
             </Box>
