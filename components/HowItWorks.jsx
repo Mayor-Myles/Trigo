@@ -6,21 +6,24 @@ import {
   Heading,
   VStack,
 } from "@chakra-ui/react";
-import { FaBox, FaMotorcycle, FaCheckCircle } from "react-icons/fa";
+import { GoPackage, } from "react-icons/go";
+import { PiBicycleThin } from "react-icons/pi";
+import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
+
 
 const steps = [
   {
-    icon: FaBox,
+    icon: GoPackage,
     title: "Post a Package",
     desc: "Upload package details, weight, price and delivery location.",
   },
   {
-    icon: FaMotorcycle,
+    icon: PiBicycleThin,
     title: "Rider Accepts",
     desc: "Nearby tricycle riders see and accept delivery requests.",
   },
   {
-    icon: FaCheckCircle,
+    icon: IoCheckmarkDoneCircleOutline ,
     title: "Delivered Fast",
     desc: "Your package gets delivered safely and quickly.",
   },
