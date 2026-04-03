@@ -19,15 +19,13 @@ const Navbar = () => {
       top="0"
       zIndex="1000"
     >
-      <Text fontSize="2xl" fontWeight="bold" color="brand.500">
+      <Text fontFamily="'Georgia',serif" fontSize="2xl" fontWeight="bold" color="brand.500">
         Tri<Text color="#0096FF" as="span">go</Text>
       </Text>
 
       <HStack spacing={4}>
         
         <IconButton
-          
-          variant="ghost"
       onClick={toggleColorMode}
       icon={colorMode=="light" ? <CiDark fontSize="25px" /> : <CiLight fontSize="25px" /> }
       aria-label="Toggle Color Mode"
