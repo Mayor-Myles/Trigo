@@ -13,19 +13,21 @@ const Navbar = () => {
       py={4}
       align="center"
       justify="space-between"
-      bg="white"
+      bg={colorMode=="light" && "white"}
       boxShadow="sm"
       position="sticky"
       top="0"
       zIndex="1000"
     >
-      <Text fontSize="xl" fontWeight="bold" color="brand.500">
-        Tri<Text color="blue" as="span">go</Text>
+      <Text fontSize="2xl" fontWeight="bold" color="brand.500">
+        Tri<Text colorScheme="blue" as="span">go</Text>
       </Text>
 
       <HStack spacing={4}>
         
         <IconButton
+          size="md"
+          variant="ghost"
       onClick={toggleColorMode}
       icon={colorMode=="light" ? <CiDark  /> : <CiLight /> }
       aria-label="Toggle Color Mode"
