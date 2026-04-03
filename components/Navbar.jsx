@@ -27,7 +27,7 @@ const Navbar = () => {
         
         <IconButton
       onClick={toggleColorMode}
-      icon={colorMode=="light" ? <CiDark size="md" /> : <CiLight size="md" /> }
+      icon={colorMode=="light" ? <CiDark  /> : <CiLight /> }
       aria-label="Toggle Color Mode"
     />
         <Button variant="ghost">Login</Button>
