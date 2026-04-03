@@ -26,11 +26,11 @@ const Hero = () => {
         mt={6}
       >
         <Button as={Link} href="/login?&role=business" colorScheme="blue" size="lg">
-         <Icon name={GoPackage} mx={4} size="md" /> Send a Package
+         <Icon name={<GoPackage />} mx={4} size="md" /> Send a Package
         </Button>
         
         <Button href="/login?&role=rider" as={Link} colorScheme="black" variant="solid" size="lg">
-          <Icon name={CiDeliveryTruck} mx={4} size="md" /> Become a Rider
+          <Icon name={<CiDeliveryTruck/>} mx={4} size="md" /> Become a Rider
         </Button>
       </Stack>
     </Box>
