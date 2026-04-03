@@ -9,7 +9,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 
 const Hero = () => {
 
-  const {colorMode} = useColorMode();
+  const {colorMode,toggleColorMode} = useColorMode();
   
   
   return (
