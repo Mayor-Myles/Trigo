@@ -29,7 +29,7 @@ const Hero = () => {
          <Icon name={GoPackage} mx={4} size="md" /> Send a Package
         </Button>
         
-        <Button href="/login?&role=rider" as={Link} colorScheme="grey" variant="solid" size="lg">
+        <Button href="/login?&role=rider" as={Link} colorScheme="black" variant="solid" size="lg">
           <Icon name={CiDeliveryTruck} mx={4} size="md" /> Become a Rider
         </Button>
       </Stack>
