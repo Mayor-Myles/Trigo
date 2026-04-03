@@ -2,7 +2,7 @@
 
 
 // components/Hero.jsx
-import { Box, Heading, Text, Button, Stack } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Stack, Icon } from "@chakra-ui/react";
 import Link from "next/link";
 import { GoPackage } from "react-icons/go";
 import { CiDeliveryTruck } from "react-icons/ci";
@@ -26,11 +26,11 @@ const Hero = () => {
         mt={6}
       >
         <Button as={Link} href="/login?&role=business" colorScheme="blue" size="lg">
-         <Icon name={GoPackage} size="md" /> Send a Package
+         <Icon name={GoPackage} mx={4} size="md" /> Send a Package
         </Button>
         
         <Button href="/login?&role=rider" as={Link} colorScheme="grey" variant="solid" size="lg">
-          <Icon name={CiDeliveryTruck} size="md" /> Become a Rider
+          <Icon name={CiDeliveryTruck} mx={4} size="md" /> Become a Rider
         </Button>
       </Stack>
     </Box>
