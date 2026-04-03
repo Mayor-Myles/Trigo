@@ -7,6 +7,7 @@ import {
   
 } from "@chakra-ui/react";
 import Navbar from "@/components/navbar";
+import Hero from "@/components/navbar";
 
 
 export default function App(){
@@ -14,6 +15,7 @@ export default function App(){
 return(
 <>
 <Navbar />
+  <Hero />
 </>
 
 
