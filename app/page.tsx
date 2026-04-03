@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-
+import HowItWorks "@/components/HowItWorks";
 
 export default function App(){
 
@@ -16,6 +16,7 @@ return(
 <>
 <Navbar />
   <Hero />
+  <HowItWorks />
 </>
 
 
