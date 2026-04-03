@@ -13,7 +13,7 @@ const Hero = () => {
   
   
   return (
-    <Box textAlign="center" py={20} px={6} bg={colorMode="light" && "gray.50"}>
+    <Box textAlign="center" py={20} px={6} bg={colorMode=="light" && "gray.50"}>
       <Heading size="2xl" mb={4}>
         Fast & Reliable Tricycle Deliveries
       </Heading>
