@@ -29,11 +29,11 @@ const Hero = () => {
         justify="center"
         mt={6}
       >
-        <Button leftIcon={<GoPackage size ="20px" />} as={Link} href="/login?&role=business" colorScheme="blue" size="lg">
+        <Button leftIcon={<GoPackage size ="25px" />} as={Link} href="/login?&role=business" colorScheme="blue" size="lg">
            Send a Package
         </Button>
         
-        <Button leftIcon={<CiDeliveryTruck size ="20px" />} href="/login?&role=rider" as={Link} color="white" bg="#36454F" variant="solid" size="lg">
+        <Button leftIcon={<CiDeliveryTruck size ="25px" />} href="/login?&role=rider" as={Link} color="white" bg="#36454F" variant="solid" size="lg">
            Become a Rider
         </Button>
       </Stack>
