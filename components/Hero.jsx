@@ -3,6 +3,9 @@
 
 // components/Hero.jsx
 import { Box, Heading, Text, Button, Stack } from "@chakra-ui/react";
+import NextLink from "next/router";
+
+
 
 const Hero = () => {
   return (
@@ -25,7 +28,7 @@ const Hero = () => {
         <Button colorScheme="blue" size="lg">
           Send a Package
         </Button>
-        <Button variant="outline" size="lg">
+        <Button as={NextLink} colorScheme="black" variant="outline" size="lg">
           Become a Rider
         </Button>
       </Stack>
