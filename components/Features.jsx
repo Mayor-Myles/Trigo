@@ -30,7 +30,7 @@ const features = [
 
 const Features = () => {
   return (
-    <Box py={16} px={6} color="white" backgroundImage="linear-gradient(to right,#ABDCFF 0%,#0396FF 100%)">
+    <Box py={16} px={6} color="white" backgroundImage="linear-gradient(180deg, #009aff 0.000%, #008bff 25.000%, #007bff 50.000%, #0068ff 75.000%, #0053ff 100.000%)">
       <Heading textAlign="center" mb={10}>
         Why Choose Trigo?
       </Heading>
