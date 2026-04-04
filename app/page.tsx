@@ -21,8 +21,9 @@ return(
   <Hero />
   <HowItWorks />
   <Features />
-  <Footer />
   <ContactUs />
+  <Footer />
+  
 </>
 
 
