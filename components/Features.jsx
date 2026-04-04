@@ -6,21 +6,23 @@ import {
   Heading,
   VStack,
 } from "@chakra-ui/react";
-import { FaMapMarkerAlt, FaClock, FaMoneyBill } from "react-icons/fa";
+import { LuMapPin,LuClock } from "react-icons/lu";
+import { GrMoney } from "react-icons/gr";
+
 
 const features = [
   {
-    icon: FaMapMarkerAlt,
+    icon: LuMapPin,
     title: "Location-Based Matching",
     desc: "Riders get deliveries closest to them.",
   },
   {
-    icon: FaClock,
+    icon: LuClock,
     title: "Fast Delivery",
     desc: "Quick turnaround using local tricycle riders.",
   },
   {
-    icon: FaMoneyBill,
+    icon: GrMoney
     title: "Affordable Pricing",
     desc: "Save money on every delivery.",
   },
