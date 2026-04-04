@@ -12,14 +12,16 @@ const Hero = () => {
   const {colorMode,toggleColorMode} = useColorMode();
 
   const [loading,setLoading1] = useState(false);
-  const [loading,setLoading2] = useState(false);
-  const setters = [setLoading1,setloading2];
+  const [loading2,setLoading2] = useState(false);
+  const setters = [setLoading1,setLoading2];
 
 const load = (type) => {
 
 const setLoading = setters[type];
 
-  setTimeout(setLoading(false),500);
+  setLoading(true);
+  
+  setTimeout(()=>{setLoading(false)},500);
 
 }
   
