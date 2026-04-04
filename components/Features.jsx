@@ -30,7 +30,7 @@ const features = [
 
 const Features = () => {
   return (
-    <Box py={16} px={6} color="alphawhite" bg="#301934">
+    <Box py={16} px={6} color="alphawhite" bg="#36454F">
       <Heading textAlign="center" mb={10}>
         Why Choose Trigo?
       </Heading>
