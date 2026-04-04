@@ -13,7 +13,7 @@ import {
   useToast,
   HStack,
   Icon,
-  iuseColorMode
+  useColorMode
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaEnvelope, FaUser, FaPaperPlane } from "react-icons/fa";
