@@ -30,8 +30,8 @@ const Navbar = () => {
       icon={colorMode=="light" ? <CiDark fontSize="25px" /> : <CiLight fontSize="25px" /> }
       aria-label="Toggle Color Mode"
     />
-        <Button as={Link} href="/login?role=admin" variant="ghost">Login</Button>
-        <Button as={Link} href="/register" colorScheme="blue">Get Started</Button>
+        <Button onClick={()=>setLoading(true)} isLoading={loading} as={Link} href="/login?role=admin" variant="ghost">Login</Button>
+        <Button onClick={()=>setLoading(true)} isLoading={loading} as={Link} href="/register" colorScheme="blue">Get Started</Button>
       </HStack>
 
       
