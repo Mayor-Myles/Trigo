@@ -1,6 +1,4 @@
 
-
-
 // components/Hero.jsx
 import { Box, Heading, Text, Button, Stack, Icon,useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
@@ -29,7 +27,7 @@ const Hero = () => {
         justify="center"
         mt={6}
       >
-        <Button leftIcon={<GoPackage size ="25px" />} as={Link} href="/login?&role=business" colorScheme="blue" size="lg">
+        <Button onClick={(e)=>{e.visibility ="none"}} leftIcon={<GoPackage size ="25px" />} as={Link} href="/login?&role=business" colorScheme="blue" size="lg">
            Send a Package
         </Button>
         
