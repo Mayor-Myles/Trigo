@@ -22,6 +22,7 @@ return(
   <HowItWorks />
   <Features />
   <Footer />
+  <ContactUs />
 </>
 
 
