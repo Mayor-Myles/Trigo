@@ -32,7 +32,7 @@ const steps = [
 const HowItWorks = () => {
   return (
     <Box py={8} px={6}>
-      <Heading textAlign="center" mb={10}>
+      <Heading fontFamily="'Georgia',serif" textAlign="center" mb={10}>
         How Trigo Works
       </Heading>
 
