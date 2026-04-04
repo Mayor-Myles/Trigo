@@ -8,11 +8,11 @@ const {colorMode,toggleColorMode} = useColorMode();
   const [loading,setLoading] = useState(false);
  const [loading2,setLoading2] = useState(false);
  
-const  navigate = () => {
+const  navigate = (type) => {
 
-  setLoading(true);
-  setLoading2(true)
-setTimeout(()=>{setLoading(false); setLoading2(false);}, 7000);
+  setLoading+type(true);
+  
+setTimeout(()=>{setLoading+type(false)}, 7000);
 
   }
 
@@ -39,8 +39,8 @@ setTimeout(()=>{setLoading(false); setLoading2(false);}, 7000);
       icon={colorMode=="light" ? <CiDark fontSize="25px" /> : <CiLight fontSize="25px" /> }
       aria-label="Toggle Color Mode"
     />
-        <Button onClick={()=>navigate()} isLoading={loading} as={Link} href="/login?role=admin" variant="ghost">Login</Button>
-        <Button onClick={()=>navigate()} isLoading={loading2} as={Link} href="/register" colorScheme="blue">Get Started</Button>
+        <Button onClick={()=>navigate(1)} isLoading={loading} as={Link} href="/login?role=admin" variant="ghost">Login</Button>
+        <Button onClick={()=>navigate(2)} isLoading={loading2} as={Link} href="/register" colorScheme="blue">Get Started</Button>
       </HStack>
 
       
