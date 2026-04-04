@@ -46,8 +46,8 @@ const setLoading = setters[type];
            Send a Package
         </Button>
         
-        <Button isLoading={loading2} onClick={()=>{load(1)}} leftIcon={<CiDeliveryTruck size ="25px" />} href="/login?role=rider" as={Link} color="white" bg="#36454F" variant="solid" size="lg"
-           Become a Rider
+        <Button isLoading={loading2} onClick={()=>{load(1)}} leftIcon={<CiDeliveryTruck size ="25px" />} href="/login?role=rider" as={Link} color="white" bg="#36454F" variant="solid" size="lg">
+          Become a Rider
         </Button>
       </Stack>
     </Box>
