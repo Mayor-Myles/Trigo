@@ -2,11 +2,11 @@
 import { Flex, Text, Button, HStack, IconButton,useColorMode } from "@chakra-ui/react";
 import { CiLight, CiDark } from "react-icons/ci";
   import Link from "next/link";
-
+import {useState} from "react";
 const Navbar = () => {
 
   const {colorMode,toggleColorMode} = useColorMode();
-  
+  const [loading,setLoading] = useState(false);
   return (
     <Flex
       px={6}
