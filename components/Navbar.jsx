@@ -7,12 +7,13 @@ const Navbar = () => {
 const {colorMode,toggleColorMode} = useColorMode();
   const [loading,setLoading1] = useState(false);
  const [loading2,setLoading2] = useState(false);
- 
+ const setters = [setLoading1,setLoading2];
 const  load = (type) => {
 
-  setLoading+type(true);
+  const setLoading = setters(type);
+  setLoading(true)
   
-setTimeout(()=>{setLoading+type(false)}, 7000);
+setTimeout(()=>{setLoading(false)}, 7000);
 
   }
 
@@ -39,8 +40,8 @@ setTimeout(()=>{setLoading+type(false)}, 7000);
       icon={colorMode=="light" ? <CiDark fontSize="25px" /> : <CiLight fontSize="25px" /> }
       aria-label="Toggle Color Mode"
     />
-        <Button onClick={()=>load(1)} isLoading={loading} as={Link} href="/login?role=admin" variant="ghost">Login</Button>
-        <Button onClick={()=>load(2)} isLoading={loading2} as={Link} href="/register" colorScheme="blue">Get Started</Button>
+        <Button onClick={()=>load(0)} isLoading={loading} as={Link} href="/login?role=admin" variant="ghost">Login</Button>
+        <Button onClick={()=>load(1)} isLoading={loading2} as={Link} href="/register" colorScheme="blue">Get Started</Button>
       </HStack>
 
       
