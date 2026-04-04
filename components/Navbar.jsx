@@ -13,7 +13,7 @@ const  load = (type) => {
   const setLoading = setters[type];
   setLoading(true)
   
-setTimeout(()=>{setLoading(false)}, 7000);
+setTimeout(()=>{setLoading(false)}, 3000);
 
   }
 
