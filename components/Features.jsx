@@ -30,7 +30,7 @@ const features = [
 
 const Features = () => {
   return (
-    <Box py={16} px={6} color="alphawhite" bg="#36454F">
+    <Box py={16} px={6} color="white" bgImage="linear-image(to right,#434343 0%,#000000 100%)">
       <Heading textAlign="center" mb={10}>
         Why Choose Trigo?
       </Heading>
@@ -38,7 +38,7 @@ const Features = () => {
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
         {features.map((feature, index) => (
           <VStack key={index} spacing={4}>
-            <Box fontSize="35px" color="blue.500">
+            <Box fontSize="35px" color="white">
               <feature.icon />
             </Box>
             <Text fontWeight="bold">{feature.title}</Text>
