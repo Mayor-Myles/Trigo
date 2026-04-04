@@ -13,13 +13,14 @@ import {
   useToast,
   HStack,
   Icon,
+  iuseColorMode
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaEnvelope, FaUser, FaPaperPlane } from "react-icons/fa";
 
 const ContactUs = () => {
   const toast = useToast();
-
+  const {colorMode,toggleColorMode} = useColorMode();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -57,7 +58,7 @@ const ContactUs = () => {
     <Box
       py={20}
       px={6}
-      bgGradient="linear(to-b, blue.50, white)"
+      bgGradient={colorMode=="white" && "linear(to-b, blue.50, white)"}
     >
       {/* HEADER */}
       <VStack spacing={3} mb={12}>
@@ -71,7 +72,7 @@ const ContactUs = () => {
       <Box
         maxW="1000px"
         mx="auto"
-        bg="white"
+        bg={colorMode=="light" && "white"}
         borderRadius="xl"
         boxShadow="lg"
         p={{ base: 6, md: 10 }}
