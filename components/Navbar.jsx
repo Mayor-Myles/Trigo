@@ -12,7 +12,7 @@ const  navigate = () => {
 
   setLoading(true);
   setLoading2(true)
-setTimeout(setLoading(false); setLoading2(false); , 67000);
+setTimeout({setLoading(false); setLoading2(false);}, 7000);
 
   }
 
