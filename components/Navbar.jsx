@@ -5,10 +5,10 @@ import { CiLight, CiDark } from "react-icons/ci";
 import {useState} from "react";
 const Navbar = () => {
 const {colorMode,toggleColorMode} = useColorMode();
-  const [loading,setLoading] = useState(false);
+  const [loading,setLoading1] = useState(false);
  const [loading2,setLoading2] = useState(false);
  
-const  navigate = (type) => {
+const  load = (type) => {
 
   setLoading+type(true);
   
@@ -39,8 +39,8 @@ setTimeout(()=>{setLoading+type(false)}, 7000);
       icon={colorMode=="light" ? <CiDark fontSize="25px" /> : <CiLight fontSize="25px" /> }
       aria-label="Toggle Color Mode"
     />
-        <Button onClick={()=>navigate(1)} isLoading={loading} as={Link} href="/login?role=admin" variant="ghost">Login</Button>
-        <Button onClick={()=>navigate(2)} isLoading={loading2} as={Link} href="/register" colorScheme="blue">Get Started</Button>
+        <Button onClick={()=>load(1)} isLoading={loading} as={Link} href="/login?role=admin" variant="ghost">Login</Button>
+        <Button onClick={()=>load(2)} isLoading={loading2} as={Link} href="/register" colorScheme="blue">Get Started</Button>
       </HStack>
 
       
