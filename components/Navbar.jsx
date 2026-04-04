@@ -5,6 +5,13 @@ import { CiLight, CiDark } from "react-icons/ci";
 import {useState} from "react";
 const Navbar = () => {
 
+const  navigate = () => {
+
+  setLoading(true);
+setTimeout(setLoading(false),3500));
+
+  }
+
   const {colorMode,toggleColorMode} = useColorMode();
   const [loading,setLoading] = useState(false);
   return (
