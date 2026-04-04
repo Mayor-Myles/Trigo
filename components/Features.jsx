@@ -22,7 +22,7 @@ const features = [
     desc: "Quick turnaround using local tricycle riders.",
   },
   {
-    icon: GrMoney
+    icon: GrMoney,
     title: "Affordable Pricing",
     desc: "Save money on every delivery.",
   },
@@ -30,7 +30,7 @@ const features = [
 
 const Features = () => {
   return (
-    <Box py={16} px={6} bg="#301934">
+    <Box py={16} px={6} color="alphawhite" bg="#301934">
       <Heading textAlign="center" mb={10}>
         Why Choose Trigo?
       </Heading>
