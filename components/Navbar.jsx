@@ -10,7 +10,7 @@ const {colorMode,toggleColorMode} = useColorMode();
  const setters = [setLoading1,setLoading2];
 const  load = (type) => {
 
-  const setLoading = setters(type);
+  const setLoading = setters[type];
   setLoading(true)
   
 setTimeout(()=>{setLoading(false)}, 7000);
