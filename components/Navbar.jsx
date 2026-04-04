@@ -4,17 +4,19 @@ import { CiLight, CiDark } from "react-icons/ci";
   import Link from "next/link";
 import {useState} from "react";
 const Navbar = () => {
-
+const {colorMode,toggleColorMode} = useColorMode();
+  const [loading,setLoading] = useState(false);
+ const [loading2,setLoading2] = useState(false);
+ 
 const  navigate = () => {
 
   setLoading(true);
-setTimeout(setLoading(false),3500);
+  setLoading2(true)
+setTimeout(setLoading(false); setLoading2(false); , 67000);
 
   }
 
-  const {colorMode,toggleColorMode} = useColorMode();
-  const [loading,setLoading] = useState(false);
-  return (
+   return (
     <Flex
       px={6}
       py={4}
@@ -38,7 +40,7 @@ setTimeout(setLoading(false),3500);
       aria-label="Toggle Color Mode"
     />
         <Button onClick={()=>navigate()} isLoading={loading} as={Link} href="/login?role=admin" variant="ghost">Login</Button>
-        <Button onClick={()=>navigate()} isLoading={loading} as={Link} href="/register" colorScheme="blue">Get Started</Button>
+        <Button onClick={()=>navigate()} isLoading={loading2} as={Link} href="/register" colorScheme="blue">Get Started</Button>
       </HStack>
 
       
