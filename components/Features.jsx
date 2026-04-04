@@ -42,7 +42,7 @@ const Features = () => {
               <feature.icon />
             </Box>
             <Text fontWeight="bold">{feature.title}</Text>
-            <Text textAlign="center" color="gray.600">
+            <Text textAlign="center" color="black">
               {feature.desc}
             </Text>
           </VStack>
