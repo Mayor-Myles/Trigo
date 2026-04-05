@@ -17,7 +17,7 @@ import {
 import { ArrowBackIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import NextLink from "next/link";
-import Navbar from "@/components/Nabvar";
+import Navbar from "@/components/Navbar";
 
 const Login = () => {
   const [show, setShow] = useState(false);
