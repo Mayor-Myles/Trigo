@@ -17,6 +17,7 @@ import {
 import { ArrowBackIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import NextLink from "next/link";
+import Navbar from "@/components/Nabvar";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -25,6 +26,8 @@ const Login = () => {
   const cardBg = useColorModeValue("white", "gray.800");
 
   return (
+    <>
+    <Navbar />
     <Flex minH="100vh" bg={bg} align="center" justify="center" px={4}>
       
       <Box w="100%" maxW="420px">
@@ -59,7 +62,7 @@ const Login = () => {
               borderRadius="xl"
               mr={3}
             >
-              📦
+              <Text fontFamily="'Georgia', serif">Tri<Text as="span" color="dodgerblue">go</Text></Text>
             </Box>
 
             <Heading size="md">
@@ -132,6 +135,7 @@ const Login = () => {
         </Box>
       </Box>
     </Flex>
+    </>
   );
 };
 
