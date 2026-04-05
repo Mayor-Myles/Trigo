@@ -62,11 +62,11 @@ const Login = () => {
               borderRadius="xl"
               mr={3}
             >
-              <Text fontFamily="'Georgia', serif">Tri<Text as="span" color="dodgerblue">go</Text></Text>
+         🚕
             </Box>
 
             <Heading size="md">
-              Tri<Text as="span" color="blue.500">Send</Text>
+              Tri<Text as="span" color="blue.500">go</Text>
             </Heading>
           </Flex>
 
