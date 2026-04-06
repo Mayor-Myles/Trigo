@@ -19,7 +19,7 @@ import { ArrowBackIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import NextLink from "next/link";
 import Navbar from "@/components/Navbar";
-import axios from "axios";
+import api from "@/utils/axios";
 
 
 
@@ -30,7 +30,7 @@ const Login = () => {
   const [role, setRole] = useState("business");
   const bg = useColorModeValue("gray.50", "gray.900");
   const cardBg = useColorModeValue("white", "gray.800");
-  const url = "/api/backend/user/login";
+  const url = "/user/login";
   const toast = useToast();
   const submit = async () => {
 
@@ -38,7 +38,7 @@ const Login = () => {
 
     try{
       
-const res = await axios.post(url,
+const res = await api.post(url,
             {
 
               phone,
