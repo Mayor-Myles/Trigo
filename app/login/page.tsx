@@ -50,8 +50,9 @@ const res = await api.post(url,
             });
 
       
-
+alert(res.data.
     if(res.data.status){
+      
     toast.closeAll();
       
       toast(
