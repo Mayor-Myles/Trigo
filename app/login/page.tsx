@@ -51,7 +51,7 @@ const res = await api.post(url,
 
       
 
-    if(res.data.status === "success"){
+    if(res.data.status){
     toast.closeAll();
       
       toast(
@@ -60,9 +60,12 @@ const res = await api.post(url,
         description: res.data.message,
         position:"top",
         duration: 3000,
-          status:"success",
+          status:response.status,
 
     });
+
+      //save jwt
+      localStorage.setItem("jwt",response.token);
 
     }}//try
       
