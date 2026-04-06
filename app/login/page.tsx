@@ -31,8 +31,8 @@ const Login = () => {
   const cardBg = useColorModeValue("white", "gray.800");
   const url = "/user/login";
   const toast = useToast();
-  const[phone,setPhone] = useState(null);
-  const[password,setPassword] = useState(null);
+  const[phone,setPhone] = useState("");
+  const[password,setPassword] = useState("");
   const[role,setRole] = useState("");
   const submit = async () => {
 
@@ -190,7 +190,7 @@ toast(
                 Phone Number
               </Text>
               <Input
-                onChange={(e)=> setPhone(e.target.value)}
+                onChange={(e)=> {setPhone(e.target.value)}}
                 placeholder="e.g 07014443254"
                 size="lg"
                 borderRadius="lg"
@@ -204,7 +204,7 @@ toast(
               </Text>
               <InputGroup size="lg">
                 <Input
-                  onChange={(e)=> setPassword(e.target.value)}
+                  onChange={(e)=> {setPassword(e.target.value)}}
                   type={show ? "text" : "password"}
                   placeholder="Your password"
                   borderRadius="lg"
