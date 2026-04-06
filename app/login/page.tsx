@@ -50,7 +50,7 @@ const res = await api.post(url,
             });
 
       
-alert(res.data.status);
+a
     if(res.data.status){
       
     toast.closeAll();
@@ -61,7 +61,7 @@ alert(res.data.status);
         description: res.data.message,
         position:"top",
         duration: 3000,
-          status:response.status,
+          status:res.data.status,
 
     });
 
