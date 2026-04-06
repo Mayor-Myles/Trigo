@@ -11,6 +11,7 @@ import {
   InputGroup,
   InputRightElement,
   Icon,
+  useToast,
   Link as ChakraLink,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -18,14 +19,67 @@ import { ArrowBackIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import NextLink from "next/link";
 import Navbar from "@/components/Navbar";
+import axios from "axios"
+
+
 
 const Login = () => {
-  const [show, setShow] = useState(false);
-const [role, setRole] = useState("business");
 
+  const [loading,setLoading] = useState(false);
+  const [show, setShow] = useState(false);
+  const [role, setRole] = useState("business");
   const bg = useColorModeValue("gray.50", "gray.900");
   const cardBg = useColorModeValue("white", "gray.800");
+  const url = "/api/backend/user/login";
+  const toast = useToast();
+  const submit = async () => {
 
+    setLoading(true);
+
+    try{
+      
+const res = await axios.post(url,
+            {
+
+              phone,
+              password,
+              role,
+
+            })
+
+    if(res.data.status === "success"){
+    toast.closeAll();
+      
+      toast(
+        {
+        title: "Info",
+        description: res.data.message,
+        position:"top",
+        duration: 3000,
+          status:"success",
+
+    });
+
+    }catch(error){
+
+toast(
+        {
+        title: "Info",
+        description: "Something went wrong",
+        position:"top",
+        duration: 3000,
+          status:"error",
+
+    });
+
+    }finally{
+
+      setLoading(false);
+
+    }
+
+   }//submit 
+  
   return (
     <>
     <Navbar />
@@ -104,7 +158,7 @@ const [role, setRole] = useState("business");
       onClick={() => setRole("business")}
       _hover={{ bg: role === "business" ? "white" : "gray.200" }}
     >
-      Business Owner
+      Business Owner 
     </Button>
     <Button
       flex={1}
