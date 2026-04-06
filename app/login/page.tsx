@@ -91,7 +91,7 @@ const [role, setRole] = useState("business");
   p={1}
   mb={6}
 >
-  <Flex>
+  <Flex gap="3">
     <Button
       flex={1}
       size="md"
