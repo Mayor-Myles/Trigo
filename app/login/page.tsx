@@ -31,11 +31,23 @@ const Login = () => {
   const cardBg = useColorModeValue("white", "gray.800");
   const url = "/user/login";
   const toast = useToast();
-  const[phone,setPhone] = useState("");
-  const[password,setPassword] = useState("");
-  const[role,setRole] = useState("");
+  const[phone,setPhone] = useState(null);
+  const[password,setPassword] = useState(null);
+  const[role,setRole] = useState("business");
   const submit = async () => {
 
+
+    if(!phone && !password){
+      toast(
+        {
+        title: "Info",
+        description: "Please enter your login details.",
+        position:"top",
+        duration: 3000,
+        status:"warning",
+
+ return;
+    }
     setLoading(true);
 
     try{
@@ -61,7 +73,7 @@ const res = await api.post(url,
         description: res.data.message,
         position:"top",
         duration: 3000,
-          status:res.data.status,
+        status:res.data.status,
 
     });
 
