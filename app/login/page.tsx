@@ -37,7 +37,8 @@ const Login = () => {
   const submit = async () => {
 
 
-    if(phone != null && password !=null){
+    if(
+      (phone != null) && (password !=null) ){
       
       toast(
         {
