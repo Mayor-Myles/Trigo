@@ -37,7 +37,8 @@ const Login = () => {
   const submit = async () => {
 
 
-    if(!phone && !password){
+    if(phone != null && password !=null){
+      
       toast(
         {
         title: "Info",
@@ -175,10 +176,10 @@ toast(
       bg={role === "business" ? "white" : "transparent"}
       color={role === "business" ? "blue.500" : "gray.500"}
       fontWeight={role === "business" ? "bold" : "medium"}
-      boxShadow={role === "business" ? "sm" : "none"}
+      boxShadow={role == "business" ? "sm" : "none"}
       leftIcon={<span>📦</span>}
       onClick={() => setRole("business")}
-      _hover={{ bg: role === "business" ? "white" : "gray.200" }}
+      _hover={{ bg: role == "business" ? "white" : "gray.200" }}
     >
       Business Owner 
     </Button>
@@ -189,8 +190,8 @@ toast(
       borderRadius="xl"
       bg={role === "rider" ? "white" : "transparent"}
       color={role === "rider" ? "blue.500" : "gray.500"}
-      fontWeight={role === "rider" ? "bold" : "medium"}
-      boxShadow={role === "rider" ? "sm" : "none"}
+      fontWeight={role == "rider" ? "bold" : "medium"}
+      boxShadow={role == "rider" ? "sm" : "none"}
       leftIcon={<span>🛺</span>}
       onClick={() => setRole("rider")}
       _hover={{ bg: role === "rider" ? "white" : "gray.200" }}
