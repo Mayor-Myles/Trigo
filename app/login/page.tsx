@@ -49,6 +49,12 @@ const res = await api.post(url,
 
             });
 
+      alert(phone);
+
+      alert(role);
+
+      alert(password);
+
     if(res.data.status === "success"){
     toast.closeAll();
       
