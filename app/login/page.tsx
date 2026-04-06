@@ -174,13 +174,13 @@ toast(
       flex={1}
       size="md"
       borderRadius="xl"
-      bg={role === "business" ? "white" : "transparent"}
+      bg={role === "business" ? "white" : "grey.200"}
       color={role === "business" ? "blue.500" : "gray.500"}
       fontWeight={role === "business" ? "bold" : "medium"}
-      boxShadow={role == "business" ? "sm" : "none"}
+      boxShadow={role === "business" ? "sm" : "none"}
       leftIcon={<span>📦</span>}
       onClick={() => setRole("business")}
-      _hover={{ bg: role == "business" ? "white" : "gray.200" }}
+      _hover={{ bg: role === "business" ? "white" : "gray.200" }}
     >
       Business Owner 
     </Button>
@@ -189,10 +189,10 @@ toast(
       flex={1}
       size="md"
       borderRadius="xl"
-      bg={role === "rider" ? "white" : "transparent"}
+      bg={role === "rider" ? "white" : "grey.200"}
       color={role === "rider" ? "blue.500" : "gray.500"}
-      fontWeight={role == "rider" ? "bold" : "medium"}
-      boxShadow={role == "rider" ? "sm" : "none"}
+      fontWeight={role === "rider" ? "bold" : "medium"}
+      boxShadow={role === "rider" ? "sm" : "none"}
       leftIcon={<span>🛺</span>}
       onClick={() => setRole("rider")}
       _hover={{ bg: role === "rider" ? "white" : "gray.200" }}
