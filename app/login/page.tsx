@@ -190,6 +190,7 @@ toast(
                 Phone Number
               </Text>
               <Input
+                _hover={{bg:"grey"}}
                 onChange={(e)=> {setPhone(e.target.value)}}
                 placeholder="e.g 07014443254"
                 size="lg"
@@ -221,6 +222,7 @@ toast(
 
             {/* Button */}
             <Button
+              onClick={submit}
               isLoading={loading}
               w="100%"
               size="lg"
