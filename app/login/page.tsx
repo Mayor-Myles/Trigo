@@ -31,13 +31,13 @@ const Login = () => {
   const cardBg = useColorModeValue("white", "gray.800");
   const url = "/user/login";
   const toast = useToast();
-  const[phone,setPhone] = useState(null);
-  const[password,setPassword] = useState(null);
+  const[phone,setPhone] = useState("");
+  const[password,setPassword] = useState("");
   const[role,setRole] = useState("business");
   const submit = async () => {
 
 
-    if(!phone || !password){
+    if(!phone.trim() || !password.trim()){
       
       toast(
         {
