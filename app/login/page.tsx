@@ -27,11 +27,13 @@ const Login = () => {
 
   const [loading,setLoading] = useState(false);
   const [show, setShow] = useState(false);
-  const [role, setRole] = useState("business");
   const bg = useColorModeValue("gray.50", "gray.900");
   const cardBg = useColorModeValue("white", "gray.800");
   const url = "/user/login";
   const toast = useToast();
+  const[phone,setPhone] = useState(null);
+  const[password,setPassword] = useState(null);
+  const[role,setRole] = useState("");
   const submit = async () => {
 
     setLoading(true);
@@ -163,6 +165,7 @@ toast(
       Business Owner 
     </Button>
     <Button
+      
       flex={1}
       size="md"
       borderRadius="xl"
@@ -187,6 +190,7 @@ toast(
                 Phone Number
               </Text>
               <Input
+                onChange={(e)=> setPhone(e.target.value)}
                 placeholder="e.g 07014443254"
                 size="lg"
                 borderRadius="lg"
@@ -200,6 +204,7 @@ toast(
               </Text>
               <InputGroup size="lg">
                 <Input
+                  onChange={(e)=> setPassword(e.target.value)}
                   type={show ? "text" : "password"}
                   placeholder="Your password"
                   borderRadius="lg"
@@ -216,6 +221,7 @@ toast(
 
             {/* Button */}
             <Button
+              isLoading={loading}
               w="100%"
               size="lg"
               bgGradient="linear(to-r, blue.400, blue.600)"
