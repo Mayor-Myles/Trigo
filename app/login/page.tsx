@@ -28,7 +28,7 @@ const Login = () => {
   return (
     <>
     <Navbar />
-    <Flex minH="100vh" bg={bg} align="center" justify="center" px={4}>
+    <Flex minH={["","100vh"]} bg={bg} align="center" justify="center" px={4}>
       
       <Box w="100%" maxW="420px">
         
@@ -62,7 +62,7 @@ const Login = () => {
               borderRadius="xl"
               mr={3}
             >
-         🚕
+         🛺
             </Box>
 
             <Heading size="md">
@@ -81,7 +81,49 @@ const Login = () => {
               Create one
             </ChakraLink>
           </Text>
+// Add this to your useState section at the top:
+const [role, setRole] = useState("business");
 
+// Then place this block after your <Text color="gray.500" mb={6}> block and before <VStack spacing={4}>:
+
+{/* Role Selector */}
+<Box
+  bg={useColorModeValue("gray.100", "gray.700")}
+  borderRadius="2xl"
+  p={1}
+  mb={6}
+>
+  <Flex>
+    <Button
+      flex={1}
+      size="md"
+      borderRadius="xl"
+      bg={role === "business" ? "white" : "transparent"}
+      color={role === "business" ? "blue.500" : "gray.500"}
+      fontWeight={role === "business" ? "bold" : "medium"}
+      boxShadow={role === "business" ? "sm" : "none"}
+      leftIcon={<span>📦</span>}
+      onClick={() => setRole("business")}
+      _hover={{ bg: role === "business" ? "white" : "gray.200" }}
+    >
+      Business Owner
+    </Button>
+    <Button
+      flex={1}
+      size="md"
+      borderRadius="xl"
+      bg={role === "rider" ? "white" : "transparent"}
+      color={role === "rider" ? "blue.500" : "gray.500"}
+      fontWeight={role === "rider" ? "bold" : "medium"}
+      boxShadow={role === "rider" ? "sm" : "none"}
+      leftIcon={<span>🛺</span>}
+      onClick={() => setRole("rider")}
+      _hover={{ bg: role === "rider" ? "white" : "gray.200" }}
+    >
+      Tricycle Rider
+    </Button>
+  </Flex>
+</Box>
           {/* Form */}
           <VStack spacing={4}>
             
