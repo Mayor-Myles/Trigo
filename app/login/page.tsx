@@ -43,17 +43,13 @@ const Login = () => {
 const res = await api.post(url,
             {
 
-              phone,
-              password,
-              role,
+              phone:phone,
+              password:password,
+              role:role,
 
             });
 
-      alert(phone);
-
-      alert(role);
-
-      alert(password);
+      
 
     if(res.data.status === "success"){
     toast.closeAll();
