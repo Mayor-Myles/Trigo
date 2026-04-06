@@ -19,7 +19,7 @@ import { ArrowBackIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import NextLink from "next/link";
 import Navbar from "@/components/Navbar";
-import axios from "axios"
+import axios from "axios";
 
 
 
