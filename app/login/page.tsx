@@ -80,12 +80,7 @@ const Login = () => {
             <ChakraLink as={NextLink} href="/signup" color="blue.500">
               Create one
             </ChakraLink>
-          </Text>
-// Add this to your useState section at the top:
-const [role, setRole] = useState("business");
-
-// Then place this block after your <Text color="gray.500" mb={6}> block and before <VStack spacing={4}>:
-
+          
 {/* Role Selector */}
 <Box
   bg={useColorModeValue("gray.100", "gray.700")}
