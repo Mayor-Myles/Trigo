@@ -29,7 +29,7 @@ const [role, setRole] = useState("business");
   return (
     <>
     <Navbar />
-    <Flex minH={["0vh","100vh"]} bg={bg} align="center" justify="center" px={4}>
+    <Flex my={[4,1]} minH={["0vh","100vh"]} bg={bg} align="center" justify="center" px={4}>
       
       <Box w="100%" maxW="420px">
         
