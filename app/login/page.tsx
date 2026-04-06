@@ -45,7 +45,7 @@ const res = await axios.post(url,
               password,
               role,
 
-            })
+            });
 
     if(res.data.status === "success"){
     toast.closeAll();
@@ -60,7 +60,9 @@ const res = await axios.post(url,
 
     });
 
-    }catch(error){
+    }}//try
+      
+      catch(error){
 
 toast(
         {
