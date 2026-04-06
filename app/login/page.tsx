@@ -29,7 +29,7 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const bg = useColorModeValue("gray.50", "gray.900");
   const cardBg = useColorModeValue("white", "gray.800");
-  const url = "/user/login";
+  const url = "api/backend/user/login";
   const toast = useToast();
   const[phone,setPhone] = useState("");
   const[password,setPassword] = useState("");
