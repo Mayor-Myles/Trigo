@@ -190,7 +190,7 @@ toast(
                 Phone Number
               </Text>
               <Input
-                _hover={{bg:"grey"}}
+                _hover={{bg:"lightgrey",color:"white"}}
                 onChange={(e)=> {setPhone(e.target.value)}}
                 placeholder="e.g 07014443254"
                 size="lg"
@@ -205,6 +205,7 @@ toast(
               </Text>
               <InputGroup size="lg">
                 <Input
+                  _hover={{bg:"lightgrey",color:"white"}}
                   onChange={(e)=> {setPassword(e.target.value)}}
                   type={show ? "text" : "password"}
                   placeholder="Your password"
