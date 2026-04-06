@@ -21,6 +21,7 @@ import Navbar from "@/components/Navbar";
 
 const Login = () => {
   const [show, setShow] = useState(false);
+const [role, setRole] = useState("business");
 
   const bg = useColorModeValue("gray.50", "gray.900");
   const cardBg = useColorModeValue("white", "gray.800");
@@ -28,7 +29,7 @@ const Login = () => {
   return (
     <>
     <Navbar />
-    <Flex minH={["","100vh"]} bg={bg} align="center" justify="center" px={4}>
+    <Flex minH={["0vh","100vh"]} bg={bg} align="center" justify="center" px={4}>
       
       <Box w="100%" maxW="420px">
         
@@ -76,10 +77,12 @@ const Login = () => {
           </Heading>
 
           <Text color="gray.500" mb={6}>
-            No account yet?{" "}
-            <ChakraLink as={NextLink} href="/signup" color="blue.500">
-              Create one
-            </ChakraLink>
+  No account yet?{" "}
+  <ChakraLink as={NextLink} href="/signup" color="blue.500">
+    Create one
+  </ChakraLink>
+</Text>
+
           
 {/* Role Selector */}
 <Box
@@ -122,13 +125,13 @@ const Login = () => {
           {/* Form */}
           <VStack spacing={4}>
             
-            {/* Email */}
+            {/* Phone number */}
             <Box w="100%">
               <Text mb={2} fontWeight="medium">
-                Email Address
+                Phone Number
               </Text>
               <Input
-                placeholder="you@example.com"
+                placeholder="e.g 07014443254"
                 size="lg"
                 borderRadius="lg"
               />
