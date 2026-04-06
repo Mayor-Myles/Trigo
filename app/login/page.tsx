@@ -66,7 +66,7 @@ const res = await api.post(url,
     });
 
       //save jwt
-      localStorage.setItem("jwt",response.token);
+      localStorage.setItem("jwt",res.data.token);
 
     }}//try
       
