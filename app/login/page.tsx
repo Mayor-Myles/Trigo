@@ -86,9 +86,13 @@ const res = await api.post(url,
       //save jwt
       localStorage.setItem("jwt",res.data.token);
 
-      setTimeout(()=>{
+     if(res.data.status==="success"){
+       setTimeout(()=>{
 router.push("/"+role);
       },1000);
+
+     }
+      
     }}//try
       
       catch(error){
