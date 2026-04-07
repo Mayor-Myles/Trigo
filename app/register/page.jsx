@@ -42,9 +42,11 @@ const Register = () => {
   };
 
   const submit = async () => {
+toast.closeAll();
+    
     if (!fullname.trim() || !phone.trim() || !password.trim() || !email.trim()) {
 
-      toast.closeAll();
+      
       
       toast({
         title: "Info",
