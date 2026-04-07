@@ -101,7 +101,7 @@ const Register = () => {
   return (
     <>
       <Navbar />
-      <Flex minH="100vh" bg={bg} align="center" justify="center" px={4} py={8}>
+      <Flex minH={["1vh","100vh"]} bg={bg} align="center" justify="center" px={4} py={8}>
         <Box w="100%" maxW="420px">
 
           {/* STEP 1: Role Selection */}
