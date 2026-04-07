@@ -8,8 +8,8 @@ import api from "@/utils/axios";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import StatsGrid from "@/components/dashboard/StatsGrid";
 import FilterTabs from "@/components/dashboard/FilterTabs";
-//import PackageCard from "@/components/dashboard/PackageCard";
-//import EmptyState from "@/components/dashboard/EmptyState";
+import PackageCard from "@/components/dashboard/PackageCard";
+import EmptyState from "@/components/dashboard/EmptyState";
 
 const Dashboard = () => {
   const [user, setUser]       = useState(null);
