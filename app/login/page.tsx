@@ -20,7 +20,7 @@ import { useState } from "react";
 import NextLink from "next/link";
 import Navbar from "@/components/Navbar";
 import api from "@/utils/axios";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 
 
 const Login = () => {
