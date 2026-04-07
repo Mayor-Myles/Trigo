@@ -57,7 +57,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    fetchUserData();
+    //fetchUserData();
   }, []);
 
   // Counts per status
