@@ -20,7 +20,7 @@ import { useState } from "react";
 import NextLink from "next/link";
 import Navbar from "@/components/Navbar";
 import api from "@/utils/axios";
-
+import useRouter from "next/router";
 
 
 const Login = () => {
@@ -35,6 +35,7 @@ const Login = () => {
   const[password,setPassword] = useState("");
   const[role,setRole] = useState("business");
  const toggleBg = useColorModeValue("gray.100", "gray.700");
+ cinst router = useRouter();
   const submit = async () => {
 
 
@@ -85,6 +86,9 @@ const res = await api.post(url,
       //save jwt
       localStorage.setItem("jwt",res.data.token);
 
+      setTimeout(()=>{
+router.push("/"+role);
+      },1000);
     }}//try
       
       catch(error){
