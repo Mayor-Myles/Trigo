@@ -28,7 +28,7 @@ const Dashboard = () => {
       return;
     }
     try {
-      const res = await api.post("/user/getUserData", { token: jwt });
+      const res = await api.post("/user/getUserData", { jwt: jwt });
      const response = res.data;
       if (response.status === "success") {
         setUser(response.data);
