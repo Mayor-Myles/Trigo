@@ -76,7 +76,7 @@ const Register = () => {
           description: res.data.message,
           position: "top",
           duration: 3000,
-          status: "success",
+          status: res.data.status,
         });
         localStorage.setItem("jwt", res.data.token);
       } else {
