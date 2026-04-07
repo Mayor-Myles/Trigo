@@ -34,7 +34,7 @@ const Login = () => {
   const[phone,setPhone] = useState("");
   const[password,setPassword] = useState("");
   const[role,setRole] = useState("business");
- const bg = useColorModeValue("gray.100", "gray.700");
+ const toggleBg = useColorModeValue("gray.100", "gray.700");
   const submit = async () => {
 
 
@@ -108,7 +108,7 @@ toast(
   return (
     <>
     <Navbar />
-    <Flex my={[4,1]} minH={["0vh","100vh"]} bg={bg} align="center" justify="center" px={4}>
+    <Flex my={[4,1]} minH={["1vh","100vh"]} bg={bg} align="center" justify="center" px={4}>
       
       <Box w="100%" maxW="420px">
         
@@ -165,7 +165,7 @@ toast(
           
 {/* Role Selector */}
 <Box
-  bg={bg}
+  bg={toggleBg}
   borderRadius="2xl"
   p={1}
   mb={6}
@@ -179,7 +179,7 @@ toast(
       color={role === "business" ? "blue.500" : "gray.500"}
       fontWeight={role === "business" ? "bold" : "medium"}
       boxShadow={role === "business" ? "sm" : "none"}
-      leftIcon={<span>📦</span>}
+      leftIcon={<span>🥡</span>}
       onClick={() => setRole("business")}
       _hover={{ bg: role === "business" ? "white" : "gray.200" }}
     >
