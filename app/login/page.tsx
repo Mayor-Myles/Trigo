@@ -39,6 +39,8 @@ const Login = () => {
 
 
     if(!phone.trim() || !password.trim()){
+
+      toast.closeAll();
       
       toast(
         {
@@ -157,7 +159,7 @@ toast(
 
           <Text color="gray.500" mb={6}>
   No account yet?{" "}
-  <ChakraLink as={NextLink} href="/signup" color="blue.500">
+  <ChakraLink as={NextLink} href="/register" color="blue.500">
     Create one
   </ChakraLink>
 </Text>
