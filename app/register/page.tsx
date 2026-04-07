@@ -137,9 +137,9 @@ const Register = () => {
                 {[
                   { key: "business", icon: "📦", label: "Business Owner", sub: "Send packages, manage deliveries" },
                   { key: "rider", icon: "🛺", label: "Tricycle Rider", sub: "Earn by delivering packages" },
-                ].map(({ key, icon, label, sub }) => (
+                ].map((item) => (
                   <Box
-                    key={key}
+                    key={item.key}
                     w="100%"
                     bg={cardBg}
                     border="1px solid"
@@ -152,19 +152,19 @@ const Register = () => {
                     gap={4}
                     _hover={{ borderColor: "blue.400" }}
                     transition="border-color 0.2s"
-                    onClick={() => selectRole(key)}
+                    onClick={() => selectRole(item.key)}
                   >
                     <Box
-                      bg={key === "business" ? "blue.50" : "green.50"}
+                      bg={item.key === "business" ? "blue.50" : "green.50"}
                       p={3}
                       borderRadius="lg"
                       fontSize="xl"
                     >
-                      {icon}
+                      {item.icon}
                     </Box>
                     <Box>
-                      <Text fontWeight="semibold">{label}</Text>
-                      <Text fontSize="sm" color="gray.500">{sub}</Text>
+                      <Text fontWeight="semibold">{item.label}</Text>
+                      <Text fontSize="sm" color="gray.500">{item.sub}</Text>
                     </Box>
                   </Box>
                 ))}
