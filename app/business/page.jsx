@@ -29,9 +29,10 @@ const Dashboard = () => {
     }
     try {
       const res = await api.post("/user/getUserData", { token: jwt });
-      if (res.data.status === "success") {
-        setUser(res.data.user);
-        setPackages(res.data.packages || []);
+     const response = res.data;
+      if (response.status === "success") {
+        setUser(response.data);
+        setPackages(response.data.packages || []);
       } else {
         toast({
           title: "Session expired",
