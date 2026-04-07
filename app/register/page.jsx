@@ -43,6 +43,9 @@ const Register = () => {
 
   const submit = async () => {
     if (!fullname.trim() || !phone.trim() || !password.trim() || !email.trim()) {
+
+      toast.closeAll();
+      
       toast({
         title: "Info",
         description: "Please fill in all required fields.",
