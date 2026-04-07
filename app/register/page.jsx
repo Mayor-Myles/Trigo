@@ -50,7 +50,7 @@ const Register = () => {
         title: "Info",
         description: "Please fill in all required fields.",
         position: "top",
-        duration: 3000,
+        duration: 4000,
         status: "warning",
       });
       return;
@@ -75,7 +75,7 @@ const Register = () => {
           title: "Success",
           description: res.data.message,
           position: "top",
-          duration: 3000,
+          duration: 4000,
           status: res.data.status,
         });
         localStorage.setItem("jwt", res.data.token);
@@ -84,7 +84,7 @@ const Register = () => {
           title: "Error",
           description: res.data.message,
           position: "top",
-          duration: 3000,
+          duration: 4000,
           status: "error",
         });
       }
@@ -93,7 +93,7 @@ const Register = () => {
         title: "Error",
         description: "Something went wrong. Please try again.",
         position: "top",
-        duration: 3000,
+        duration: 4000,
         status: "error",
       });
     } finally {
