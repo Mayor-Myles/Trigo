@@ -21,7 +21,7 @@ import NextLink from "next/link";
 import Navbar from "@/components/Navbar";
 import api from "@/utils/axios";
 
-const Signup = () => {
+const Register = () => {
   const [step, setStep] = useState("role");
   const [role, setRole] = useState("");
   const [show, setShow] = useState(false);
@@ -31,7 +31,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [businessName, setBusinessName] = useState("");
-
+const toggleBg = useColorModeValue("gray.100", "gray.700"); 
   const bg = useColorModeValue("gray.50", "gray.900");
   const cardBg = useColorModeValue("white", "gray.800");
   const roleBg = useColorModeValue("gray.100", "gray.700");
@@ -306,4 +306,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;
