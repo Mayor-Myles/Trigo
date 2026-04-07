@@ -6,27 +6,28 @@ const TABS = [
   { key: "transit",   label: "In Transit" },
   { key: "delivered", label: "Delivered" },
 ];
+const[active,setActive] = useState("all");
 
-const FilterTabs = ({ active, counts, onChange }) => {
+const FilterTabs = ({ counts }) => {
   const inactiveBg  = useColorModeValue("white", "gray.700");
 
   return (
     <Flex px={4} gap={2} flexWrap="wrap" mb={4}>
       {TABS.map(({ key, label }) => {
-        const isActive = active === key;
-        const count = key === "all" ? null : counts[key];
+        //const isActive = active === key;
+       const count =  counts[key];
         return (
           <Button
             key={key}
-            onClick={() => onChange(key)}
+            onClick={() => setActive(key)}
             size="sm"
             borderRadius="xl"
             border="1px solid"
-            borderColor={isActive ? "blue.500" : "gray.200"}
-            bg={isActive ? "blue.500" : inactiveBg}
-            color={isActive ? "white" : "gray.600"}
+            borderColor={active ? "blue.500" : "gray.200"}
+            bg={active ? "blue.500" : inactiveBg}
+            color={active ? "white" : "gray.600"}
             fontWeight="semibold"
-            _hover={{ bg: isActive ? "blue.600" : "gray.100" }}
+            _hover={{ bg: active ? "blue.600" : "gray.100" }}
           >
             {label}
             {count !== null && (
