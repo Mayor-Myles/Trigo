@@ -16,8 +16,8 @@ const StatCard = ({ icon, label, value, iconBg, iconColor }) => {
       >
         <span style={{ color: iconColor }}>{icon}</span>
       </Flex>
-      <Text fontSize="3xl" fontWeight="bold" mb={1}>{value}</Text>
-      <Text color="gray.500" fontSize="sm">{label}</Text>
+      <Text align="center" fontSize="2xl" fontWeight="bold" mb={1}>{value}</Text>
+      <Text align="center" color="gray.500" fontSize="sm">{label}</Text>
     </Box>
   );
 };
