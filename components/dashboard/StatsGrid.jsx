@@ -4,7 +4,7 @@ import { SimpleGrid, Box, Text, Flex, useColorModeValue } from "@chakra-ui/react
 const StatCard = ({ icon, label, value, iconBg, iconColor }) => {
   const cardBg = useColorModeValue("white", "gray.800");
   return (
-    <Box bg={cardBg} borderRadius="2xl" p={5} boxShadow="sm">
+    <Box bg={cardBg} borderRadius="2xl" p={4} boxShadow="md">
       <Flex
         w="30px" h="30px"
         borderRadius="xl"
