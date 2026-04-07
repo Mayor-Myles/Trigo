@@ -31,13 +31,12 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [businessName, setBusinessName] = useState("");
-const toggleBg = useColorModeValue("gray.100", "gray.700"); 
+
   const bg = useColorModeValue("gray.50", "gray.900");
   const cardBg = useColorModeValue("white", "gray.800");
-  const roleBg = useColorModeValue("gray.100", "gray.700");
   const toast = useToast();
 
-  const selectRole = (selected:"business" | "rider") => {
+  const selectRole = (selected) => {
     setRole(selected);
     setStep("form");
   };
@@ -66,7 +65,6 @@ const toggleBg = useColorModeValue("gray.100", "gray.700");
         businessName,
       };
 
-
       const res = await api.post("/user/register", payload);
 
       if (res.data.status) {
@@ -77,7 +75,6 @@ const toggleBg = useColorModeValue("gray.100", "gray.700");
           duration: 3000,
           status: "success",
         });
-
         localStorage.setItem("jwt", res.data.token);
       } else {
         toast({
@@ -253,31 +250,53 @@ const toggleBg = useColorModeValue("gray.100", "gray.700");
 
                   <Box w="100%">
                     <Text mb={2} fontWeight="medium" fontSize="sm">Full Name</Text>
-                    <Input onChange={(e) => setFullname(e.target.value)} />
+                    <Input
+                      placeholder="e.g. Ada Okafor"
+                      size="lg"
+                      borderRadius="lg"
+                      onChange={(e) => setFullname(e.target.value)}
+                    />
                   </Box>
 
                   <Box w="100%">
-                    <Text mb={2}>Phone Number</Text>
-                    <Input onChange={(e) => setPhone(e.target.value)} />
+                    <Text mb={2} fontWeight="medium" fontSize="sm">Phone Number</Text>
+                    <Input
+                      placeholder="e.g. 07014443254"
+                      size="lg"
+                      borderRadius="lg"
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
                   </Box>
 
                   <Box w="100%">
-                    <Text mb={2}>Email</Text>
-                    <Input onChange={(e) => setEmail(e.target.value)} />
+                    <Text mb={2} fontWeight="medium" fontSize="sm">Email Address</Text>
+                    <Input
+                      placeholder="you@example.com"
+                      size="lg"
+                      borderRadius="lg"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </Box>
 
                   {role === "business" && (
                     <Box w="100%">
-                      <Text mb={2}>Business Name</Text>
-                      <Input onChange={(e) => setBusinessName(e.target.value)} />
+                      <Text mb={2} fontWeight="medium" fontSize="sm">Business Name</Text>
+                      <Input
+                        placeholder="e.g. Ada's Fashion Store"
+                        size="lg"
+                        borderRadius="lg"
+                        onChange={(e) => setBusinessName(e.target.value)}
+                      />
                     </Box>
                   )}
 
                   <Box w="100%">
-                    <Text mb={2}>Password</Text>
-                    <InputGroup>
+                    <Text mb={2} fontWeight="medium" fontSize="sm">Password</Text>
+                    <InputGroup size="lg">
                       <Input
                         type={show ? "text" : "password"}
+                        placeholder="Create a password"
+                        borderRadius="lg"
                         onChange={(e) => setPassword(e.target.value)}
                       />
                       <InputRightElement>
@@ -290,7 +309,16 @@ const toggleBg = useColorModeValue("gray.100", "gray.700");
                     </InputGroup>
                   </Box>
 
-                  <Button onClick={submit} isLoading={loading} w="100%">
+                  <Button
+                    onClick={submit}
+                    isLoading={loading}
+                    w="100%"
+                    size="lg"
+                    bgGradient="linear(to-r, blue.400, blue.600)"
+                    color="white"
+                    _hover={{ bgGradient: "linear(to-r, blue.500, blue.700)" }}
+                    mt={2}
+                  >
                     Create Account
                   </Button>
 
