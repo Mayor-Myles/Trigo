@@ -175,7 +175,7 @@ toast(
       flex={1}
       size="md"
       borderRadius="xl"
-      bg={role === "business" ? "white" : "grey.200"}
+      bg={role === "business" ? "white" : "gray.200"}
       color={role === "business" ? "blue.500" : "gray.500"}
       fontWeight={role === "business" ? "bold" : "medium"}
       boxShadow={role === "business" ? "sm" : "none"}
@@ -190,7 +190,7 @@ toast(
       flex={1}
       size="md"
       borderRadius="xl"
-      bg={role === "rider" ? "white" : "grey.200"}
+      bg={role === "rider" ? "white" : "gray.200"}
       color={role === "rider" ? "blue.500" : "gray.500"}
       fontWeight={role === "rider" ? "bold" : "medium"}
       boxShadow={role === "rider" ? "sm" : "none"}
