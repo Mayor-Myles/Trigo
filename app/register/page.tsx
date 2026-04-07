@@ -37,7 +37,7 @@ const toggleBg = useColorModeValue("gray.100", "gray.700");
   const roleBg = useColorModeValue("gray.100", "gray.700");
   const toast = useToast();
 
-  const selectRole = (selected) => {
+  const selectRole = (selected:"business" | "rider") => {
     setRole(selected);
     setStep("form");
   };
