@@ -84,7 +84,7 @@ const res = await api.post(url,
     });
 
       //save jwt
-      localStorage.setItem("jwt",res.data.token);
+      localStorage.setItem("jwt",res.data.data.token);
 
      if(res.data.status==="success"){
        setTimeout(()=>{
