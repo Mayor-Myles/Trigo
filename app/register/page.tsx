@@ -63,11 +63,9 @@ const toggleBg = useColorModeValue("gray.100", "gray.700");
         email,
         password,
         role,
+        businessName,
       };
 
-      if (role === "business") {
-        payload.business_name = businessName;
-      }
 
       const res = await api.post("/user/register", payload);
 
