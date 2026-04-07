@@ -35,7 +35,7 @@ const Login = () => {
   const[password,setPassword] = useState("");
   const[role,setRole] = useState("business");
  const toggleBg = useColorModeValue("gray.100", "gray.700");
- cinst router = useRouter();
+ const router = useRouter();
   const submit = async () => {
 
 
