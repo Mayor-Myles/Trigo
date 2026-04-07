@@ -6,6 +6,7 @@ const tabs = [
   { key: "transit",   label: "In Transit" },
   { key: "delivered", label: "Delivered" },
 ];
+const[active,setActive] = useState("all");
 
 const FilterTabs = ({ counts }) => {
   const inactiveBg  = useColorModeValue("white", "gray.700");
