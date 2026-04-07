@@ -34,6 +34,7 @@ const Login = () => {
   const[phone,setPhone] = useState("");
   const[password,setPassword] = useState("");
   const[role,setRole] = useState("business");
+ const bg = useColorModeValue("gray.100", "gray.700");
   const submit = async () => {
 
 
@@ -164,7 +165,7 @@ toast(
           
 {/* Role Selector */}
 <Box
-  bg={useColorModeValue("gray.100", "gray.700")}
+  bg={bg}
   borderRadius="2xl"
   p={1}
   mb={6}
