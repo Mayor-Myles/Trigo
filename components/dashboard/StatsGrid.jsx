@@ -6,12 +6,12 @@ const StatCard = ({ icon, label, value, iconBg, iconColor }) => {
   return (
     <Box bg={cardBg} borderRadius="2xl" p={5} boxShadow="sm">
       <Flex
-        w="48px" h="48px"
+        w="30px" h="30px"
         borderRadius="xl"
         bg={iconBg}
         align="center"
         justify="center"
-        fontSize="22px"
+        fontSize="15px"
         mb={4}
       >
         <span style={{ color: iconColor }}>{icon}</span>
