@@ -104,9 +104,7 @@ const Dashboard = () => {
           <StatsGrid stats={stats} />
       
       <FilterTabs
-        active={activeTab}
         counts={counts}
-        onChange={setActiveTab}
       />
       {/*
       {filtered.length === 0 ? (
