@@ -1,4 +1,4 @@
-import { Flex, Button, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Button, useColorModeValue,Text } from "@chakra-ui/react";
 import {useState} from "react";
 
 const tabs = [
@@ -7,10 +7,10 @@ const tabs = [
   { key: "transit",   label: "In Transit" },
   { key: "delivered", label: "Delivered" },
 ];
-const[active,setActive] = useState("all");
 
 const FilterTabs = ({ counts }) => {
   const inactiveBg  = useColorModeValue("white", "gray.700");
+const[active,setActive] = useState("all");
 
   return (
     <Flex px={4} gap={2} flexWrap="wrap" mb={4}>
@@ -24,11 +24,11 @@ const FilterTabs = ({ counts }) => {
             size="sm"
             borderRadius="xl"
             border="1px solid"
-            borderColor={active ? "blue.500" : "gray.200"}
-            bg={active ? "blue.500" : inactiveBg}
-            color={active ? "white" : "gray.600"}
+            borderColor={active==key ? "blue.500" : "gray.200"}
+            bg={active==key ? "blue.500" : inactiveBg}
+            color={active==key "white" : "gray.600"}
             fontWeight="semibold"
-            _hover={{ bg: active ? "blue.600" : "gray.100" }}
+            _hover={{ bg: active===key ? "blue.600" : "gray.100" }}
           >
             {label}
             {count !== null && (
