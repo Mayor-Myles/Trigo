@@ -10,6 +10,8 @@ import StatsGrid from "@/components/dashboard/StatsGrid";
 import FilterTabs from "@/components/dashboard/FilterTabs";
 import PackageCard from "@/components/dashboard/PackageCard";
 import EmptyState from "@/components/dashboard/EmptyState";
+import Navbar from "@/components/Navbar";
+
 
 const Dashboard = () => {
   const [user, setUser]       = useState(null);
@@ -90,8 +92,8 @@ const Dashboard = () => {
   }
 
   return (
-
-    
+<>
+    <Navbar />
     <Box bg={bg} minH="100vh" pb={10}>
       <DashboardHeader
         name={user?.fullname?.split(" ")[0]?.toUpperCase() || "USER"}
@@ -99,8 +101,8 @@ const Dashboard = () => {
         onPostPackage={() => router.push("/dashboard/post-package")}
       />
 
-      {/*    <StatsGrid stats={stats} />
-
+          <StatsGrid stats={stats} />
+      {/*
       <FilterTabs
         active={activeTab}
         counts={counts}
@@ -120,6 +122,7 @@ const Dashboard = () => {
       )}
       */}
     </Box>
+</>
   );
 };
 
