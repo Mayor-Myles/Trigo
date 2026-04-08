@@ -46,7 +46,8 @@ setTimeout(()=>{setLoading(false)}, 1500);
       icon={colorMode=="light" ? <CiDark fontSize="25px" /> : <CiLight fontSize="25px" /> }
       aria-label="Toggle Color Mode"
     />
-       {isUser && ( 
+        {isUser?.business_name && (<Text size="xs">{isUser.business_name}</Text>)}
+       {!isUser && ( 
       <>
       <Button onClick={()=>load(0)} isLoading={loading} as={Link} href="/login" variant="ghost">Login</Button>
         <Button onClick={()=>load(1)} isLoading={loading2} as={Link} href="/register" colorScheme="blue">Get Started</Button>
