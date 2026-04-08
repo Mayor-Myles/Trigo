@@ -26,7 +26,7 @@ const[active,setActive] = useState("all");
             border="1px solid"
             borderColor={active==key ? "blue.500" : "gray.200"}
             bg={active==key ? "blue.500" : inactiveBg}
-            color={active==key "white" : "gray.600"}
+            color={active==key ? "white" : "gray.600"}
             fontWeight="semibold"
             _hover={{ bg: active===key ? "blue.600" : "gray.100" }}
           >
