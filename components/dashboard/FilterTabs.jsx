@@ -8,7 +8,7 @@ const tabs = [
   { key: "delivered", label: "Delivered" },
 ];
 
-const FilterTabs = ({ counts }) => {
+const FilterTabs = ({ counts,packages,setPackages }) => {
   const inactiveBg  = useColorModeValue("white", "gray.700");
 const[active,setActive] = useState("all");
 
@@ -17,7 +17,10 @@ const[active,setActive] = useState("all");
       {tabs.map(({ key, label }) => {
         //const isActive = active === key;
        // const count = key === "all" ? null : counts[key];
-        return (
+        const filtered = packages.filter((item)=> item.status === key);
+        setPackages(filtered);
+      
+      return (
           <Button
             key={key}
             onClick={() => setActive(key)}
