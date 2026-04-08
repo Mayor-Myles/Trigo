@@ -29,7 +29,7 @@ const StatsGrid = ({ stats }) => {
   return (
     <SimpleGrid columns={2} spacing={3} px={4} py={4}>
       <StatCard
-        icon={GoPackage/>}
+        icon={<GoPackage/>}
         label="Total Orders"
         value={stats.total}
         iconBg="blue.50"
@@ -43,7 +43,7 @@ const StatsGrid = ({ stats }) => {
         iconColor="#f97316"
       />
       <StatCard
-        icon={CiDeliveryTruck/>}
+        icon={<CiDeliveryTruck/>}
         label="In Transit"
         value={stats.inTransit}
         iconBg="purple.50"
