@@ -1,5 +1,8 @@
 
 import { SimpleGrid, Box, Text, Flex, useColorModeValue } from "@chakra-ui/react";
+import { GoPackage,GoClock, } from "react-icons/go";
+import { CiDeliveryTruck } from "react-icons/ci";
+import { SiTicktick } from "react-icons/si";
 
 const StatCard = ({ icon, label, value, iconBg, iconColor }) => {
   const cardBg = useColorModeValue("white", "gray.800");
@@ -26,28 +29,28 @@ const StatsGrid = ({ stats }) => {
   return (
     <SimpleGrid columns={2} spacing={3} px={4} py={4}>
       <StatCard
-        icon="📦"
+        icon={GoPackage/>}
         label="Total Orders"
         value={stats.total}
         iconBg="blue.50"
         iconColor="#3b82f6"
       />
       <StatCard
-        icon="🕐"
+        icon={<GoClock/>}
         label="Pending"
         value={stats.pending}
         iconBg="orange.50"
         iconColor="#f97316"
       />
       <StatCard
-        icon="🚚"
+        icon={CiDeliveryTruck/>}
         label="In Transit"
         value={stats.inTransit}
         iconBg="purple.50"
         iconColor="#8b5cf6"
       />
       <StatCard
-        icon="✅"
+        icon={<SiTicktick/>}
         label="Delivered"
         value={stats.delivered}
         iconBg="green.50"
