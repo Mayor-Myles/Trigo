@@ -8,7 +8,7 @@ const DashboardHeader = ({ name, onRefresh, onPostPackage }) => {
 
   return (
     <Box bg={bg} px={4} pt={6} pb={4}>
-      <Heading size="lg" mb={1}>
+      <Heading size="sm" mb={1}>
         Good day, {name} 👋
       </Heading>
       <Text color="gray.500" mb={5}>
