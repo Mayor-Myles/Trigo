@@ -30,7 +30,7 @@ console.log(pkg);
       {/* Package image */}
       <Box position="relative">
         <Image
-          src={pkg.picture.pic1 || "/package.jpg"}
+          src={"/"+pkg.picture["pic1"] || "/package.jpg"}
           alt="package"
           w="100%"
           h="180px"
