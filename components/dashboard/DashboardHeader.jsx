@@ -45,7 +45,7 @@ const DashboardHeader = ({ name, isRefreshed, onRefresh, onPostPackage }) => {
           Post Package
         </Button>
            <Button
-          size="lg"
+             flex={3}
           colorScheme="red"
           variant="outline"
           borderRadius="xl"
