@@ -6,6 +6,7 @@ import { RepeatIcon, AddIcon } from "@chakra-ui/icons";
 const DashboardHeader = ({ name, onRefresh, onPostPackage }) => {
   const bg = useColorModeValue("white", "gray.800");
 
+   
   return (
     <Box bg={bg} px={3} pt={6} pb={4}>
       <Heading size="sm" mb={1}>
@@ -16,7 +17,8 @@ const DashboardHeader = ({ name, onRefresh, onPostPackage }) => {
       </Text>
       <Flex gap={3}>
         <Button
-          onClick={onRefresh}
+          isLoading={isRefreshed}
+          onClick={{onRefresh}
           leftIcon={<RepeatIcon />}
           variant="outline"
           borderRadius="xl"
