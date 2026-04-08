@@ -15,7 +15,7 @@ const PackageCard = ({ pkg, onClick }) => {
   const cardBg = useColorModeValue("white", "gray.800");
   const status = pkg.status?.toLowerCase().replace(" ", "") || "pending";
   const colors = STATUS_COLORS[status] || STATUS_COLORS.pending;
-console.log(pkg);
+const picture = JSON.parse(pkg.picture);
   return (
     <Box
       bg={cardBg}
@@ -30,7 +30,7 @@ console.log(pkg);
       {/* Package image */}
       <Box position="relative">
         <Image
-          src={"/"+pkg.picture.pic1 || "/package.jpg"}
+          src={"/"+picture.pic1 || "/package.jpg"}
           alt="package"
           w="100%"
           h="180px"
@@ -82,7 +82,7 @@ console.log(pkg);
           </Text>
         </Flex>
 
-        <Flex align="center" gap={2}>
+        <Flex align="center" gap={2} mb={2}>
           <Text fontSize="lg">🎒</Text>
           <Text fontSize="sm" color="gray.700">{pkg.weight} kg</Text>
         </Flex>
