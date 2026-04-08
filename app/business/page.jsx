@@ -11,7 +11,7 @@ import FilterTabs from "@/components/dashboard/FilterTabs";
 import PackageCard from "@/components/dashboard/PackageCard";
 import EmptyState from "@/components/dashboard/EmptyState";
 import Navbar from "@/components/Navbar";
-
+import Footer from "@/components/Footer";
 
 const Dashboard = () => {
   const [user, setUser]       = useState(null);
@@ -121,6 +121,7 @@ const Dashboard = () => {
       )}
       
     </Box>
+  <Footer />
 </>
   );
 };
