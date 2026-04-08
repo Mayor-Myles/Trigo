@@ -15,7 +15,7 @@ const PackageCard = ({ pkg, onClick }) => {
   const cardBg = useColorModeValue("white", "gray.800");
   const status = pkg.status?.toLowerCase().replace(" ", "") || "pending";
   const colors = STATUS_COLORS[status] || STATUS_COLORS.pending;
-
+console.log(pkg);
   return (
     <Box
       bg={cardBg}
