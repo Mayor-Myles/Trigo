@@ -85,7 +85,7 @@ const picture = JSON.parse(pkg.picture);
 
         <Flex align="center" gap={2} mb={2}>
           <Text fontSize="lg">🎒</Text>
-          <Text fontSize="sm" color="gray.700">{pkg.weight} kg</Text>
+          <Text fontSize="sm" color={cardText}>{pkg.weight} kg</Text>
         </Flex>
         <Flex align="center" gap={2}>
           <Text fontSize="lg">📝</Text>
