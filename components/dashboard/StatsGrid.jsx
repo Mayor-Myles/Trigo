@@ -9,7 +9,7 @@ const StatCard = ({ icon, label, value, iconBg, iconColor }) => {
   return (
     <Box bg={cardBg} borderRadius="2xl" p={4} boxShadow="md">
       <Flex
-        w="30px" h="30px"
+        w="40px" h="40px"
         borderRadius="xl"
         bg={iconBg}
         align="center"
