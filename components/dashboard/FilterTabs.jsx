@@ -26,7 +26,7 @@ const filter = (key) => {
       return (
           <Button
             key={key}
-            onClick={() =>{ setActive(key); filter(key);}
+            onClick={() =>{ setActive(key); filter(key);}}
             size="sm"
             borderRadius="xl"
             border="1px solid"
