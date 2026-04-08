@@ -2,7 +2,7 @@
 import { Flex, Text, Button, HStack, IconButton,useColorMode } from "@chakra-ui/react";
 import { CiLight, CiDark } from "react-icons/ci";
   import Link from "next/link";
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import {userDataAtom} from "@/utils/jotai";
 import {useAtom} from "jotai";
 
@@ -22,7 +22,11 @@ const[isUser,setIsUser] = useAtom(userDataAtom);
 setTimeout(()=>{setLoading(false)}, 1500);
 
   }
+useEffect(()=> {
 
+console.log(isUser);
+
+},[]);
    return (
     <Flex
       px={6}
