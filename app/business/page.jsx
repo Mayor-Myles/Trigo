@@ -64,6 +64,7 @@ const Dashboard = () => {
 
   // Counts per status
   const counts = {
+    all: packages.length,
     pending:   packages.filter((p) => p.status?.toLowerCase() === "pending").length,
     transit:   packages.filter((p) => p.status?.toLowerCase() === "transit").length,
     delivered: packages.filter((p) => p.status?.toLowerCase() === "delivered").length,
