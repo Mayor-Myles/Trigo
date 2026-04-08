@@ -3,12 +3,13 @@ import {
 } from "@chakra-ui/react";
 import { RepeatIcon, AddIcon } from "@chakra-ui/icons";
 import {useState} from "react";
-
+import {useRouter} from "next/router";
 
 const DashboardHeader = ({ name, isRefreshed, onRefresh, onPostPackage }) => {
   const bg = useColorModeValue("white", "gray.800");
   const[loading,setLoading] = useState(false);
-   const logout = () => {
+  const router = useRouter();
+  const logout = () => {
      setLoading(true);
      
   localStorage.removeItem("jwt");
