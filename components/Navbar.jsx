@@ -44,7 +44,7 @@ console.log(isUser);
       </Text>
 
       <HStack spacing={4}>
-            {isUser?.business_name && (<Text fontFamily="'Georgia',serif" size="xs">{isUser.business_name.length > 15 ? isUser.business_name.substring(0,15)+"..." : isUser.business_name }</Text>)}
+            {isUser?.business_name && (<Text fontFamily="'Helvetica',serif" size="xs">{isUser.business_name.length > 25 ? isUser.business_name.substring(0,25)+"..." : isUser.business_name }</Text>)}
         <IconButton
       onClick={toggleColorMode}
       icon={colorMode=="light" ? <CiDark fontSize="25px" /> : <CiLight fontSize="25px" /> }
