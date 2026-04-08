@@ -18,7 +18,7 @@ const DashboardHeader = ({ name, onRefresh, onPostPackage }) => {
       <Flex gap={3}>
         <Button
           isLoading={isRefreshed}
-          onClick={{onRefresh}
+          onClick={onRefresh}
           leftIcon={<RepeatIcon />}
           variant="outline"
           borderRadius="xl"
