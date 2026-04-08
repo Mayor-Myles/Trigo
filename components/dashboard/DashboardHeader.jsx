@@ -3,7 +3,7 @@ import {
 } from "@chakra-ui/react";
 import { RepeatIcon, AddIcon } from "@chakra-ui/icons";
 import {useState} from "react";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 
 const DashboardHeader = ({ name, isRefreshed, onRefresh, onPostPackage }) => {
   const bg = useColorModeValue("white", "gray.800");
