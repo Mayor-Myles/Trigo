@@ -82,13 +82,19 @@ const[isRefreshed,setIsRefreshed] = useState(false);
     delivered: packages.filter((p) => p.status?.toLowerCase() === "delivered").length,
   };
 
+  
   const stats = {
     total:     packages.length,
     pending:   counts.pending,
     inTransit: counts.transit,
     delivered: counts.delivered,
   };
+const filter = () => {
 
+
+
+}
+  
   if (!user?.fullname) {
     return (
       <Flex minH="100vh" align="center" justify="center" bg={bg}>
@@ -110,7 +116,7 @@ const[isRefreshed,setIsRefreshed] = useState(false);
 
           <StatsGrid stats={stats} />
       
-      <FilterTabs
+      <FilterTabs packages={packages} setPackages={setPackages}
         counts={counts}
       />
     
