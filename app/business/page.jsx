@@ -107,19 +107,19 @@ const Dashboard = () => {
       <FilterTabs
         counts={counts}
       />
-      {/*
-      {filtered.length === 0 ? (
-        <EmptyState onPostPackage={() => router.push("/dashboard/post-package")} />
+    
+      {counts.all === 0 ? (
+        <EmptyState onPostPackage={() => router.push("/post-package")} />
       ) : (
-        filtered.map((pkg) => (
+        packages.map((pkg) => (
           <PackageCard
-            key={pkg.id}
+            key={pkg.pid}
             pkg={pkg}
-            onClick={() => router.push(`/dashboard/package/${pkg.id}`)}
+            onClick={() => router.push(`/package/${pkg.pid}`)}
           />
         ))
       )}
-      */}
+      
     </Box>
 </>
   );
