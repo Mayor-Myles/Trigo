@@ -95,6 +95,7 @@ const[isRefreshed,setIsRefreshed] = useState(false);
       <DashboardHeader
         name={user?.fullname?.split(" ")[0]?.toUpperCase() || "USER"}
         onRefresh={fetchUserData}
+        isRefreshed={isRefreshed}
         onPostPackage={() => router.push("/dashboard/post-package")}
       />
 
