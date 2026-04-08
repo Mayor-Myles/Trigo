@@ -13,7 +13,8 @@ const STATUS_COLORS = {
 
 const PackageCard = ({ pkg, onClick }) => {
   const cardBg = useColorModeValue("white", "gray.800");
-  const status = pkg.status?.toLowerCase().replace(" ", "") || "pending";
+  const cardText = useColorModeValue("gray.700", "white");
+ const status = pkg.status?.toLowerCase().replace(" ", "") || "pending";
   const colors = STATUS_COLORS[status] || STATUS_COLORS.pending;
 const picture = JSON.parse(pkg.picture);
   return (
@@ -60,15 +61,15 @@ const picture = JSON.parse(pkg.picture);
       {/* Package details */}
       <Box p={4}>
         <Flex justify="space-between" align="center" mb={3}>
-          <Text fontSize="2xl" fontWeight="bold" color="blue.500">
+          <Text fontSize="2xl" fontWeight="bold" color={cardText}>
             ₦{Number(pkg.price).toLocaleString()}
           </Text>
-          <ChevronRightIcon color="gray.400" boxSize={5} />
+          <ChevronRightIcon color="gray.600" boxSize={5} />
         </Flex>
 
         <Flex align="flex-start" gap={2} mb={2}>
           <Text fontSize="lg">📍</Text>
-          <Text fontSize="sm" color="gray.700">
+          <Text fontSize="sm" color={cardText}>
             <Text as="span" fontWeight="semibold">From: </Text>
             {pkg.pickup}
           </Text>
@@ -76,7 +77,7 @@ const picture = JSON.parse(pkg.picture);
 
         <Flex align="flex-start" gap={2} mb={2}>
           <Text fontSize="lg">📌</Text>
-          <Text fontSize="sm" color="gray.700">
+          <Text fontSize="sm" color={cardText}>
             <Text as="span" fontWeight="semibold">To: </Text>
             {pkg.delivery}
           </Text>
@@ -88,7 +89,7 @@ const picture = JSON.parse(pkg.picture);
         </Flex>
         <Flex align="center" gap={2}>
           <Text fontSize="lg">📝</Text>
-          <Text fontSize="sm" color="gray.700">{pkg.description}</Text>
+          <Text fontSize="sm" color={cardText}>{pkg.description}</Text>
         </Flex>
       </Box>
     </Box>
