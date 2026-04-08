@@ -70,13 +70,6 @@ const Dashboard = () => {
     delivered: packages.filter((p) => p.status?.toLowerCase() === "delivered").length,
   };
 
-  // Filtered list
-  const filtered = packages.filter((p) => {
-    if (activeTab === "all") return true;
-    if (activeTab === "transit") return p.status?.toLowerCase() === "transit";
-    return p.status?.toLowerCase() === activeTab;
-  });
-
   const stats = {
     total:     packages.length,
     pending:   counts.pending,
@@ -84,7 +77,7 @@ const Dashboard = () => {
     delivered: counts.delivered,
   };
 
-  if (loading) {
+  if (!user?.fullname) {
     return (
       <Flex minH="100vh" align="center" justify="center" bg={bg}>
         <Spinner size="xl" color="blue.500" />
