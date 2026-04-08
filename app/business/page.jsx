@@ -39,6 +39,13 @@ const[isRefreshed,setIsRefreshed] = useState(false);
       if (response.status === "success") {
         setUser(response.data);
         setPackages(response.data.packages || []);
+      toast({
+          title: "Welcome",
+         // description: "Please log in again.",
+          status: "info",
+          position: "top",
+          duration: 3000,
+        });
       } else {
         toast({
           title: "Session expired",
