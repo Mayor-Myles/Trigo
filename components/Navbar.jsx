@@ -3,7 +3,7 @@ import { Flex, Text, Button, HStack, IconButton,useColorMode } from "@chakra-ui/
 import { CiLight, CiDark } from "react-icons/ci";
   import Link from "next/link";
 import {useState} from "react";
-import {userDataAtom} from "@/utils/atom";
+import {userDataAtom} from "@/utils/jotai";
 import {useAtom} from "jotai";
 
 
