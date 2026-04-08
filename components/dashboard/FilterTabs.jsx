@@ -11,19 +11,22 @@ const tabs = [
 const FilterTabs = ({ counts,packages,setPackages }) => {
   const inactiveBg  = useColorModeValue("white", "gray.700");
 const[active,setActive] = useState("all");
-
+const filter = (key) => {
+     const filtered = packages.filter((item)=> item.status === key);
+        setPackages(filtered);
+        }
+  
   return (
     <Flex px={4} gap={2} flexWrap="wrap" mb={4}>
       {tabs.map(({ key, label }) => {
         //const isActive = active === key;
        // const count = key === "all" ? null : counts[key];
-        const filtered = packages.filter((item)=> item.status === key);
-        setPackages(filtered);
+        
       
       return (
           <Button
             key={key}
-            onClick={() => setActive(key)}
+            onClick={() =>{ setActive(key); filter(key);}
             size="sm"
             borderRadius="xl"
             border="1px solid"
