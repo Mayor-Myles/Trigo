@@ -18,18 +18,20 @@ const Dashboard = () => {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("all");
-
+const[isRefreshed,setIsRefreshed] = useState(false);
   const bg = useColorModeValue("gray.50", "gray.900");
   const toast = useToast();
   const router = useRouter();
 
   const fetchUserData = async () => {
+    
     const jwt = localStorage.getItem("jwt");
     if (!jwt) {
       router.push("/login");
       return;
     }
     try {
+      setIsRefreshed(true);
       const res = await api.post("/user/getUserData", { jwt: jwt });
      const response = res.data;
       if (response.status === "success") {
@@ -55,6 +57,7 @@ const Dashboard = () => {
       });
     } finally {
       setLoading(false);
+      setIsRefreshed(false);
     }
   };
 
