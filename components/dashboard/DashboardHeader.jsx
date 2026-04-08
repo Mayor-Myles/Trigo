@@ -6,7 +6,14 @@ import { RepeatIcon, AddIcon } from "@chakra-ui/icons";
 const DashboardHeader = ({ name, isRefreshed, onRefresh, onPostPackage }) => {
   const bg = useColorModeValue("white", "gray.800");
 
-   
+   const logout = () => {
+     
+  localStorage.removeItem("jwt");
+
+    router.push("/login");
+     
+   }
+  
   return (
     <Box bg={bg} px={3} pt={6} pb={4}>
       <Heading size="sm" mb={1}>
@@ -37,6 +44,17 @@ const DashboardHeader = ({ name, isRefreshed, onRefresh, onPostPackage }) => {
         >
           Post Package
         </Button>
+           <Button
+          size="lg"
+          colorScheme="red"
+          variant="outline"
+          borderRadius="xl"
+          mb={3}
+          onClick={logout}
+        >
+          Log Out
+        </Button>
+
       </Flex>
     </Box>
   );
