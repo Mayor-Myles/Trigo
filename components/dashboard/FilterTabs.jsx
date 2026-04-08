@@ -31,9 +31,9 @@ const[active,setActive] = useState("all");
             _hover={{ bg: active===key ? "blue.600" : "gray.100" }}
           >
             {label}
-            {count !== null && (
-              <Text as="span" ml={1} color={isActive ? "whiteAlpha.800" : "gray.400"} fontWeight="normal">
-                ({count[key]})
+            {counts !== null && (
+              <Text as="span" ml={1} color={active ? "whiteAlpha.800" : "gray.400"} fontWeight="normal">
+                ({counts[key]})
               </Text>
             )}
           </Button>
