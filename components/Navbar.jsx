@@ -44,13 +44,13 @@ console.log(isUser);
       </Text>
 
       <HStack spacing={4}>
-        
+            {isUser?.business_name && (<Text fontFamily="'Georgia',serif" size="xs">{isUser.business_name.length > 15 ? isUser.business_name.substring(0,15)+"..." : isUser.business_name }</Text>)}
         <IconButton
       onClick={toggleColorMode}
       icon={colorMode=="light" ? <CiDark fontSize="25px" /> : <CiLight fontSize="25px" /> }
       aria-label="Toggle Color Mode"
     />
-        {isUser?.business_name && (<Text size="xs">{isUser.business_name}</Text>)}
+    
        {!isUser && ( 
       <>
       <Button onClick={()=>load(0)} isLoading={loading} as={Link} href="/login" variant="ghost">Login</Button>
