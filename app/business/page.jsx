@@ -12,9 +12,11 @@ import PackageCard from "@/components/dashboard/PackageCard";
 import EmptyState from "@/components/dashboard/EmptyState";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import {useAtom} from "jotai";
+import {userDataAtom} from "@/utils/jotai";
 
 const Dashboard = () => {
-  const [user, setUser]       = useState(null);
+  const [user, setUser]       = useAtom(userDataAtom);
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("all");
