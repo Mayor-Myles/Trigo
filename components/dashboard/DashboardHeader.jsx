@@ -2,15 +2,20 @@ import {
   Box, Flex, Heading, Text, Button, useColorModeValue,
 } from "@chakra-ui/react";
 import { RepeatIcon, AddIcon } from "@chakra-ui/icons";
+import {useState} from "react";
+
 
 const DashboardHeader = ({ name, isRefreshed, onRefresh, onPostPackage }) => {
   const bg = useColorModeValue("white", "gray.800");
-
+  const[loading,setLoading] = useState(false);
    const logout = () => {
+     setLoading(true);
      
   localStorage.removeItem("jwt");
 
-    router.push("/login");
+     setTimeout(()=>{
+       setLoading(false);
+    router.push("/login");},1200);
      
    }
   
@@ -45,7 +50,8 @@ const DashboardHeader = ({ name, isRefreshed, onRefresh, onPostPackage }) => {
           Post Package
         </Button>
            <Button
-             flex={3}
+             isLoading={loading}
+             flex={1}
           colorScheme="red"
           variant="outline"
           borderRadius="xl"
