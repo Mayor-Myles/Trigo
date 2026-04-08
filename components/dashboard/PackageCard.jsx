@@ -86,6 +86,10 @@ console.log(pkg);
           <Text fontSize="lg">🎒</Text>
           <Text fontSize="sm" color="gray.700">{pkg.weight} kg</Text>
         </Flex>
+        <Flex align="center" gap={2}>
+          <Text fontSize="lg">📝</Text>
+          <Text fontSize="sm" color="gray.700">{pkg.description}</Text>
+        </Flex>
       </Box>
     </Box>
   );
