@@ -1,4 +1,5 @@
 
+
 import {
   Box, Flex, Text, Badge, Image, useColorModeValue,
 } from "@chakra-ui/react";
@@ -69,7 +70,7 @@ const PackageCard = ({ pkg, onClick }) => {
           <Text fontSize="lg">📍</Text>
           <Text fontSize="sm" color="gray.700">
             <Text as="span" fontWeight="semibold">From: </Text>
-            {pkg.from}
+            {pkg.pickup}
           </Text>
         </Flex>
 
@@ -77,7 +78,7 @@ const PackageCard = ({ pkg, onClick }) => {
           <Text fontSize="lg">📌</Text>
           <Text fontSize="sm" color="gray.700">
             <Text as="span" fontWeight="semibold">To: </Text>
-            {pkg.to}
+            {pkg.delivery}
           </Text>
         </Flex>
 
