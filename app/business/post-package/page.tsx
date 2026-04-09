@@ -1,95 +1,229 @@
-
+import { useRef, useState } from "react";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
-  InputLeftElement, InputRightElement, Select, Textarea,
-  VStack, HStack, Text
+  InputLeftElement, Select, Textarea, VStack, HStack,
+  Text, Icon, Image, Center, Flex, Badge,
 } from "@chakra-ui/react";
-import { FiMapPin, FiDollarSign } from "react-icons/fi";
+import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
 import { LuWeight } from "react-icons/lu";
+import Navbar from "@/components/Navbar";
 
 export default function PostPackage() {
+  const fileRef = useRef();
+  const [preview, setPreview] = useState(null);
+
+  const handleFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setPreview(URL.createObjectURL(file));
+  };
+
   return (
-    <Box maxW="480px" mx="auto" px={4} py={6} bg="white" minH="100vh">
-      <Text fontSize="xl" fontWeight="bold" mb={6}>Post a Package</Text>
+    <Box minH="100vh" bg="gray.50">
+      <Navbar />
 
-      <VStack spacing={5} align="stretch">
+      {/* Hero Header */}
+      <Box
+        bgGradient="linear(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
+        px={5} pt={10} pb={16}
+      >
+        <Box maxW="520px" mx="auto">
+          <Badge
+            bg="whiteAlpha.200" color="blue.200"
+            fontSize="xs" letterSpacing="widest"
+            textTransform="uppercase" px={3} py={1} rounded="full" mb={3}
+          >
+            New Delivery
+          </Badge>
+          <Text
+            fontSize={{ base: "3xl", md: "4xl" }}
+            fontWeight="900"
+            color="white"
+            lineHeight="1.1"
+            letterSpacing="-1px"
+          >
+            Post a Package
+          </Text>
+          <Text color="blue.200" mt={2} fontSize="sm" fontWeight="400">
+            Fill in the details below. You'll pay the delivery fee before posting.
+          </Text>
+        </Box>
+      </Box>
 
-        {/* Package Weight */}
-        <FormControl isRequired>
-          <FormLabel fontWeight="semibold">Package Weight</FormLabel>
-          <HStack>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <LuWeight color="gray" />
-              </InputLeftElement>
-              <Input type="number" defaultValue="0.0" bg="gray.50" border="none" rounded="xl" />
-            </InputGroup>
-            <Select w="110px" bg="gray.50" border="none" rounded="xl" flexShrink={0}>
-              <option>kg</option>
-              <option>lbs</option>
-            </Select>
-          </HStack>
-        </FormControl>
-
-        {/* Pickup Location */}
-        <FormControl isRequired>
-          <FormLabel fontWeight="semibold">Pickup Location</FormLabel>
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <FiMapPin color="green" />
-            </InputLeftElement>
-            <Input placeholder="e.g. 12 Broad Street, Lagos Island" bg="gray.50" border="none" rounded="xl" />
-          </InputGroup>
-        </FormControl>
-
-        {/* Delivery Location */}
-        <FormControl isRequired>
-          <FormLabel fontWeight="semibold">Delivery Location</FormLabel>
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <FiMapPin color="red" />
-            </InputLeftElement>
-            <Input placeholder="e.g. 5 Ikeja Avenue, Ikeja" bg="gray.50" border="none" rounded="xl" />
-          </InputGroup>
-        </FormControl>
-
-        {/* Service Price */}
-        <FormControl isRequired>
-          <FormLabel fontWeight="semibold">Service Price (₦)</FormLabel>
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <FiDollarSign color="gray" />
-            </InputLeftElement>
-            <Input type="number" placeholder="e.g. 1500" bg="gray.50" border="none" rounded="xl" />
-          </InputGroup>
-        </FormControl>
-
-        {/* Package Description */}
-        <FormControl>
-          <FormLabel fontWeight="semibold">Package Description</FormLabel>
-          <Textarea
-            placeholder="Describe the contents, fragility, or any special handling notes..."
-            bg="gray.50"
-            border="none"
-            rounded="xl"
-            rows={4}
-            resize="none"
-          />
-        </FormControl>
-
-        {/* Submit Button */}
-        <Button
-          bgGradient="linear(to-r, blue.400, blue.600)"
-          color="white"
-          size="lg"
-          rounded="xl"
-          _hover={{ bgGradient: "linear(to-r, blue.500, blue.700)" }}
-          mt={2}
+      {/* Card pulls up over header */}
+      <Box maxW="520px" mx="auto" px={4} mt="-40px" pb={10}>
+        <Box
+          bg="white"
+          rounded="2xl"
+          shadow="xl"
+          p={6}
+          borderTop="4px solid"
+          borderColor="blue.500"
         >
-          Proceed
-        </Button>
+          <VStack spacing={6} align="stretch">
 
-      </VStack>
+            {/* Package Photo */}
+            <FormControl isRequired>
+              <FormLabel fontWeight="700" fontSize="sm" color="gray.700" mb={2}>
+                Package Photo
+              </FormLabel>
+              <input
+                ref={fileRef}
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                hidden
+                onChange={handleFile}
+              />
+              {preview ? (
+                <Box position="relative" rounded="xl" overflow="hidden" h="180px">
+                  <Image src={preview} w="full" h="full" objectFit="cover" />
+                  <Button
+                    position="absolute" top={2} right={2}
+                    size="xs" colorScheme="red" rounded="full"
+                    onClick={() => setPreview(null)}
+                    leftIcon={<FiX />}
+                  >
+                    Remove
+                  </Button>
+                </Box>
+              ) : (
+                <Center
+                  onClick={() => fileRef.current.click()}
+                  cursor="pointer"
+                  border="2px dashed"
+                  borderColor="blue.200"
+                  bg="blue.50"
+                  rounded="xl"
+                  py={10}
+                  flexDirection="column"
+                  gap={2}
+                  _hover={{ borderColor: "blue.400", bg: "blue.100" }}
+                  transition="all 0.2s"
+                >
+                  <Icon as={FiUploadCloud} boxSize={8} color="blue.400" />
+                  <Text fontWeight="600" color="blue.500" fontSize="sm">
+                    Click to upload photo
+                  </Text>
+                  <Text color="gray.400" fontSize="xs">
+                    PNG, JPG, WEBP up to 5MB
+                  </Text>
+                </Center>
+              )}
+            </FormControl>
+
+            {/* Divider Line */}
+            <Box h="1px" bg="gray.100" />
+
+            {/* Package Weight */}
+            <FormControl isRequired>
+              <FormLabel fontWeight="700" fontSize="sm" color="gray.700">
+                Package Weight
+              </FormLabel>
+              <HStack>
+                <InputGroup>
+                  <InputLeftElement pointerEvents="none">
+                    <Icon as={LuWeight} color="gray.400" />
+                  </InputLeftElement>
+                  <Input
+                    type="number" defaultValue="0.0"
+                    bg="gray.50" border="1.5px solid" borderColor="gray.200"
+                    rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
+                  />
+                </InputGroup>
+                <Select
+                  w="110px" bg="gray.50"
+                  border="1.5px solid" borderColor="gray.200"
+                  rounded="xl" flexShrink={0}
+                  _focus={{ borderColor: "blue.400" }}
+                >
+                  <option>kg</option>
+                  <option>lbs</option>
+                </Select>
+              </HStack>
+            </FormControl>
+
+            {/* Pickup Location */}
+            <FormControl isRequired>
+              <FormLabel fontWeight="700" fontSize="sm" color="gray.700">
+                Pickup Location
+              </FormLabel>
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <Icon as={FiMapPin} color="green.400" />
+                </InputLeftElement>
+                <Input
+                  placeholder="e.g. 12 Broad Street, Lagos Island"
+                  bg="gray.50" border="1.5px solid" borderColor="gray.200"
+                  rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
+                  _placeholder={{ color: "gray.400", fontSize: "sm" }}
+                />
+              </InputGroup>
+            </FormControl>
+
+            {/* Delivery Location */}
+            <FormControl isRequired>
+              <FormLabel fontWeight="700" fontSize="sm" color="gray.700">
+                Delivery Location
+              </FormLabel>
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <Icon as={FiMapPin} color="red.400" />
+                </InputLeftElement>
+                <Input
+                  placeholder="e.g. 5 Ikeja Avenue, Ikeja"
+                  bg="gray.50" border="1.5px solid" borderColor="gray.200"
+                  rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
+                  _placeholder={{ color: "gray.400", fontSize: "sm" }}
+                />
+              </InputGroup>
+            </FormControl>
+
+            {/* Service Price */}
+            <FormControl isRequired>
+              <FormLabel fontWeight="700" fontSize="sm" color="gray.700">
+                Service Price (₦)
+              </FormLabel>
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <Icon as={FiDollarSign} color="gray.400" />
+                </InputLeftElement>
+                <Input
+                  type="number" placeholder="e.g. 1500"
+                  bg="gray.50" border="1.5px solid" borderColor="gray.200"
+                  rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
+                  _placeholder={{ color: "gray.400", fontSize: "sm" }}
+                />
+              </InputGroup>
+            </FormControl>
+
+            {/* Package Description */}
+            <FormControl>
+              <FormLabel fontWeight="700" fontSize="sm" color="gray.700">
+                Package Description
+              </FormLabel>
+              <Textarea
+                placeholder="Describe the contents, fragility, or any special handling notes..."
+                bg="gray.50" border="1.5px solid" borderColor="gray.200"
+                rounded="xl" rows={4} resize="none"
+                _focus={{ borderColor: "blue.400", bg: "white" }}
+                _placeholder={{ color: "gray.400", fontSize: "sm" }}
+              />
+            </FormControl>
+
+            {/* CTA */}
+            <Button
+              size="lg" rounded="xl" fontWeight="700"
+              bgGradient="linear(to-r, blue.500, blue.700)"
+              color="white" mt={1}
+              _hover={{ bgGradient: "linear(to-r, blue.600, blue.800)", transform: "translateY(-1px)", shadow: "lg" }}
+              _active={{ transform: "translateY(0)" }}
+              transition="all 0.2s"
+            >
+              Proceed to Payment
+            </Button>
+
+          </VStack>
+        </Box>
+      </Box>
     </Box>
   );
 }
