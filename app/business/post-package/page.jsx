@@ -10,16 +10,35 @@ import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
 import { LuWeight } from "react-icons/lu";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import {useAtom} from "jotai";
+import {userDataAtom} from "@/utils/jotai";
+
+
 
 
 export default function PostPackage() {
   const fileRef = useRef(null);
   const [preview, setPreview] = useState(null);
   const{colorMode,toggleColorMode} = useColorMode();
+ const[user,setUser] = useAtom(userDataAtom); 
   const handleFile = (e) => {
     const file = e.target.files[0];
     if (file) setPreview(URL.createObjectURL(file));
   };
+
+const fetchUserData = async () => {
+    
+    const jwt = localStorage.getItem("jwt");
+    if (!jwt) {
+      router.push("/login");
+      return;
+    }
+    try {
+      
+      const res = await api.post("/user/getUserData", { jwt: jwt });
+      const response = res.data;
+      if (response.status === "success") {
+  
 
   return (
     <>
