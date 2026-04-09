@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
   InputLeftElement, Select, Textarea, VStack, HStack,
-  Text, Icon, Image, Center, Flex, Badge,
+  Text, Icon, Image, Center, Flex, Badge,useColorMode,
 } from "@chakra-ui/react";
 import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
 import { LuWeight } from "react-icons/lu";
