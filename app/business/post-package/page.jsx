@@ -41,6 +41,8 @@ const fetchUserData = async () => {
         setUser(response.data);
       }
 
+    }
+
     }//fetchdata
       if(!user){
 
