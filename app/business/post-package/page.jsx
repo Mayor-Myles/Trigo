@@ -38,7 +38,16 @@ const fetchUserData = async () => {
       const res = await api.post("/user/getUserData", { jwt: jwt });
       const response = res.data;
       if (response.status === "success") {
-  
+        setUser(response.data);
+      }
+
+
+      if(!user){
+
+        return(<>
+        </>
+               );
+      }
 
   return (
     <>
