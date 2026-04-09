@@ -47,7 +47,7 @@ const[isRefreshed,setIsRefreshed] = useState(false);
           title: "Welcome",
          // description: "Please log in again.",
           status: "info",
-          position: "top",
+          position: "bottom",
           duration: 3000,
         });
       } else {
@@ -55,7 +55,7 @@ const[isRefreshed,setIsRefreshed] = useState(false);
           title: "Session expired",
           description: "Please log in again.",
           status: "warning",
-          position: "bottom",
+          position: "top",
           duration: 3000,
         });
         router.push("/login");
