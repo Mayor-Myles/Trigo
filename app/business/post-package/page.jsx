@@ -51,6 +51,11 @@ const fetchUserData = async () => {
 fetchUserData();
   },[]);
 
+  if(!user){
+
+    return(<></>);
+  }
+
   return (
     <>
        <Navbar />
@@ -153,7 +158,7 @@ fetchUserData();
             {/* Package Weight */}
             <FormControl isRequired>
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
-                Package Weight
+                Package Weight (Kg)
               </FormLabel>
               <HStack>
                 <InputGroup>
@@ -166,15 +171,7 @@ fetchUserData();
                     rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
                   />
                 </InputGroup>
-                <Select color={colorMode==="dark" && "white"} bg={colorMode==="dark" && "black"}
-                  w="110px" bg="gray.50"
-                  border="1.5px solid" borderColor="gray.200"
-                  rounded="xl" flexShrink={0}
-                  _focus={{ borderColor: "blue.400" }}
-                >
-                  <option>kg</option>
-                  <option>lbs</option>
-                </Select>
+                
               </HStack>
             </FormControl>
 
