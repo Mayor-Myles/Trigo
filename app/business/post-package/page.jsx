@@ -22,9 +22,11 @@ export default function PostPackage() {
   };
 
   return (
-    <Box minH="100vh" color={colorMode==="light" && "gray.50"} bg={colorMode==="light" && "gray.50"}>
-      <Navbar />
-
+    <>
+       <Navbar />
+      
+    <Box minH="100vh" bg={colorMode==="light" && "gray.50"}>
+ 
       {/* Hero Header */}
       <Box
         bgGradient="linear(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
@@ -120,7 +122,7 @@ export default function PostPackage() {
 
             {/* Package Weight */}
             <FormControl isRequired>
-              <FormLabel fontWeight="700" fontSize="sm" color="gray.700">
+              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
                 Package Weight
               </FormLabel>
               <HStack>
@@ -148,7 +150,7 @@ export default function PostPackage() {
 
             {/* Pickup Location */}
             <FormControl isRequired>
-              <FormLabel fontWeight="700" fontSize="sm" color="gray.700">
+              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
                 Pickup Location
               </FormLabel>
               <InputGroup>
@@ -166,7 +168,7 @@ export default function PostPackage() {
 
             {/* Delivery Location */}
             <FormControl isRequired>
-              <FormLabel fontWeight="700" fontSize="sm" color="gray.700">
+              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
                 Delivery Location
               </FormLabel>
               <InputGroup>
@@ -184,7 +186,7 @@ export default function PostPackage() {
 
             {/* Service Price */}
             <FormControl isRequired>
-              <FormLabel fontWeight="700" fontSize="sm" color="gray.700">
+              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
                 Service Price (₦)
               </FormLabel>
               <InputGroup>
@@ -202,7 +204,7 @@ export default function PostPackage() {
 
             {/* Package Description */}
             <FormControl>
-              <FormLabel fontWeight="700" fontSize="sm" color="gray.700">
+              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
                 Package Description
               </FormLabel>
               <Textarea
@@ -229,7 +231,9 @@ export default function PostPackage() {
           </VStack>
         </Box>
       </Box>
-      <Footer />
+      
     </Box>
+      <Footer />
+    </>
   );
 }
