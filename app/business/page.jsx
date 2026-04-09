@@ -115,7 +115,7 @@ const filter = () => {
         name={user?.fullname?.split(" ")[0]?.toUpperCase() || "USER"}
         onRefresh={fetchUserData}
         isRefreshed={isRefreshed}
-        onPostPackage={() => router.push("/dashboard/post-package")}
+        onPostPackage={() => router.push("/business/post-package")}
       />
 
           <StatsGrid stats={stats} />
