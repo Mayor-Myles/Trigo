@@ -11,7 +11,7 @@ import { LuWeight } from "react-icons/lu";
 import Navbar from "@/components/Navbar";
 
 export default function PostPackage() {
-  const fileRef = useRef();
+  const fileRef = useRef(null);
   const [preview, setPreview] = useState(null);
 
   const handleFile = (e) => {
