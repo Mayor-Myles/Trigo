@@ -12,8 +12,9 @@ const FilterTabs = ({ counts,packages,setPackages }) => {
   const inactiveBg  = useColorModeValue("white", "gray.700");
 const[active,setActive] = useState("all");
 const filter = (key) => {
+    const defaultPkg = packages;
      const filtered = packages.filter((item)=> item.status === key);
-   key === "all" ? setPackages(packages) : setPackages(filtered);
+   key === "all" ? setPackages(defaultPkg) : setPackages(filtered);
         }
   
   return (
