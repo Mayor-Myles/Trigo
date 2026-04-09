@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState,useEffect } from "react";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
   InputLeftElement, Select, Textarea, VStack, HStack,
@@ -41,13 +41,17 @@ const fetchUserData = async () => {
         setUser(response.data);
       }
 
-
+    }//fetchdata
       if(!user){
 
         return(<>
         </>
                );
       }
+
+  useEffect(()=>{
+fetchUserData();
+  });
 
   return (
     <>
