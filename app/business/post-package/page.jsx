@@ -47,14 +47,6 @@ const fetchUserData = async () => {
     }//fetchdata
 
 
-  
-      if(!user){
-
-        return(<>
-        </>
-               );
-      }
-
   useEffect(()=>{
 fetchUserData();
   });
