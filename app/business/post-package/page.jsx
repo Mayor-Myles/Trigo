@@ -39,14 +39,14 @@ const fetchUserData = async () => {
       const response = res.data;
       if (response.status === "success") {
         setUser(response.data);
-      }catch(error){
+      }
+
+    }catch(error){
     console.log(error);
 
     }
 
-    }//fetchdata
-
-
+}//fetchdata
   useEffect(()=>{
 fetchUserData();
   },[]);
