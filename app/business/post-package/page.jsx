@@ -15,7 +15,7 @@ import Footer from "@/components/Footer";
 export default function PostPackage() {
   const fileRef = useRef(null);
   const [preview, setPreview] = useState(null);
-
+  const{colorMode,toggleColorMode} = useColorMode();
   const handleFile = (e) => {
     const file = e.target.files[0];
     if (file) setPreview(URL.createObjectURL(file));
@@ -56,7 +56,7 @@ export default function PostPackage() {
       {/* Card pulls up over header */}
       <Box maxW="520px" mx="auto" px={4} mt="-40px" pb={10}>
         <Box
-          bg="white"
+          bg={colorMode=="light" && "white"}
           rounded="2xl"
           shadow="xl"
           p={6}
