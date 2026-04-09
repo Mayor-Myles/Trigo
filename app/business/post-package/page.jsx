@@ -49,7 +49,7 @@ const fetchUserData = async () => {
 
   useEffect(()=>{
 fetchUserData();
-  });
+  },[]);
 
   return (
     <>
