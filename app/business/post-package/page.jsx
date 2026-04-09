@@ -9,6 +9,8 @@ import {
 import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
 import { LuWeight } from "react-icons/lu";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
 
 export default function PostPackage() {
   const fileRef = useRef(null);
@@ -46,7 +48,7 @@ export default function PostPackage() {
             Post a Package
           </Text>
           <Text color="blue.200" mt={2} fontSize="sm" fontWeight="400">
-            Fill in the details below. You'll pay the delivery fee before posting.
+            Fill in the details below. Your order would be reviewed by the admin before being posted to riders
           </Text>
         </Box>
       </Box>
@@ -74,6 +76,7 @@ export default function PostPackage() {
                 accept="image/png,image/jpeg,image/webp"
                 hidden
                 onChange={handleFile}
+                multiple
               />
               {preview ? (
                 <Box position="relative" rounded="xl" overflow="hidden" h="180px">
@@ -226,6 +229,7 @@ export default function PostPackage() {
           </VStack>
         </Box>
       </Box>
+      <Footer />
     </Box>
   );
 }
