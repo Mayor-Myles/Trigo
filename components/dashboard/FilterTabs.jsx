@@ -13,6 +13,7 @@ const FilterTabs = ({ counts,packages,setPackages }) => {
 const[active,setActive] = useState("all");
 const filter = (key) => {
     const defaultPkg = packages;
+  console.log(defaultPkg);
      const filtered = packages.filter((item)=> item.status === key);
    key === "all" ? setPackages(defaultPkg) : setPackages(filtered);
         }
