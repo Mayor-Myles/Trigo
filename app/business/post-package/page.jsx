@@ -40,13 +40,13 @@ const fetchUserData = async () => {
       if (response.status === "success") {
         setUser(response.data);
       }catch(error){
-console.log(error);
-
-    }
+    console.log(error);
 
     }
 
     }//fetchdata
+
+
   
       if(!user){
 
