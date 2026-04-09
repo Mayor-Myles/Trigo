@@ -8,15 +8,16 @@ const tabs = [
   { key: "delivered", label: "Delivered" },
 ];
 
-const FilterTabs = ({ counts,packages,setPackages }) => {
+const FilterTabs = ({allPackages, counts,packages,setPackages }) => {
   const inactiveBg  = useColorModeValue("white", "gray.700");
 const[active,setActive] = useState("all");
 const filter = (key) => {
-    const defaultPkg = packages;
+  
+    
   
      const filtered = packages.filter((item)=> item.status === key);
-  console.log(defaultPkg);
-  key === "all" ? setPackages(defaultPkg) : filtered.length> 0 ? setPackages(filtered) : setPackages([]);
+  
+  key === "all" ? setPackages(allPackages) : filtered.length> 0 ? setPackages(filtered) : setPackages([]);
         }
   
   return (
