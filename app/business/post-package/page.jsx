@@ -69,7 +69,7 @@ export default function PostPackage() {
 
             {/* Package Photo */}
             <FormControl isRequired>
-              <FormLabel fontWeight="700" fontSize="sm" color="gray.700" mb={2}>
+              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"} mb={2}>
                 Package Photo
               </FormLabel>
               <input
