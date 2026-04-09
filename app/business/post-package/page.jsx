@@ -136,7 +136,7 @@ export default function PostPackage() {
                     rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
                   />
                 </InputGroup>
-                <Select
+                <Select color={colorMode==="dark" && "white"} bg={colorMode==="dark" && "black"}
                   w="110px" bg="gray.50"
                   border="1.5px solid" borderColor="gray.200"
                   rounded="xl" flexShrink={0}
