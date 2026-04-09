@@ -36,7 +36,7 @@ const[isRefreshed,setIsRefreshed] = useState(false);
     try {
       setIsRefreshed(true);
       const res = await api.post("/user/getUserData", { jwt: jwt });
-     const response = res.data;
+      const response = res.data;
       if (response.status === "success") {
         setUser(response.data);
         setPackages(response.data.packages || []);
