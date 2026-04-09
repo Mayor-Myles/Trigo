@@ -22,7 +22,7 @@ export default function PostPackage() {
   };
 
   return (
-    <Box minH="100vh" bg={colorMode==="light" && "gray.50"}>
+    <Box minH="100vh" color={colorMode==="light" && "gray.50"} bg={colorMode==="light" && "gray.50"}>
       <Navbar />
 
       {/* Hero Header */}
