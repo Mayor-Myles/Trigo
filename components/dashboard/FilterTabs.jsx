@@ -15,7 +15,7 @@ const filter = (key) => {
     const defaultPkg = packages;
   
      const filtered = packages.filter((item)=> item.status === key);
-  console.log(filtered);
+  console.log(defaultPkg);
   key === "all" ? setPackages(defaultPkg) : filtered.length> 0 ? setPackages(filtered) : setPackages([]);
         }
   
