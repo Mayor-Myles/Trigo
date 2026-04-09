@@ -21,6 +21,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("all");
 const[isRefreshed,setIsRefreshed] = useState(false);
+ const[allPackages,setAllPackages] = useState([]);
   const bg = useColorModeValue("gray.50", "gray.900");
   const toast = useToast();
   const router = useRouter();
@@ -39,6 +40,7 @@ const[isRefreshed,setIsRefreshed] = useState(false);
       if (response.status === "success") {
         setUser(response.data);
         setPackages(response.data.packages || []);
+        setAllPackages(response.data.packages);
       toast({
           title: "Welcome",
          // description: "Please log in again.",
@@ -116,7 +118,7 @@ const filter = () => {
 
           <StatsGrid stats={stats} />
       
-      <FilterTabs packages={packages} setPackages={setPackages}
+      <FilterTabs allPackages={allPackages} packages={packages} setPackages={setPackages}
         counts={counts}
       />
     
