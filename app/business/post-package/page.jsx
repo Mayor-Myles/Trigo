@@ -3,7 +3,7 @@
 import { useRef, useState,useEffect } from "react";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
-  InputLeftElement, Select, Textarea, VStack, HStack,
+  InputLeftElement, Select, Textarea, VStack, useToast, HStack,
   Text, Icon, Image, Center, Flex, Badge,useColorMode,
   
 } from "@chakra-ui/react";
@@ -16,8 +16,14 @@ import {userDataAtom} from "@/utils/jotai";
 import {useRouter} from "next/navigation";
 import api from "@/utils/axios";
 import MyPopover from "@/components/MyPopover";
+import api from "@/utils/axios";
 
-export default function PostPackage() {
+
+
+
+
+export default function PostPackage
+  () {
   const fileRef = useRef(null);
   const [preview, setPreview] = useState(null);
   const{colorMode,toggleColorMode} = useColorMode();
@@ -25,6 +31,8 @@ export default function PostPackage() {
  const[deliveryData,setDeliveryData] = useState([]);
   const[pickupData,setPickupData] = useState([]);
   const router = useRouter();
+  const toast = useToast();
+    
   const handleFile = (e) => {
     
     const file = e.target.files[0];
@@ -55,10 +63,29 @@ router.push("/login");
 
 }//fetchdata
 
-  const searchAddress = (address,type) => {
+  const searchAddress = aync (address,type) => {
 
-type === "delivery" ? setDeliveryData() : setPickup(data);
-}
+const url = "https://api.locationiq.com/v1/autocomplete?key=Your_API_Access_Token&q="+address+"&limit=10&dedupe=1&";
+
+   const res = await api.get(url);
+
+    if(res){
+      
+const response = res.data;
+      
+type === "delivery" ? setDeliveryData(response) : setPickupData(response);
+    
+    } else{
+
+toast({
+  title:"Error",
+  description:"Search failed",
+  status:"error",
+  position:"top"
+    
+
+});
+    }
 
   }//search
 
