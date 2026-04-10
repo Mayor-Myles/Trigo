@@ -12,7 +12,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {useAtom} from "jotai";
 import {userDataAtom} from "@/utils/jotai";
-
+import {useRouter} from "next/navigation";
 
 
 
@@ -21,7 +21,9 @@ export default function PostPackage() {
   const [preview, setPreview] = useState(null);
   const{colorMode,toggleColorMode} = useColorMode();
  const[user,setUser] = useAtom(userDataAtom); 
+ const router = useRouter();
   const handleFile = (e) => {
+    
     const file = e.target.files[0];
     if (file) setPreview(URL.createObjectURL(file));
   };
@@ -42,7 +44,7 @@ const fetchUserData = async () => {
       }
 
     }catch(error){
-    console.log(error);
+    console.log(error.data);
 
     }
 
