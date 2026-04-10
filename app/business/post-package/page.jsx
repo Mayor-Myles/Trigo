@@ -198,10 +198,10 @@ fetchUserData();
     <PopoverHeader>Popover Title</PopoverHeader>
     <PopoverCloseButton />
     <PopoverBody>
-      This is the content of the popover.
+      
       
         <Image src="placeholderimage.png" />
-      </MyFlex>
+      
     </PopoverBody>
   </PopoverContent>
               </Popover>
