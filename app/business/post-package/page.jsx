@@ -29,8 +29,8 @@ export default function PostPackage
   const [preview, setPreview] = useState(null);
   const{colorMode,toggleColorMode} = useColorMode();
  const[user,setUser] = useAtom(userDataAtom); 
- const[deliveryData,setDeliveryData] = useState();
-  const[pickupData,setPickupData] = useState();
+ const[deliveryData,setDeliveryData] = useState(null);
+  const[pickupData,setPickupData] = useState(null);
   const[deliveryAddress,setDeliveryAddress] = useState("");
   const[pickupAddress,setPickupAddress] = useState("");
   const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1500); // 1.5s delay
