@@ -72,7 +72,7 @@ const url = "https://api.locationiq.com/v1/autocomplete?key="+locationToken+"&q=
     if(res){
       
 const response = res.data;
-      
+      console.log(response);
 type === "delivery" ? setDeliveryData(response) : setPickupData(response);
     
     } else{
