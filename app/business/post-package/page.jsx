@@ -179,6 +179,21 @@ fetchUserData();
 
             {/* Pickup Location */}
             <FormControl isRequired>
+              <Popover>
+  <PopoverTrigger>
+    <Button>Trigger Me!</Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    <PopoverHeader>Popover Title</PopoverHeader>
+    <PopoverCloseButton />
+    <PopoverBody>
+      This is the content of the popover.
+      <MyFlex>
+        <Image src="placeholderimage.png" />
+      </MyFlex>
+    </PopoverBody>
+  </PopoverContent>
+              </Popover>
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
                 Pickup Location
               </FormLabel>
