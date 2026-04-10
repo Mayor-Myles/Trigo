@@ -233,7 +233,7 @@ fetchUserData();
 
             {/* Pickup Location */}
             {pickupData?.length > 0 &&  (
-          <MyPopover setData={{setPickupData} data={pickupData} />
+          <MyPopover setData={setPickupData} data={pickupData} />
           )}
             <FormControl isRequired>
            
