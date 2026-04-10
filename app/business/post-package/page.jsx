@@ -5,15 +5,7 @@ import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
   InputLeftElement, Select, Textarea, VStack, HStack,
   Text, Icon, Image, Center, Flex, Badge,useColorMode,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor,
+  
 } from "@chakra-ui/react";
 import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
 import { LuWeight } from "react-icons/lu";
@@ -189,7 +181,7 @@ fetchUserData();
             </FormControl>
 
             {/* Pickup Location */}
-              <MyPopOver />
+              <MyPopover />
             <FormControl isRequired>
            
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
