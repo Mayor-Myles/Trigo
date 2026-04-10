@@ -77,7 +77,7 @@ const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+"&a
     if(res){
       
 const response = res.data;
-      
+      console.log(response.features.prpperties);
 type === "delivery" ? setDeliveryData(response.features.properties) : setPickupData(response.features.properties);
     
     } else{
