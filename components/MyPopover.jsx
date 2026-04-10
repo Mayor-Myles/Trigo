@@ -10,7 +10,8 @@ import {
   PopoverArrow,
   PopoverCloseButton,
   PopoverAnchor,
-  Box
+  Box,
+  Text,
 } from '@chakra-ui/react'
 
 
