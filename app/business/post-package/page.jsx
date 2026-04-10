@@ -13,7 +13,7 @@ import Footer from "@/components/Footer";
 import {useAtom} from "jotai";
 import {userDataAtom} from "@/utils/jotai";
 import {useRouter} from "next/navigation";
-
+import api from "@/utils/acios";
 
 
 export default function PostPackage() {
