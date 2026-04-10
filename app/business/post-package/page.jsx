@@ -23,7 +23,7 @@ import {useAtom} from "jotai";
 import {userDataAtom} from "@/utils/jotai";
 import {useRouter} from "next/navigation";
 import api from "@/utils/axios";
-
+import MyPopover from "@/components/MyPopover";
 
 export default function PostPackage() {
   const fileRef = useRef(null);
@@ -189,23 +189,7 @@ fetchUserData();
             </FormControl>
 
             {/* Pickup Location */}
-              <Center>
-            <Popover>
-  <PopoverTrigger>
-    <Button>Trigger Me!</Button>
-  </PopoverTrigger>
-  <PopoverContent>
-    <PopoverHeader>Popover Title</PopoverHeader>
-    <PopoverCloseButton />
-    <PopoverBody>
-      
-      
-        <Image src="placeholderimage.png" />
-      
-    </PopoverBody>
-  </PopoverContent>
-              </Popover>
-              </Center>
+              <MyPopOver />
             <FormControl isRequired>
            
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
