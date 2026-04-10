@@ -5,7 +5,7 @@ import {useDebounce} from "use-debounce";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
   InputLeftElement, Select, Textarea, VStack, useToast, HStack,
-  Text, Icon, Image, Center, Flex, Badge,useColorMode,Spinner,
+  Text, Icon, Image, Center, Flex, Badge,useColorMode,Spinner,InputElementLeft,
   
 } from "@chakra-ui/react";
 import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
@@ -245,13 +245,16 @@ fetchUserData();
                   <Icon as={FiMapPin} color="green.400" />
                 </InputLeftElement>
                 <Input
-                  leftIcon={debouncedPickupAddress && (<Spinner color="blue.600" />)}
+                
                   onChange={(e)=>setPickupAddress(e.target.value)}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
                   _placeholder={{ color: "gray.400", fontSize: "sm" }}
                 />
+                <InputRightElement>
+                <Spinner color="blue.600" />
+                </InputRightElement>
               </InputGroup>
             </FormControl>
 
