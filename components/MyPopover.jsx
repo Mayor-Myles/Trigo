@@ -17,7 +17,7 @@ import {
 
 export default function MyPopover({data}){
 
-console.log(data[0].properties.formatted);
+//console.log(data[0].properties.formatted);
   return(
 
          <Center>
@@ -32,7 +32,7 @@ console.log(data[0].properties.formatted);
       {
         
         data.map((item,i)=> (
-<Box my={2} key={i} boxShadow="sm">
+<Box my={2} key={item.properties.place_id} boxShadow="sm">
 
   <Text fontWeight={400}>{item.properties.address_line1}</Text>
    <Text>{item.properties.formatted}</Text>
