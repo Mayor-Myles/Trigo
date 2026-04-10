@@ -16,7 +16,7 @@ import {userDataAtom} from "@/utils/jotai";
 import {useRouter} from "next/navigation";
 import api from "@/utils/axios";
 import MyPopover from "@/components/MyPopover";
-import api from "@/utils/axios";
+
 
 
 
