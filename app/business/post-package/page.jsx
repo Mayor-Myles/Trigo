@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState,useEffect } from "react";
+import { useRef, useState,useEffect,useDebounce } from "react";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
   InputLeftElement, Select, Textarea, VStack, useToast, HStack,
@@ -30,7 +30,12 @@ export default function PostPackage
  const[user,setUser] = useAtom(userDataAtom); 
  const[deliveryData,setDeliveryData] = useState([]);
   const[pickupData,setPickupData] = useState([]);
-  const router = useRouter();
+  const[deliveryAddress,setDeliveryAddress] = useState("");
+  const[pickupAddress,setPickupAddress] = useState("");
+  const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1500); // 1.5s delay
+  const [debouncedPickupAddress] = useDebounce(pickupAddress, 1500); // 1.5s delay
+
+    const router = useRouter();
   const toast = useToast();
     
   const handleFile = (e) => {
@@ -90,8 +95,16 @@ toast({
 
   
   useEffect(()=>{
+if(debouncedPickupAddress){ 
+searchAddress(debouncedPickupAddress);
+}else{
+searchAddress(debouncedDeliveryAddress);
+}
+  },[debouncedPickupAddress,debouncedDeliveryAddress]);
+
+   useEffect(()=>{
 fetchUserData();
-  },[]);
+  },[]); 
 
   if(!user){
 
@@ -229,7 +242,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="green.400" />
                 </InputLeftElement>
                 <Input
-                  onClick={(e)=>searchAddress(e.target.value,"pickup")}
+                  onChange={(e)=>setPickupAddress((prev)=> (e.target.value)}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
@@ -249,7 +262,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="red.400" />
                 </InputLeftElement>
                 <Input
-                  onClick={(e)=>searchAddress(e.target.value,"delivery")}
+                  onChange={(e)=>setDeliveryAddress(e.target.value)}
                   placeholder="e.g. 5 Ikeja Avenue, Ikeja"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
