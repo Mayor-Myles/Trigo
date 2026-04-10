@@ -78,7 +78,7 @@ const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+"&a
       
 const response = res.data;
       
-type === "delivery" ? setDeliveryData(response.features) : setPickupData(response.features);
+type === "delivery" ? setDeliveryData(response.features.properties) : setPickupData(response.features.properties);
     
     } else{
 
@@ -232,7 +232,9 @@ fetchUserData();
             </FormControl>
 
             {/* Pickup Location */}
-              <MyPopover data={pickupData} />
+            {pickupData.length > 0 && (
+          <MyPopover data={pickupData} />
+          )}
             <FormControl isRequired>
            
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
@@ -253,7 +255,9 @@ fetchUserData();
             </FormControl>
 
             {/* Delivery Location */}
-            <MyPopover data={deliveryData} />
+                {deliveryData.length > 0 && (
+          <MyPopover data={deliveryData} />
+          )}
             <FormControl isRequired>
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
                 Delivery Location
