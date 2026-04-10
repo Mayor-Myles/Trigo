@@ -5,7 +5,7 @@ import {useDebounce} from "use-debounce";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
   InputLeftElement, Select, Textarea, VStack, useToast, HStack,
-  Text, Icon, Image, Center, Flex, Badge,useColorMode,
+  Text, Icon, Image, Center, Flex, Badge,useColorMode,Spinner,
   
 } from "@chakra-ui/react";
 import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
@@ -77,7 +77,7 @@ const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+"&a
     if(res){
       
 const response = res.data;
-      console.log(response.features);
+    
 type === "delivery" ? setDeliveryData(response.features) : setPickupData(response.features);
     
     } else{
@@ -233,7 +233,7 @@ fetchUserData();
 
             {/* Pickup Location */}
             {pickupData?.length > 0 &&  (
-          <MyPopover data={pickupData} />
+          <MyPopover setData={{setPickupData} data={pickupData} />
           )}
             <FormControl isRequired>
            
@@ -245,6 +245,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="green.400" />
                 </InputLeftElement>
                 <Input
+                  leftIcon={debouncedPickupAddress && (<Spinner color="blue.600" />)}
                   onChange={(e)=>setPickupAddress(e.target.value)}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
@@ -256,7 +257,7 @@ fetchUserData();
 
             {/* Delivery Location */}
                 {deliveryData?.length > 0 && (
-          <MyPopover data={deliveryData} />
+          <MyPopover setData={setDeliveryData} data={deliveryData} />
           )}
             <FormControl isRequired>
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
