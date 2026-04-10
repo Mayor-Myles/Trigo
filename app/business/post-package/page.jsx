@@ -232,7 +232,7 @@ fetchUserData();
             </FormControl>
 
             {/* Pickup Location */}
-            {pickupData.length > 0 &&  (
+            {pickupData?.length > 0 &&  (
           <MyPopover data={pickupData} />
           )}
             <FormControl isRequired>
@@ -255,7 +255,7 @@ fetchUserData();
             </FormControl>
 
             {/* Delivery Location */}
-                {deliveryData.length > 0 && (
+                {deliveryData?.length > 0 && (
           <MyPopover data={deliveryData} />
           )}
             <FormControl isRequired>
