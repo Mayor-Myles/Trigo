@@ -28,6 +28,7 @@ export default function MyPopover({data}){
       
       
       {
+        console.log(data);
         data.map((item,i)=> (
 <Box my={2} key={i} boxShadow="sm">
 
