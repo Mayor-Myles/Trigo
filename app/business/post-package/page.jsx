@@ -22,7 +22,9 @@ export default function PostPackage() {
   const [preview, setPreview] = useState(null);
   const{colorMode,toggleColorMode} = useColorMode();
  const[user,setUser] = useAtom(userDataAtom); 
- const router = useRouter();
+ const[deliveryData,setDeliveryData] = useState([]);
+  const[pickupData,setPickupData] = useState([]);
+  const router = useRouter();
   const handleFile = (e) => {
     
     const file = e.target.files[0];
@@ -52,6 +54,15 @@ router.push("/login");
     }
 
 }//fetchdata
+
+  const searchAddress = (address,type) => {
+
+type === "delivery" ? setDeliveryData() : setPickup(data);
+}
+
+  }//search
+
+  
   useEffect(()=>{
 fetchUserData();
   },[]);
@@ -181,7 +192,7 @@ fetchUserData();
             </FormControl>
 
             {/* Pickup Location */}
-              <MyPopover />
+              <MyPopover data={setPickupData} />
             <FormControl isRequired>
            
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
@@ -192,6 +203,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="green.400" />
                 </InputLeftElement>
                 <Input
+                  onClick={(e)=>searchAddress(e.target.value,"pickup")}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
@@ -201,6 +213,7 @@ fetchUserData();
             </FormControl>
 
             {/* Delivery Location */}
+            <MyPopover data={setDeliveryData} />
             <FormControl isRequired>
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
                 Delivery Location
@@ -210,6 +223,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="red.400" />
                 </InputLeftElement>
                 <Input
+                  onClick={(e)=>searchAddress(e.target.value,"delivery")}
                   placeholder="e.g. 5 Ikeja Avenue, Ikeja"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
