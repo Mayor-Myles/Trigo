@@ -218,7 +218,7 @@ fetchUserData();
             </FormControl>
 
             {/* Pickup Location */}
-              <MyPopover data={setPickupData} />
+              <MyPopover data={pickupData} />
             <FormControl isRequired>
            
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
@@ -239,7 +239,7 @@ fetchUserData();
             </FormControl>
 
             {/* Delivery Location */}
-            <MyPopover data={setDeliveryData} />
+            <MyPopover data={deliveryData} />
             <FormControl isRequired>
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
                 Delivery Location
