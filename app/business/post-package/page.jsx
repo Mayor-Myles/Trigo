@@ -65,8 +65,7 @@ router.push("/login");
 
   const searchAddress = async (address,type) => {
 const locationToken = process.env.LOCATIONIQ_TOKEN; 
-const url = "https://api.locationiq.com/v1/autocomplete?key="+locationToken+"&q="+address+"&limit=10&dedupe=1&";
-    
+const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+"&apiKey="+locationToken;
    const res = await api.get(url);
 
     if(res){
