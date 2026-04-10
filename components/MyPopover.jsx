@@ -27,14 +27,11 @@ export default function MyPopover({data}){
       
       
       {
-        data.map((item,i)=> {
+        data.map((item,i)=> (
 <Box my={2} key={i} boxShadow="sm">
 
 </Box>
-
-        });
-
-      }
+        ))}
       
     </PopoverBody>
   </PopoverContent>
