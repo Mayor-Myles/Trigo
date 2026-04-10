@@ -2,50 +2,60 @@
 
 import {
   Center,
-  Popover,
-  PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
   Box,
   Text,
-} from '@chakra-ui/react'
+  useBreakpointValue,
+} from "@chakra-ui/react";
 
+export default function MyPopover({ data }) {
+  // Responsive modal size
+  const modalSize = useBreakpointValue({
+    base: "xs", // mobile
+    md: "md",   // tablets & above
+  });
 
-export default function MyPopover({data}){
+  return (
+    <Center>
+      <Modal isOpen={data.length > 0 || false} size={modalSize}>
+        <ModalOverlay />
 
-//console.log(data[0].properties.formatted);
-  return(
+        <ModalContent>
+          <ModalHeader>Results</ModalHeader>
+          <ModalCloseButton  />
 
-         <Center>
-            <Popover isOpen={data.length > 0}>
-  
-  <PopoverContent>
-    <PopoverHeader>Results</PopoverHeader>
-    <PopoverCloseButton />
-    <PopoverBody>
-      
-      
-      {
-        
-        data.map((item,i)=> (
-<Box my={2} key={item.properties.place_id} boxShadow="sm">
+          <ModalBody>
+            {data.length > 0 ? (
+              data.map((item) => (
+                <Box
+                  key={item.properties.place_id}
+                  my={2}
+                  p={3}
+                  borderWidth="1px"
+                  borderRadius="md"
+                  _hover={{ bg: "gray.50" }}
+                  cursor="pointer"
+                >
+                  <Text fontWeight={500}>
+                    {item.properties.address_line1}
+                  </Text>
 
-  <Text fontWeight={400}>{item.properties.address_line1}</Text>
-   <Text>{item.properties.formatted}</Text>
-</Box>
-        ))}
-      
-    </PopoverBody>
-  </PopoverContent>
-              </Popover>
-              </Center>
-
-
-);
-
+                  <Text fontSize="sm" color="gray.500">
+                    {item.properties.formatted}
+                  </Text>
+                </Box>
+              ))
+            ) : (
+              <Text color="gray.400">No results</Text>
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </Center>
+  );
 }
-  
