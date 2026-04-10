@@ -31,6 +31,8 @@ export default function MyPopover({data}){
         data.map((item,i)=> (
 <Box my={2} key={i} boxShadow="sm">
 
+  <Text fontWeight={400}>{item.display_place}</Text>
+   <Text>{item.display_address}</Text>
 </Box>
         ))}
       
