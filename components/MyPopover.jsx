@@ -15,7 +15,7 @@ import {
 
 export default function MyPopover({data}){
 
-console.log("This data "+data)
+console.log(data)
   return(
 
 <Center>
