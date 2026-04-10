@@ -41,6 +41,8 @@ const fetchUserData = async () => {
       const response = res.data;
       if (response.status === "success") {
         setUser(response.data);
+      }else{
+router.push("/login");
       }
 
     }catch(error){
