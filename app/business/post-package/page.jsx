@@ -242,7 +242,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="green.400" />
                 </InputLeftElement>
                 <Input
-                  onChange={(e)=>setPickupAddress((prev)=> (e.target.value)}
+                  onChange={(e)=>setPickupAddress(e.target.value)}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
