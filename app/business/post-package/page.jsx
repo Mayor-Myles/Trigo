@@ -189,8 +189,7 @@ fetchUserData();
             </FormControl>
 
             {/* Pickup Location */}
-            <FormControl isRequired>
-              <Popover>
+               <Popover>
   <PopoverTrigger>
     <Button>Trigger Me!</Button>
   </PopoverTrigger>
@@ -205,6 +204,8 @@ fetchUserData();
     </PopoverBody>
   </PopoverContent>
               </Popover>
+            <FormControl isRequired>
+           
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
                 Pickup Location
               </FormLabel>
