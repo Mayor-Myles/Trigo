@@ -1,3 +1,4 @@
+"use client";
 
 import {
   Center,
@@ -18,7 +19,7 @@ export default function MyPopover({data}){
 console.log(data[0].properties.formatted);
   return(
 
-<Center>
+         <Center>
             <Popover isOpen={data.length > 0}>
   
   <PopoverContent>
@@ -32,8 +33,8 @@ console.log(data[0].properties.formatted);
         data.map((item,i)=> (
 <Box my={2} key={i} boxShadow="sm">
 
-  <Text fontWeight={400}>{item.address_line1}</Text>
-   <Text>{item.formatted}</Text>
+  <Text fontWeight={400}>{item.properties.address_line1}</Text>
+   <Text>{item.properties.formatted}</Text>
 </Box>
         ))}
       
