@@ -64,9 +64,9 @@ router.push("/login");
 }//fetchdata
 
   const searchAddress = async (address,type) => {
-
-const url = "https://api.locationiq.com/v1/autocomplete?key=Your_API_Access_Token&q="+address+"&limit=10&dedupe=1&";
-
+const locationToken = process.env.LOCATIONIQ_TOKEN; 
+const url = "https://api.locationiq.com/v1/autocomplete?key="+locationToken+"&q="+address+"&limit=10&dedupe=1&";
+    
    const res = await api.get(url);
 
     if(res){
