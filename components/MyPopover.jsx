@@ -13,13 +13,20 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-export default function MyPopover({ data }) {
+export default function MyPopover({ data,setData }) {
   // Responsive modal size
   const modalSize = useBreakpointValue({
     base: "xs", // mobile
     md: "md",   // tablets & above
   });
 
+
+  const close = () => {
+
+    setData([]);
+    
+
+  }
   return (
     <Center>
       <Modal isOpen={data.length > 0 || false} size={modalSize}>
@@ -27,7 +34,7 @@ export default function MyPopover({ data }) {
 
         <ModalContent>
           <ModalHeader>Results</ModalHeader>
-          <ModalCloseButton  />
+          <ModalCloseButton onClick={close}  />
 
           <ModalBody>
             {data.length > 0 ? (
