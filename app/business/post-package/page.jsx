@@ -97,9 +97,9 @@ toast({
   
   useEffect(()=>{
 if(debouncedPickupAddress){ 
-searchAddress(debouncedPickupAddress);
+searchAddress(debouncedPickupAddress,"pickup");
 }else{
-searchAddress(debouncedDeliveryAddress);
+searchAddress(debouncedDeliveryAddress,"delivery");
 }
   },[debouncedPickupAddress,debouncedDeliveryAddress]);
 
