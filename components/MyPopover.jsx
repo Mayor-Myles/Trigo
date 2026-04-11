@@ -11,6 +11,7 @@ import {
   Box,
   Text,
   useBreakpointValue,
+  
 } from "@chakra-ui/react";
 
 export default function MyPopover({ data,setData }) {
@@ -19,21 +20,17 @@ export default function MyPopover({ data,setData }) {
     base: "xs", // mobile
     md: "md",   // tablets & above
   });
+const { isOpen, onOpen, onClose } = useDisclosure()
 
 
-  const close = () => {
-
-    setData([]);
-
-  }
   return (
     <Center>
-      <Modal isOpen={data.length > 0 || false} size={modalSize}>
+      <Modal isOpen={data.length > 0} size={modalSize}>
         <ModalOverlay />
 
         <ModalContent>
           <ModalHeader>Results</ModalHeader>
-          <ModalCloseButton onClick={close}  />
+          <ModalCloseButton onClick={onClose}  />
 
           <ModalBody>
             {data.length > 0 ? (
@@ -47,7 +44,7 @@ export default function MyPopover({ data,setData }) {
                   borderRadius="md"
                   _hover={{ bg: "gray.300" }}
                   cursor="pointer"
-                  onClick={()=>{setData(item); close();}}
+                  onClick={()=>{setData(item); onClose();}}
                 >
                   <Text fontWeight={500}>
                     {item.properties.address_line1}
