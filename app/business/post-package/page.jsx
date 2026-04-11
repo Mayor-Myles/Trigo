@@ -81,7 +81,8 @@ const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+"&a
 const response = res.data;
     
 type === "delivery" ? setDeliveryData(response.features) : setPickupData(response.features);
-    
+    setDeliveryLoading(false);
+    setPickupLoading(false);
     } else{
 
 toast({
@@ -96,21 +97,29 @@ toast({
 
   }//search
 
-  //Stop spinning if delivery or pickup data is fetched
-    if(pickupAddress !="" || deliveryAddress !=""){
-setPickupLoading(false);
-setDeliveryLoading(false);   
+
+  useEffect(() => {
+    if (debouncedPickupAddress) {
+      setPickupLoading(true);
+      searchAddress(debouncedPickupAddress, "pickup");
+    } else {
+      //setPickupData([]);
+      setPickupLoading(false);
     }
+  }, [debouncedPickupAddress]);
 
-  useEffect(()=>{
-if(debouncedPickupAddress){ 
-searchAddress(debouncedPickupAddress,"pickup");
-}else{
-searchAddress(debouncedDeliveryAddress,"delivery");
-}
-  },[debouncedPickupAddress,debouncedDeliveryAddress]);
+  useEffect(() => {
+    if (debouncedDeliveryAddress) {
+      setDeliveryLoading(true);
+      searchAddress(debouncedDeliveryAddress, "delivery");
+    } else {
+     // setDeliveryData([]);
+      setDeliveryLoading(false);
+    }
+  }, [debouncedDeliveryAddress]);
 
-   useEffect(()=>{
+    
+    useEffect(()=>{
 fetchUserData();
   },[]); 
 
@@ -253,7 +262,7 @@ fetchUserData();
                 </InputLeftElement>
                 <Input
                 
-                  onChange={(e)=>{setPickupAddress(e.target.value); setPickupLoading(true)}}
+                  onChange={(e)=>{setPickupAddress(e.target.value); }}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
@@ -278,7 +287,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="red.400" />
                 </InputLeftElement>
                 <Input
-                  onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
+                  onChange={(e)=>{setDeliveryAddress(e.target.value);}}
                   placeholder="e.g. 5 Ikeja Avenue, Ikeja"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
