@@ -14,18 +14,25 @@ import {
   useDisclosure,
   
 } from "@chakra-ui/react";
+import {useAtom} from "jotai";
+import{pickupDataAtom,deliveryDataAtom,isPickupAtom,isDeliveryAtom} from "@/utils/jotai";
 
-export default function MyPopover({ data,setData }) {
+
+
+export default function MyPopover({type}){
   // Responsive modal size
   const modalSize = useBreakpointValue({
     base: "xs", // mobile
     md: "md",   // tablets & above
   });
 const { isOpen, onOpen, onClose } = useDisclosure()
+const[pickupData,setPickupData] = useAtom(pickupDataAtom);
+  const[deliveryData,setDeliveryData] = useAtom(deliveryDataAtom);
+ const[isPickup,setIsPickup] = useAtom(isPickupAtom);
+  const[isDelivery,setIsDelivery] = useAtom(isDeliveryAtom);
 
-  const chooseAddress = (data) => {
-console.log(data)
-setData(data);
+  const chooseAddress = (item) => {
+    type ==="pickup" ? setIsPickup(item.properties.formatted) : setIsDelivery(item.properties.formatted);   
   }
 
   return (
@@ -38,10 +45,12 @@ setData(data);
           <ModalCloseButton onClick={()=>onClose()}  />
 
           <ModalBody>
-            {data.length > 0 ? (
-              data.map((item) => (
-                <Box
-                  
+            {
+              type === "pickup" ? 
+              
+                  (pickupData?.length > 0 ? 
+               data.map((item) => (
+                <Box       
                   key={item.properties.place_id}
                   my={2}
                   p={3}
@@ -59,10 +68,35 @@ setData(data);
                     {item.properties.formatted}
                   </Text>
                 </Box>
-              ))
-            ) : (
+              )): (
               <Text color="gray.400">No results</Text>
-            )}
+            )
+            ) :  
+               (data.map((item) => (
+                <Box       
+                  key={item.properties.place_id}
+                  my={2}
+                  p={3}
+                  borderWidth="1px"
+                  borderRadius="md"
+                  _hover={{ bg: "gray.300" }}
+                  cursor="pointer"
+                  onClick={()=>{chooseAddress(item); onClose();}}
+                >
+                  <Text fontWeight={500}>
+                    {item.properties.address_line1}
+                  </Text>
+
+                  <Text fontSize="sm" color="gray.500">
+                    {item.properties.formatted}
+                  </Text>
+                </Box>
+              )): (
+              <Text color="gray.400">No results</Text>
+            )
+            ) 
+            
+            }
           </ModalBody>
         </ModalContent>
       </Modal>
