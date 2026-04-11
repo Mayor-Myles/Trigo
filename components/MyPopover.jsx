@@ -45,7 +45,7 @@ export default function MyPopover({ data,setData }) {
                   p={3}
                   borderWidth="1px"
                   borderRadius="md"
-                  _hover={{ bg: "gray.50" }}
+                  _hover={{ bg: "gray.200" }}
                   cursor="pointer"
                 >
                   <Text fontWeight={500}>
