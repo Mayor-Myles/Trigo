@@ -37,7 +37,7 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
 
   return (
     <Center>
-      <Modal isOpen={data.length > 0} size={modalSize}>
+      <Modal isOpen={pickupData?.length > 0} size={modalSize}>
         <ModalOverlay />
 
         <ModalContent>
