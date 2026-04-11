@@ -37,12 +37,12 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
 
   return (
     <Center>
-      <Modal onClose={onClose} isOpen={pickupData?.length > 0} size={modalSize}>
+      <Modal onClose={onClose()} isOpen={pickupData?.length > 0} size={modalSize}>
         <ModalOverlay />
 
         <ModalContent>
           <ModalHeader>Results</ModalHeader>
-          <ModalCloseButton onClick={onClose}  />
+          <ModalCloseButton onClick={onClose()}  />
 
      <ModalBody>
   {type === "pickup" ? (
