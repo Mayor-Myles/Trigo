@@ -35,8 +35,8 @@ export default function PostPackage
   const[pickupData,setPickupData] = useState(null);
   const[deliveryAddress,setDeliveryAddress] = useState("");
   const[pickupAddress,setPickupAddress] = useState("");
-  const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1200); // 1.5s delay
-  const [debouncedPickupAddress] = useDebounce(pickupAddress, 1200); // 1.5s delay
+  const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1500); // 1.5s delay
+  const [debouncedPickupAddress] = useDebounce(pickupAddress, 1500); // 1.5s delay
 
     const router = useRouter();
    const toast = useToast();
@@ -73,7 +73,7 @@ router.push("/login");
 
 const searchAddress = async (address,type) => {
 const locationToken = process.env.NEXT_PUBLIC_LOCATIONIQ_TOKEN; 
-const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+"&apiKey="+locationToken;
+const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+"&filter=countrycode:ng&apiKey="+locationToken;
    const res = await api.get(url);
 
     if(res){
@@ -261,7 +261,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="green.400" />
                 </InputLeftElement>
                 <Input
-                
+                value={pickupData.properties.lon}
                   onChange={(e)=>{setPickupAddress(e.target.value); setPickupLoading(true) }}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
@@ -287,6 +287,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="red.400" />
                 </InputLeftElement>
                 <Input
+                  value={deliveryData.properties.lon}
                   onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
                   placeholder="e.g. 5 Ikeja Avenue, Ikeja"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
