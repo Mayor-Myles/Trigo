@@ -97,7 +97,7 @@ toast({
   }//search
 
   //Stop spinning if delivery or pickup data is fetched
-    if(pickupAddress  || deliveryAddress){
+    if(pickupAddress !="" || deliveryAddress !=""){
 setPickupLoading(false);
 setDeliveryLoading(false);   
     }
