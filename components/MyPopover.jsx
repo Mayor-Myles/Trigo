@@ -24,7 +24,6 @@ export default function MyPopover({ data,setData }) {
   const close = () => {
 
     setData([]);
-    
 
   }
   return (
@@ -40,13 +39,15 @@ export default function MyPopover({ data,setData }) {
             {data.length > 0 ? (
               data.map((item) => (
                 <Box
+                  
                   key={item.properties.place_id}
                   my={2}
                   p={3}
                   borderWidth="1px"
                   borderRadius="md"
-                  _hover={{ bg: "gray.200" }}
+                  _hover={{ bg: "gray.300" }}
                   cursor="pointer"
+                  onClick={()=>{setData(item); close();}}
                 >
                   <Text fontWeight={500}>
                     {item.properties.address_line1}
