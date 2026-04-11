@@ -32,6 +32,8 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
   const[isDelivery,setIsDelivery] = useAtom(isDeliveryAtom);
 
   const chooseAddress = (item) => {
+    console.log("item ");
+    console.log(item);
     type ==="pickup" ? setIsPickup(item.properties.formatted) : setIsDelivery(item.properties.formatted);   
   handleClose();
   }
