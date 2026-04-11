@@ -98,8 +98,8 @@ toast({
 
   //Stop spinning if delivery or pickup data is fetched
     if(deliveryData  || pickupData){
-setPickupLoading(false);
-setDeliveryLoading(false);   
+//setPickupLoading(false);
+//setDeliveryLoading(false);   
     }
 
   useEffect(()=>{
