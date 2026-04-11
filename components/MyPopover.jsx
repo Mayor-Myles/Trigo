@@ -25,7 +25,7 @@ export default function MyPopover({type}){
     base: "xs", // mobile
     md: "md",   // tablets & above
   });
-const { isOpen, onOpen, onClose } = useDisclosure()
+const { isOpen, onOpen, onClose } = useDisclosure();
 const[pickupData,setPickupData] = useAtom(pickupDataAtom);
   const[deliveryData,setDeliveryData] = useAtom(deliveryDataAtom);
  const[isPickup,setIsPickup] = useAtom(isPickupAtom);
@@ -37,12 +37,12 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
 
   return (
     <Center>
-      <Modal isOpen={pickupData?.length > 0} size={modalSize}>
+      <Modal onClose={onClose} isOpen={pickupData?.length > 0} size={modalSize}>
         <ModalOverlay />
 
         <ModalContent>
           <ModalHeader>Results</ModalHeader>
-          <ModalCloseButton onClick={()=>onClose()}  />
+          <ModalCloseButton onClick={onClose}  />
 
      <ModalBody>
   {type === "pickup" ? (
