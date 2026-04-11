@@ -24,7 +24,7 @@ export default function MyPopover({ data,setData }) {
 const { isOpen, onOpen, onClose } = useDisclosure()
 
   const chooseAddress = (data) => {
-
+console.log(data)
 setData(data);
   }
 
