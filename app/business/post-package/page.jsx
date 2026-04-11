@@ -13,8 +13,7 @@ import { LuWeight } from "react-icons/lu";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {useAtom} from "jotai";
-import {userDataAtom} from "@/utils/jotai";
-import{pickupDataAtom,deliveryDataAtom} from "@/utils/jotai";
+import{pickupDataAtom,deliveryDataAtom,isPickupAtom,isDeliveryAtom,userDataAtom} from "@/utils/jotai";
 import {useRouter} from "next/navigation";
 import api from "@/utils/axios";
 import MyPopover from "@/components/MyPopover";
@@ -38,7 +37,8 @@ export default function PostPackage
   const[pickupAddress,setPickupAddress] = useState("");
   const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1800); // 1.8s delay
   const [debouncedPickupAddress] = useDebounce(pickupAddress, 1800); // 1.8s delay
-
+  const[isPickup,setIsPickup] = useAtom(isPickupAtom);
+    const[isDelivery,setIsDelivery] = useAtom(isDeliveryAtom);
     const router = useRouter();
    const toast = useToast();
     
@@ -253,7 +253,7 @@ fetchUserData();
 
             {/* Pickup Location */}
             {pickupData?.length > 0 &&  (
-          <MyPopover  />
+          <MyPopover type="pickup"  />
           )}
             <FormControl isRequired>
            
@@ -265,7 +265,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="green.400" />
                 </InputLeftElement>
                 <Input
-                value={pickupData?.properties.formatted}
+                value={isPickup}
                   onChange={(e)=>{setPickupAddress(e.target.value); setPickupLoading(true) }}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
@@ -280,7 +280,7 @@ fetchUserData();
 
             {/* Delivery Location */}
                 {deliveryData?.length > 0 && (
-          <MyPopover  />
+          <MyPopover type="delivery"  />
           )}
             <FormControl isRequired>
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
@@ -291,7 +291,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="red.400" />
                 </InputLeftElement>
                 <Input
-                  value={pickupData?.properties.formatted}
+                  value={isDelivery}
                   onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
                   placeholder="e.g. 5 Ikeja Avenue, Ikeja"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
