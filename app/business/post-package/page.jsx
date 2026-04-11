@@ -5,7 +5,7 @@ import {useDebounce} from "use-debounce";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
   InputLeftElement, Select, Textarea, VStack, useToast, HStack,
-  Text, Icon, Image, Center, Flex, Badge,useColorMode,Spinner,InputElementLeft,
+  Text, Icon, Image, Center, Flex, Badge,useColorMode,Spinner,InputRightElement,
   
 } from "@chakra-ui/react";
 import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
@@ -25,6 +25,8 @@ import MyPopover from "@/components/MyPopover";
 
 export default function PostPackage
   () {
+  const [pickupLoading,setPickupLoading] = useState(false);
+  const [deliveryLoading,setDeliveryLoading] = useState(false);
   const fileRef = useRef(null);
   const [preview, setPreview] = useState(null);
   const{colorMode,toggleColorMode} = useColorMode();
@@ -69,7 +71,7 @@ router.push("/login");
 
 }//fetchdata
 
-  const searchAddress = async (address,type) => {
+const searchAddress = async (address,type) => {
 const locationToken = process.env.NEXT_PUBLIC_LOCATIONIQ_TOKEN; 
 const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+"&apiKey="+locationToken;
    const res = await api.get(url);
@@ -94,7 +96,12 @@ toast({
 
   }//search
 
-  
+  //Stop spinning if delivery or pickup data is fetched
+    if(deliveryData.length > 0 || pickupData.length > 0){
+setPickupLoading(false);
+setDeliveryLoading(false);   
+    }
+
   useEffect(()=>{
 if(debouncedPickupAddress){ 
 searchAddress(debouncedPickupAddress,"pickup");
@@ -246,15 +253,15 @@ fetchUserData();
                 </InputLeftElement>
                 <Input
                 
-                  onChange={(e)=>setPickupAddress(e.target.value)}
+                  onChange={(e)=>{setPickupAddress(e.target.value); setPickupLoading(true)}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
                   _placeholder={{ color: "gray.400", fontSize: "sm" }}
                 />
-                <InputRightElement>
+                {pickupLoading && (<InputRightElement>
                 <Spinner color="blue.600" />
-                </InputRightElement>
+                </InputRightElement>)}
               </InputGroup>
             </FormControl>
 
@@ -271,12 +278,15 @@ fetchUserData();
                   <Icon as={FiMapPin} color="red.400" />
                 </InputLeftElement>
                 <Input
-                  onChange={(e)=>setDeliveryAddress(e.target.value)}
+                  onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
                   placeholder="e.g. 5 Ikeja Avenue, Ikeja"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
                   _placeholder={{ color: "gray.400", fontSize: "sm" }}
                 />
+                {deliveryLoading && ( <InputRightElement>
+                <Spinner color="blue.600" />
+                </InputRightElement>)}
               </InputGroup>
             </FormControl>
 
