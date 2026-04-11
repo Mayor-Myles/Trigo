@@ -102,6 +102,7 @@ toast({
     if (debouncedPickupAddress) {
       setPickupLoading(true);
       searchAddress(debouncedPickupAddress, "pickup");
+      setPickupAddress(pickupData.properties.formatted);
     } else {
       //setPickupData([]);
       setPickupLoading(false);
@@ -113,6 +114,7 @@ toast({
     if (debouncedDeliveryAddress) {
       setDeliveryLoading(true);
       searchAddress(debouncedDeliveryAddress, "delivery");
+      setDeliveryAddress(deliveryData.properties.formatted);
     } else {
      // setDeliveryData([]);
       setDeliveryLoading(false);
