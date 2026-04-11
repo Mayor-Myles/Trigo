@@ -262,7 +262,7 @@ fetchUserData();
                 </InputLeftElement>
                 <Input
                 
-                  onChange={(e)=>{setPickupAddress(e.target.value); }}
+                  onChange={(e)=>{setPickupAddress(e.target.value); setPickupLoading(true) }}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
@@ -287,7 +287,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="red.400" />
                 </InputLeftElement>
                 <Input
-                  onChange={(e)=>{setDeliveryAddress(e.target.value);}}
+                  onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
                   placeholder="e.g. 5 Ikeja Avenue, Ikeja"
                   bg="gray.50" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
