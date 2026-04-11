@@ -39,7 +39,7 @@ export default function PostPackage
   const [debouncedPickupAddress] = useDebounce(pickupAddress, 1500); // 1.5s delay
 
     const router = useRouter();
-  const toast = useToast();
+   const toast = useToast();
     
   const handleFile = (e) => {
     
@@ -97,7 +97,7 @@ toast({
   }//search
 
   //Stop spinning if delivery or pickup data is fetched
-    if(deliveryData.length > 0 || pickupData.length > 0){
+    if(deliveryData  || pickupData){
 setPickupLoading(false);
 setDeliveryLoading(false);   
     }
