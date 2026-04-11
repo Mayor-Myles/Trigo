@@ -23,6 +23,10 @@ export default function MyPopover({ data,setData }) {
   });
 const { isOpen, onOpen, onClose } = useDisclosure()
 
+  const chooseAddress = (data) => {
+
+setData(data);
+  }
 
   return (
     <Center>
@@ -37,7 +41,7 @@ const { isOpen, onOpen, onClose } = useDisclosure()
             {data.length > 0 ? (
               data.map((item) => (
                 <Box
-                  {console.log(item)}
+                  
                   key={item.properties.place_id}
                   my={2}
                   p={3}
@@ -45,7 +49,7 @@ const { isOpen, onOpen, onClose } = useDisclosure()
                   borderRadius="md"
                   _hover={{ bg: "gray.300" }}
                   cursor="pointer"
-                  onClick={()=>{setData(item); onClose();}}
+                  onClick={()=>{chooseAddress(item); onClose();}}
                 >
                   <Text fontWeight={500}>
                     {item.properties.address_line1}
