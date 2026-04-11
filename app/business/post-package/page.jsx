@@ -105,7 +105,7 @@ toast({
     } else {
       //setPickupData([]);
       setPickupLoading(false);
-      console.log(pickUpData);
+      console.log(pickupData);
     }
   }, [debouncedPickupAddress]);
 
