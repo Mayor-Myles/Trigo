@@ -33,8 +33,13 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
 
   const chooseAddress = (item) => {
     type ==="pickup" ? setIsPickup(item.properties.formatted) : setIsDelivery(item.properties.formatted);   
+  handleClose();
   }
-
+  const handleClose = () => {
+    // ✅ Clear data AND close modal
+    type === "pickup" ? setPickupData([]) : setDeliveryData([]);
+    onClose();
+  };
   return (
     <Center>
       <Modal onClose={()=>onClose()} isOpen={pickupData?.length > 0} size={modalSize}>
@@ -42,7 +47,7 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
 
         <ModalContent>
           <ModalHeader>Results</ModalHeader>
-          <ModalCloseButton onClick={()=>onClose()}  />
+          <ModalCloseButton onClick={()=>handleClose()}  />
 
      <ModalBody>
   {type === "pickup" ? (
@@ -56,7 +61,7 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
           borderRadius="md"
           _hover={{ bg: "gray.300" }}
           cursor="pointer"
-          onClick={() => { chooseAddress(item); onClose(); }}
+          onClick={() => { chooseAddress(item); }}
         >
           <Text fontWeight={500}>{item.properties.address_line1}</Text>
           <Text fontSize="sm" color="gray.500">{item.properties.formatted}</Text>
@@ -76,7 +81,7 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
           borderRadius="md"
           _hover={{ bg: "gray.300" }}
           cursor="pointer"
-          onClick={() => { chooseAddress(item); onClose(); }}
+          onClick={() => { chooseAddress(item); }}
         >
           <Text fontWeight={500}>{item.properties.address_line1}</Text>
           <Text fontSize="sm" color="gray.500">{item.properties.formatted}</Text>
