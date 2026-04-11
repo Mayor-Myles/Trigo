@@ -35,8 +35,8 @@ export default function PostPackage
   const[pickupData,setPickupData] = useState(null);
   const[deliveryAddress,setDeliveryAddress] = useState("");
   const[pickupAddress,setPickupAddress] = useState("");
-  const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1500); // 1.5s delay
-  const [debouncedPickupAddress] = useDebounce(pickupAddress, 1500); // 1.5s delay
+  const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1200); // 1.5s delay
+  const [debouncedPickupAddress] = useDebounce(pickupAddress, 1200); // 1.5s delay
 
     const router = useRouter();
    const toast = useToast();
@@ -97,9 +97,9 @@ toast({
   }//search
 
   //Stop spinning if delivery or pickup data is fetched
-    if(deliveryData  || pickupData){
-//setPickupLoading(false);
-//setDeliveryLoading(false);   
+    if(pickupAddress  || deliveryAddress){
+setPickupLoading(false);
+setDeliveryLoading(false);   
     }
 
   useEffect(()=>{
@@ -331,7 +331,7 @@ fetchUserData();
               _active={{ transform: "translateY(0)" }}
               transition="all 0.2s"
             >
-              Proceed to Payment
+              Proceed
             </Button>
 
           </VStack>
