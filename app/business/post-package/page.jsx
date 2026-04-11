@@ -36,7 +36,7 @@ export default function PostPackage
   const[deliveryAddress,setDeliveryAddress] = useState("");
   const[pickupAddress,setPickupAddress] = useState("");
   const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1800); // 1.8s delay
-  const [debouncedPickupAddress] = useDebounce(pickupAddress, 15800); // 1.8s delay
+  const [debouncedPickupAddress] = useDebounce(pickupAddress, 1800); // 1.8s delay
 
     const router = useRouter();
    const toast = useToast();
