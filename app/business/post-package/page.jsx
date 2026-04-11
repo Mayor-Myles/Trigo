@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {useAtom} from "jotai";
 import {userDataAtom} from "@/utils/jotai";
+import{pickupDataAtom,deliveryDataAtom} from "@/utils/jotai";
 import {useRouter} from "next/navigation";
 import api from "@/utils/axios";
 import MyPopover from "@/components/MyPopover";
@@ -31,8 +32,8 @@ export default function PostPackage
   const [preview, setPreview] = useState(null);
   const{colorMode,toggleColorMode} = useColorMode();
  const[user,setUser] = useAtom(userDataAtom); 
- const[deliveryData,setDeliveryData] = useState(null);
-  const[pickupData,setPickupData] = useState(null);
+ const[deliveryData,setDeliveryData] = useAtom(deliveryDataAtom);
+  const[pickupData,setPickupData] = useAtom(pickupDataAtom);
   const[deliveryAddress,setDeliveryAddress] = useState("");
   const[pickupAddress,setPickupAddress] = useState("");
   const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1800); // 1.8s delay
@@ -252,7 +253,7 @@ fetchUserData();
 
             {/* Pickup Location */}
             {pickupData?.length > 0 &&  (
-          <MyPopover setData={setPickupData} data={pickupData} />
+          <MyPopover  />
           )}
             <FormControl isRequired>
            
@@ -279,7 +280,7 @@ fetchUserData();
 
             {/* Delivery Location */}
                 {deliveryData?.length > 0 && (
-          <MyPopover setData={setDeliveryData} data={deliveryData} />
+          <MyPopover  />
           )}
             <FormControl isRequired>
               <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
