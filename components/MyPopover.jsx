@@ -31,13 +31,13 @@ const { isOpen, onOpen, onClose } = useDisclosure()
 
         <ModalContent>
           <ModalHeader>Results</ModalHeader>
-          <ModalCloseButton onClick={onClose}  />
+          <ModalCloseButton onClick={()=>onClose()}  />
 
           <ModalBody>
             {data.length > 0 ? (
               data.map((item) => (
                 <Box
-                  
+                  {console.log(item)}
                   key={item.properties.place_id}
                   my={2}
                   p={3}
