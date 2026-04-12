@@ -244,8 +244,8 @@ fetchUserData();
                   </InputLeftElement>
                   <Input
                     type="number" defaultValue="0.0"
-                    bg="gray.50" border="1.5px solid" borderColor="gray.200"
-                    rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
+                     border="1.5px solid" borderColor="gray.200"
+                    rounded="xl" _focus={{ borderColor: "blue.400",}}
                   />
                 </InputGroup>
                 
@@ -266,11 +266,11 @@ fetchUserData();
                   <Icon as={FiMapPin} color="green.400" />
                 </InputLeftElement>
                 <Input
-                value={isPickup?.isPickup}
+                value={isPickup}
                   onChange={(e)=>{setPickupAddress(e.target.value); setPickupLoading(true) }}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="" border="1.5px solid" borderColor="gray.200"
-                  rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
+                  rounded="xl" _focus={{ borderColor: "blue.400", }}
                   _placeholder={{ color: "gray.400", fontSize: "md" }}
                 />
                 {pickupLoading && (<InputRightElement>
@@ -295,8 +295,8 @@ fetchUserData();
                   
                   onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
                   placeholder="e.g. 5 Ikeja Avenue, Ikeja"
-                  bg="gray.50" border="1.5px solid" borderColor="gray.200"
-                  rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
+                   border="1.5px solid" borderColor="gray.200"
+                  rounded="xl" _focus={{ borderColor: "blue.400", }}
                   _placeholder={{ color: "gray.400", fontSize: "sm" }}
                 />
                 {deliveryLoading && ( <InputRightElement>
@@ -316,8 +316,8 @@ fetchUserData();
                 </InputLeftElement>
                 <Input
                   type="number" placeholder="e.g. 1500"
-                  bg="gray.50" border="1.5px solid" borderColor="gray.200"
-                  rounded="xl" _focus={{ borderColor: "blue.400", bg: "white" }}
+                  border="1.5px solid" borderColor="gray.200"
+                  rounded="xl" _focus={{ borderColor: "blue.400", }}
                   _placeholder={{ color: "gray.400", fontSize: "sm" }}
                 />
               </InputGroup>
@@ -330,9 +330,9 @@ fetchUserData();
               </FormLabel>
               <Textarea
                 placeholder="Describe the contents, fragility, or any special handling notes..."
-                bg="gray.50" border="1.5px solid" borderColor="gray.200"
+                border="1.5px solid" borderColor="gray.200"
                 rounded="xl" rows={4} resize="none"
-                _focus={{ borderColor: "blue.400", bg: "white" }}
+                _focus={{ borderColor: "blue.400",  }}
                 _placeholder={{ color: "gray.400", fontSize: "sm" }}
               />
             </FormControl>
