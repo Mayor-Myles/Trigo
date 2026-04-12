@@ -68,7 +68,7 @@ onOpen();
           borderRadius="md"
           _hover={{ bg: "gray.300" }}
           cursor="pointer"
-          onClick={() => { chooseAddress(item); }}
+          onClick={() => { handleClose(); chooseAddress(item); }}
         >
           <Text fontWeight={500}>{item.properties.address_line1}</Text>
           <Text fontSize="sm" color="gray.500">{item.properties.formatted}</Text>
