@@ -32,14 +32,16 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
   const[isDelivery,setIsDelivery] = useAtom(isDeliveryAtom);
 
   const chooseAddress = (item) => {
-    console.log("item ");
-    console.log(item);
     
-    type ==="pickup" ? setIsPickup(item.properties.formatted) : setIsDelivery(item.properties.formatted);   
+    const address = item.properties.formatted;
+
+    console.log(address);
+    
+    type ==="pickup" ? setIsPickup(address) : setIsDelivery(address);   
   
   }
   const handleClose = () => {
-    // ✅ Clear data AND close modal
+    // Clear data AND close modal
     type === "pickup" ? setPickupData([]) : setDeliveryData([]);
     onClose();
   };
