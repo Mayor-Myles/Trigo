@@ -125,7 +125,7 @@ toast({
     
     useEffect(()=>{
 fetchUserData();
-      cosole.log(isPickup);
+      console.log(isPickup);
   },[isPickup]); 
 
   if(!user){
