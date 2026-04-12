@@ -42,7 +42,14 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
   }
   const handleClose = () => {
     // Clear data AND close modal
-    type === "pickup" ? setPickupData([]) : setDeliveryData([]);
+    if (type === "pickup") {
+  setPickupData([]);
+  setIsPickup("");
+} else {
+  setDeliveryData([]);
+  setIsDelivery("");
+}
+
     onClose();
   };
 
