@@ -6,5 +6,5 @@ export const userDataAtom = atom(null);
 export const pickupDataAtom = atom(null);
 
 export const deliveryDataAtom = atom(null);
-export const isPickupAtom = atom("");
-export const isDeliveryAtom = atom("");
+export const isPickupAtom = atom(null);
+export const isDeliveryAtom = atom(null);
