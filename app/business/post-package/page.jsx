@@ -35,8 +35,8 @@ export default function PostPackage
   const[pickupData,setPickupData] = useAtom(pickupDataAtom);
   const[deliveryAddress,setDeliveryAddress] = useState("");
   const[pickupAddress,setPickupAddress] = useState("");
-  const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1800); // 1.8s delay
-  const [debouncedPickupAddress] = useDebounce(pickupAddress, 1800); // 1.8s delay
+  const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1400); // 1.8s delay
+  const [debouncedPickupAddress] = useDebounce(pickupAddress, 1400); // 1.8s delay
   const[isPickup,setIsPickup] = useAtom(isPickupAtom);
     const[isDelivery,setIsDelivery] = useAtom(isDeliveryAtom);
     const router = useRouter();
