@@ -125,7 +125,7 @@ toast({
     
     useEffect(()=>{
 fetchUserData();
-      console.log(isPickup);
+      
   },[isPickup]); 
 
   if(!user){
@@ -292,7 +292,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="red.400" />
                 </InputLeftElement>
                 <Input
-                  
+                  value={isDelivery}
                   onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
                   placeholder="e.g. 5 Ikeja Avenue, Ikeja"
                    border="1.5px solid" borderColor="gray.200"
