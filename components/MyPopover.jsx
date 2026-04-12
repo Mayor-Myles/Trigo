@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import {useAtom} from "jotai";
 import{pickupDataAtom,deliveryDataAtom,isPickupAtom,isDeliveryAtom} from "@/utils/jotai";
-
+import {useEffect} from "react";
 
 
 export default function MyPopover({type}){
@@ -34,17 +34,22 @@ const[pickupData,setPickupData] = useAtom(pickupDataAtom);
   const chooseAddress = (item) => {
     console.log("item ");
     console.log(item);
+    
     type ==="pickup" ? setIsPickup(item.properties.formatted) : setIsDelivery(item.properties.formatted);   
-  handleClose();
+  
   }
   const handleClose = () => {
     // ✅ Clear data AND close modal
     type === "pickup" ? setPickupData([]) : setDeliveryData([]);
     onClose();
   };
+
+  useEffect(()=>{
+onOpen();
+  },[]);
   return (
     <Center>
-      <Modal onClose={()=>onClose()} isOpen={pickupData?.length > 0} size={modalSize}>
+      <Modal onClose={()=>handleClose()} isOpen={isOpen} size={modalSize}>
         <ModalOverlay />
 
         <ModalContent>
