@@ -5,7 +5,7 @@ import { useDebounce } from "use-debounce";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
   InputLeftElement, Textarea, VStack, useToast, HStack,
-  Text, Icon, Image, Center, Badge, useColorMode,
+  Text, Icon, Image, Center, Badge, useColorMode,Center,
   Spinner, InputRightElement
 } from "@chakra-ui/react";
 import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
@@ -175,9 +175,11 @@ export default function PostPackage() {
 
                 {preview ? (
                   <Box position="relative">
-                    <Image boxSize={15} src={preview} />
+                    <Center>
+                    <Image w="250px" h="250px" objectFit="contain"  src={preview} />
                     <Button colorScheme="red" onClick={() => setPreview(null)}>Remove</Button>
-                  </Box>
+                    </Center>
+                    </Box>
                 ) : (
                   <Center onClick={() => fileRef.current.click()}>
                     <Icon color="dodgerblue" as={FiUploadCloud} />
