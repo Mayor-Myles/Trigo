@@ -78,7 +78,15 @@ export default function PostPackage() {
       const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${address}&filter=countrycode:ng&apiKey=${apiKey}`;
 
       const res = await api.get(url);
+      if(res.data.length < 1){
+toast({
+        title: "Info",
+        description: "No address was found.",
+        status: "info",
+        position: "top"
+      });
 
+      }
       const results = res.data.features;
 
       if (type === "pickup") {
@@ -152,7 +160,7 @@ export default function PostPackage() {
               New Delivery
             </Badge>
 
-            <Text fontSize="3xl" fontWeight="900" color="white">
+            <Text fontSize="lg" fontWeight="900" color="white">
               Post a Package
             </Text>
           </Box>
