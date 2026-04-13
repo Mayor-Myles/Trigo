@@ -6,7 +6,7 @@ import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
   InputLeftElement, Textarea, VStack, useToast, HStack,
   Text, Icon, Image, Center, Badge, useColorMode,
-  Spinner, InputRightElement
+  Spinner, InputRightElement,Select
 } from "@chakra-ui/react";
 import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
 import { LuWeight } from "react-icons/lu";
