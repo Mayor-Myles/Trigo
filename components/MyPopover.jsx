@@ -15,7 +15,7 @@ import {
   
 } from "@chakra-ui/react";
 import {useAtom} from "jotai";
-import{pickupDataAtom,deliveryDataAtom,pickupAddressAtom,deliveryAddressdAtom} from "@/utils/jotai";
+import{pickupDataAtom,deliveryDataAtom,pickupAddressAtom,deliveryAddressAtom} from "@/utils/jotai";
 import {useEffect} from "react";
 
 
