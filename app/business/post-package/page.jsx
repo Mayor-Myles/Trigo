@@ -167,7 +167,7 @@ toast({
         </Box>
 
         <Box maxW="520px" mx="auto" px={4} mt="-40px" pb={10}>
-          <Box bg="white" rounded="2xl" shadow="xl" p={6}>
+          <Box rounded="2xl" shadow="xl" p={6}>
             <VStack spacing={6} align="stretch">
 
               {/* IMAGE */}
