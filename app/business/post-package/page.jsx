@@ -78,7 +78,9 @@ export default function PostPackage() {
       const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${address}&filter=countrycode:ng&apiKey=${apiKey}`;
 
       const res = await api.get(url);
-      if(res.data.length < 1){
+      
+      const results = res.data.features;
+if(results.length < 1){
 toast({
         title: "Info",
         description: "No address was found.",
@@ -87,8 +89,6 @@ toast({
       });
 
       }
-      const results = res.data.features;
-
       if (type === "pickup") {
         setPickupData(results);
         setPickupLoading(false);
