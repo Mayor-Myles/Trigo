@@ -175,12 +175,12 @@ export default function PostPackage() {
 
                 {preview ? (
                   <Box position="relative">
-                    <Image src={preview} />
-                    <Button onClick={() => setPreview(null)}>Remove</Button>
+                    <Image boxSize={15} src={preview} />
+                    <Button colorScheme="red" onClick={() => setPreview(null)}>Remove</Button>
                   </Box>
                 ) : (
                   <Center onClick={() => fileRef.current.click()}>
-                    <Icon as={FiUploadCloud} />
+                    <Icon color="dodgerblue" as={FiUploadCloud} />
                     <Text>Upload</Text>
                   </Center>
                 )}
@@ -189,7 +189,7 @@ export default function PostPackage() {
               {/* WEIGHT */}
               <FormControl isRequired>
                 <FormLabel>Weight</FormLabel>
-                <Input type="number" />
+                <Input type="number" placeholder="Package weight"/>
               </FormControl>
 
               {/* PICKUP */}
@@ -206,7 +206,7 @@ export default function PostPackage() {
 
               <InputGroup>
                 <InputLeftElement>
-                  <Icon color="lightgreen" as={FiMapPin} />
+                  <Icon color="seagreen" as={FiMapPin} />
                 </InputLeftElement>
                 <Input
                   value={pickupAddress}
@@ -214,7 +214,7 @@ export default function PostPackage() {
                   placeholder="Pickup address"
                 />
                 <InputRightElement>
-                {pickupLoading && <Spinner color="blue" />}
+                {pickupLoading && <Spinner color="dodgerblue" />}
               </InputRightElement>
                 </InputGroup>
 
@@ -237,10 +237,10 @@ export default function PostPackage() {
                 <Input
                   value={deliveryAddress}
                   onChange={(e) => setDeliveryAddress(e.target.value)}
-                  placeholder="Delivery address"
+                  placeholder="Enter Delivery address"
                 />
                 <InputRightElement>
-                {deliveryLoading && <Spinner color="blue" />}
+                {deliveryLoading && <Spinner color="dodgerblue" />}
               </InputRightElement>
                 </InputGroup>
 
