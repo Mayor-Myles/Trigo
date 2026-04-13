@@ -124,9 +124,8 @@ toast({
 
     
     useEffect(()=>{
-fetchUserData();
-      
-  },[isPickup]); 
+fetchUserData();     
+  },[]); 
 
   if(!user){
 
