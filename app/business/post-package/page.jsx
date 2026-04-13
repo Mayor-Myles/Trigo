@@ -74,7 +74,7 @@ router.push("/login");
 
 const searchAddress = async (address,type) => {
 const locationToken = process.env.NEXT_PUBLIC_LOCATIONIQ_TOKEN; 
-const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+"&filter=countrycode:ng&apiKey="+locationToken;
+const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+" ibadan&filter=countrycode:ng&apiKey="+locationToken;
    const res = await api.get(url);
 
     if(res){
@@ -268,7 +268,7 @@ fetchUserData();
                 <Input
                 value={pickupAddress}
                   onChange={(e)=>{setPickupAddress(e.target.value); setPickupLoading(true) }}
-                  placeholder="e.g. 12 Broad Street, Lagos Island"
+                  placeholder="Type and choose the pickup address"
                   bg="" border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", }}
                   _placeholder={{ color: "gray.400", fontSize: "md" }}
@@ -294,7 +294,7 @@ fetchUserData();
                 <Input
                   value={pickupAddress}
                   onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
-                  placeholder="e.g. 5 Ikeja Avenue, Ikeja"
+                  placeholder="Type and choose the delivery address"
                    border="1.5px solid" borderColor="gray.200"
                   rounded="xl" _focus={{ borderColor: "blue.400", }}
                   _placeholder={{ color: "gray.400", fontSize: "sm" }}
