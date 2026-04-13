@@ -8,3 +8,7 @@ export const pickupDataAtom = atom(null);
 export const deliveryDataAtom = atom(null);
 export const isPickupAtom = atom(null);
 export const isDeliveryAtom = atom(null);
+export const deliveryAddressAtom = atom("");
+export const pickupAddressAtom = atom("");
+
+
