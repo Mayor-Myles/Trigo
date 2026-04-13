@@ -78,12 +78,13 @@ export default function PostPackage() {
     try {
       const apiKey = process.env.NEXT_PUBLIC_GEOAPIFY_KEY;
 
-      const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${address}&filter=countrycode:ng&apiKey=${apiKey}`;
+      const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${address} Ibadan&filter=countrycode:ng&apiKey=${apiKey}`;
 
       const res = await api.get(url);
       
       const results = res?.data?.features || [];
-if(results.length < 1){
+
+      if(results.length < 1){
 toast({
         title: "Info",
         description: "No address was found.",
@@ -187,14 +188,14 @@ toast({
                 {preview ? (
                   <Box position="relative">
                     <Center>
-                    <Image w="250px" h="250px" objectFit="contain"  src={preview} />
+                    <Image w="300px" h="250px" objectFit="contain"  src={preview} />
                     <Button colorScheme="red" onClick={() => setPreview(null)}>Remove</Button>
                     </Center>
                     </Box>
                 ) : (
                   <Center onClick={() => fileRef.current.click()}>
                     <Icon color="dodgerblue" as={FiUploadCloud} />
-                    <Text>Upload</Text>
+                    <Text ml="2">Click here to upload</Text>
                   </Center>
                 )}
               </FormControl>
@@ -234,7 +235,7 @@ toast({
                 <Input
                   value={pickupAddress}
                   onChange={(e) => setPickupAddress(e.target.value)}
-                  placeholder="Pickup address"
+                  placeholder="Type the pickup address"
                 />
                 <InputRightElement>
                 {pickupLoading && <Spinner color="dodgerblue" />}
@@ -260,7 +261,7 @@ toast({
                 <Input
                   value={deliveryAddress}
                   onChange={(e) => setDeliveryAddress(e.target.value)}
-                  placeholder="Enter Delivery address"
+                  placeholder="Type the delivery address"
                 />
                 <InputRightElement>
                 {deliveryLoading && <Spinner color="dodgerblue" />}
@@ -268,10 +269,15 @@ toast({
                 </InputGroup>
 
               {/* PRICE */}
+
+              {
+                price > 0 && (
               <FormControl isRequired>
                 <FormLabel>Price</FormLabel>
                 <Input value={price} type="number" readOnly />
-              </FormControl>
+              </FormControl>)
+
+              }
 
               {/* DESC */}
               <Textarea placeholder="Description" />
