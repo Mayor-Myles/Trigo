@@ -147,7 +147,7 @@ toast({
     <>
       <Navbar />
 
-      <Box minH="100vh" bg={colorMode === "light" ? "gray.50" : ""}>
+      <Box minH="100vh" bg={colorMode === "light" ? "gray.50" : "black"}>
         {/* HEADER */}
         <Box
           bgGradient="linear(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
