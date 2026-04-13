@@ -39,13 +39,24 @@ export default function MyPopover({ type, onSelect }) {
   
   const chooseAddress = (item) => {
     const address = item.properties.formatted;
-
+    const geometry = item.geometry.cordinates;
+      
     if (type === "pickup") {
       setPickupAddress(address);
       setPickupData([]);
+      setCordinates(prev => ({
+ ...prev,
+  pickupLon: geometry[0],
+  pickupLat: geometry[1]
+}));
     } else {
       setDeliveryAddress(address);
       setDeliveryData([]);
+      setCordinates(prev => ({
+ ...prev,
+  deliveryLon: geometry[0],
+  deliveryLat: geometr[1],
+}));
     }
 
     onSelect && onSelect(address);
