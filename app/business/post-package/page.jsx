@@ -124,7 +124,7 @@ toast({
 
     
     useEffect(()=>{
-fetchUserData();     
+    fetchUserData();     
   },[]); 
 
   if(!user){
@@ -291,7 +291,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="red.400" />
                 </InputLeftElement>
                 <Input
-                  value={pickupAddress}
+                  value={deliveryAddress}
                   onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
                   placeholder="Type and choose the delivery address"
                    border="1.5px solid" borderColor="gray.200"
@@ -337,6 +337,8 @@ fetchUserData();
             </FormControl>
 
             {/* CTA */}
+
+            
             <Button
               size="lg" rounded="xl" fontWeight="700"
               bgGradient="linear(to-r, blue.500, blue.700)"
