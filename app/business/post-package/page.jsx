@@ -80,7 +80,7 @@ export default function PostPackage() {
       const res = await api.get(url);
       
       const results = res.data.features;
-if(results?.length < 1){
+/*if(results?.length < 1){
 toast({
         title: "Info",
         description: "No address was found.",
@@ -88,7 +88,7 @@ toast({
         position: "top"
       });
 
-      }
+      }*/
       if (type === "pickup") {
         setPickupData(results);
         setPickupLoading(false);
