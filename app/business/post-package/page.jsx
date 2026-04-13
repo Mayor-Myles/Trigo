@@ -166,7 +166,7 @@ toast({
           </Box>
         </Box>
 
-        <Box maxW="520px" mx="auto" px={4} mt="-40px" pb={10}>
+        <Box zIndex={9999} maxW="520px" mx="auto" px={4} mt="-40px" pb={10}>
           <Box rounded="2xl" shadow="xl" p={6}>
             <VStack spacing={6} align="stretch">
 
