@@ -213,8 +213,10 @@ export default function PostPackage() {
                   onChange={(e) => setPickupAddress(e.target.value)}
                   placeholder="Pickup address"
                 />
-                {pickupLoading && <Spinner />}
-              </InputGroup>
+                <InputRightElement>
+                {pickupLoading && <Spinner color="blue" />}
+              </InputRightElement>
+                </InputGroup>
 
               {/* DELIVERY */}
               {deliveryData.length > 0 && (
@@ -237,8 +239,10 @@ export default function PostPackage() {
                   onChange={(e) => setDeliveryAddress(e.target.value)}
                   placeholder="Delivery address"
                 />
-                {deliveryLoading && <Spinner />}
-              </InputGroup>
+                <InputRightElement>
+                {deliveryLoading && <Spinner color="blue" />}
+              </InputRightElement>
+                </InputGroup>
 
               {/* PRICE */}
               <FormControl isRequired>
@@ -249,7 +253,7 @@ export default function PostPackage() {
               {/* DESC */}
               <Textarea placeholder="Description" />
 
-              <Button colorScheme="blue">Proceed</Button>
+              <Button bgGradient="linear(to-r,blue.400,blue.700)" colorScheme="blue">Proceed</Button>
 
             </VStack>
           </Box>
