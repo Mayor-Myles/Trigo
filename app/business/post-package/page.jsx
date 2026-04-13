@@ -1,360 +1,261 @@
 "use client";
 
-import { useRef, useState,useEffect, } from "react";
-import {useDebounce} from "use-debounce";
+import { useRef, useState, useEffect } from "react";
+import { useDebounce } from "use-debounce";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
-  InputLeftElement, Select, Textarea, VStack, useToast, HStack,
-  Text, Icon, Image, Center, Flex, Badge,useColorMode,Spinner,InputRightElement,
-  
+  InputLeftElement, Textarea, VStack, useToast, HStack,
+  Text, Icon, Image, Center, Badge, useColorMode,
+  Spinner, InputRightElement
 } from "@chakra-ui/react";
 import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
 import { LuWeight } from "react-icons/lu";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import {useAtom} from "jotai";
-import{pickupDataAtom,deliveryDataAtom,isPickupAtom,isDeliveryAtom,userDataAtom,deliveryAddressAtom,pickupAddressAtom} from "@/utils/jotai";
-import {useRouter} from "next/navigation";
+import { useAtom } from "jotai";
+import {
+  pickupDataAtom,
+  deliveryDataAtom,
+  userDataAtom,
+  deliveryAddressAtom,
+  pickupAddressAtom
+} from "@/utils/jotai";
+import { useRouter } from "next/navigation";
 import api from "@/utils/axios";
 import MyPopover from "@/components/MyPopover";
 
+export default function PostPackage() {
+  const [pickupLoading, setPickupLoading] = useState(false);
+  const [deliveryLoading, setDeliveryLoading] = useState(false);
 
+  const [isSelectingPickup, setIsSelectingPickup] = useState(false);
+  const [isSelectingDelivery, setIsSelectingDelivery] = useState(false);
 
-
-
-
-export default function PostPackage
-  () {
-  const [pickupLoading,setPickupLoading] = useState(false);
-  const [deliveryLoading,setDeliveryLoading] = useState(false);
   const fileRef = useRef(null);
   const [preview, setPreview] = useState(null);
-  const{colorMode,toggleColorMode} = useColorMode();
- const[user,setUser] = useAtom(userDataAtom); 
- const[deliveryData,setDeliveryData] = useAtom(deliveryDataAtom);
-  const[pickupData,setPickupData] = useAtom(pickupDataAtom);
-  const[deliveryAddress,setDeliveryAddress] = useAtom(deliveryAddressAtom);
-  const[pickupAddress,setPickupAddress] = useAtom(pickupAddressAtom);
-  const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1400); // 1.8s delay
-  const [debouncedPickupAddress] = useDebounce(pickupAddress, 1400); // 1.8s delay
-  const[isPickup,setIsPickup] = useAtom(isPickupAtom);
-    const[isDelivery,setIsDelivery] = useAtom(isDeliveryAtom);
-    const router = useRouter();
-   const toast = useToast();
-    
+
+  const { colorMode } = useColorMode();
+  const toast = useToast();
+  const router = useRouter();
+
+  const [user, setUser] = useAtom(userDataAtom);
+  const [deliveryData, setDeliveryData] = useAtom(deliveryDataAtom);
+  const [pickupData, setPickupData] = useAtom(pickupDataAtom);
+  const [deliveryAddress, setDeliveryAddress] = useAtom(deliveryAddressAtom);
+  const [pickupAddress, setPickupAddress] = useAtom(pickupAddressAtom);
+
+  const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 800);
+  const [debouncedPickupAddress] = useDebounce(pickupAddress, 800);
+
+  // ================= FILE =================
   const handleFile = (e) => {
-    
     const file = e.target.files[0];
     if (file) setPreview(URL.createObjectURL(file));
   };
 
-const fetchUserData = async () => {
-    
+  // ================= USER =================
+  const fetchUserData = async () => {
     const jwt = localStorage.getItem("jwt");
-    if (!jwt) {
-      router.push("/login");
+    if (!jwt) return router.push("/login");
+
+    try {
+      const res = await api.post("/user/getUserData", { jwt });
+      if (res.data.status === "success") {
+        setUser(res.data.data);
+      } else {
+        router.push("/login");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // ================= SEARCH =================
+  const searchAddress = async (address, type) => {
+    try {
+      const apiKey = process.env.NEXT_PUBLIC_GEOAPIFY_KEY;
+
+      const url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${address}&filter=countrycode:ng&apiKey=${apiKey}`;
+
+      const res = await api.get(url);
+
+      const results = res.data.features;
+
+      if (type === "pickup") {
+        setPickupData(results);
+        setPickupLoading(false);
+      } else {
+        setDeliveryData(results);
+        setDeliveryLoading(false);
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Search failed",
+        status: "error",
+        position: "top"
+      });
+    }
+  };
+
+  // ================= EFFECTS =================
+  useEffect(() => {
+    if (isSelectingPickup) {
+      setIsSelectingPickup(false);
       return;
     }
-    try {
-      
-      const res = await api.post("/user/getUserData", { jwt: jwt });
-      const response = res.data;
-      if (response.status === "success") {
-        setUser(response.data);
-      }else{
-router.push("/login");
-      }
 
-    }catch(error){
-    console.log(error.data);
-
-    }
-
-}//fetchdata
-
-const searchAddress = async (address,type) => {
-const locationToken = process.env.NEXT_PUBLIC_LOCATIONIQ_TOKEN; 
-const url = "https://api.geoapify.com/v1/geocode/autocomplete?text="+address+" ibadan&filter=countrycode:ng&apiKey="+locationToken;
-   const res = await api.get(url);
-
-    if(res){
-      
-const response = res.data;
-    
-type === "delivery" ? setDeliveryData(response.features) : setPickupData(response.features);
-    setDeliveryLoading(false);
-    setPickupLoading(false);
-    } else{
-
-toast({
-  title:"Error",
-  description:"Search failed",
-  status:"error",
-  position:"top"
-    
-
-});
-    }
-
-  }//search
-
-
-  useEffect(() => {
     if (debouncedPickupAddress) {
       setPickupLoading(true);
       searchAddress(debouncedPickupAddress, "pickup");
-      //setPickupAddress(pickupData?.properties.formatted);
     } else {
-      //setPickupData([]);
+      setPickupData([]);
       setPickupLoading(false);
-      
     }
   }, [debouncedPickupAddress]);
 
   useEffect(() => {
+    if (isSelectingDelivery) {
+      setIsSelectingDelivery(false);
+      return;
+    }
+
     if (debouncedDeliveryAddress) {
       setDeliveryLoading(true);
       searchAddress(debouncedDeliveryAddress, "delivery");
-      //setDeliveryAddress(deliveryData?.properties.formatted);
     } else {
-     // setDeliveryData([]);
+      setDeliveryData([]);
       setDeliveryLoading(false);
     }
   }, [debouncedDeliveryAddress]);
 
-    
-    useEffect(()=>{
-    fetchUserData();     
-  },[]); 
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
-  if(!user){
-
-    return(<></>);
-  }
+  if (!user) return null;
 
   return (
     <>
-       <Navbar />
-      
-    <Box minH="100vh" bg={colorMode==="light" && "gray.50"}>
- 
-      {/* Hero Header */}
-      <Box
-        bgGradient="linear(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
-        px={5} pt={10} pb={16}
-      >
-        <Box maxW="520px" mx="auto">
-          <Badge
-            bg="whiteAlpha.200" color="blue.200"
-            fontSize="xs" letterSpacing="widest"
-            textTransform="uppercase" px={3} py={1} rounded="full" mb={3}
-          >
-            New Delivery
-          </Badge>
-          <Text
-            fontSize={{ base: "3xl", md: "4xl" }}
-            fontWeight="900"
-            color="white"
-            lineHeight="1.1"
-            letterSpacing="-1px"
-          >
-            Post a Package
-          </Text>
-          <Text color="blue.200" mt={2} fontSize="sm" fontWeight="400">
-            Fill in the details below. Your order would be reviewed by the admin before being posted to riders
-          </Text>
-        </Box>
-      </Box>
+      <Navbar />
 
-      {/* Card pulls up over header */}
-      <Box maxW="520px" mx="auto" px={4} mt="-40px" pb={10}>
+      <Box minH="100vh" bg={colorMode === "light" ? "gray.50" : ""}>
+        {/* HEADER */}
         <Box
-          bg={colorMode=="light" && "white"}
-          rounded="2xl"
-          shadow="xl"
-          p={6}
-          borderTop="4px solid"
-          borderColor="blue.500"
+          bgGradient="linear(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
+          px={5}
+          pt={10}
+          pb={16}
         >
-          <VStack spacing={6} align="stretch">
+          <Box maxW="520px" mx="auto">
+            <Badge bg="whiteAlpha.200" color="blue.200" px={3} py={1} rounded="full">
+              New Delivery
+            </Badge>
 
-            {/* Package Photo */}
-            <FormControl isRequired>
-              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"} mb={2}>
-                Package Photo
-              </FormLabel>
-              <input
-                ref={fileRef}
-                type="file"
-                accept="image/png,image/jpeg,image/webp"
-                hidden
-                onChange={handleFile}
-                multiple
-              />
-              {preview ? (
-                <Box position="relative" rounded="xl" overflow="hidden" h="180px">
-                  <Image src={preview} w="full" h="full" objectFit="cover" />
-                  <Button
-                    position="absolute" top={2} right={2}
-                    size="xs" colorScheme="red" rounded="full"
-                    onClick={() => setPreview(null)}
-                    leftIcon={<FiX />}
-                  >
-                    Remove
-                  </Button>
-                </Box>
-              ) : (
-                <Center
-                  onClick={() => fileRef.current.click()}
-                  cursor="pointer"
-                  border="2px dashed"
-                  borderColor="blue.200"
-                  bg="blue.50"
-                  rounded="xl"
-                  py={10}
-                  flexDirection="column"
-                  gap={2}
-                  _hover={{ borderColor: "blue.400", bg: "blue.100" }}
-                  transition="all 0.2s"
-                >
-                  <Icon as={FiUploadCloud} boxSize={8} color="blue.400" />
-                  <Text fontWeight="600" color="blue.500" fontSize="sm">
-                    Click to upload photo
-                  </Text>
-                  <Text color="gray.400" fontSize="xs">
-                    PNG, JPG, WEBP up to 5MB
-                  </Text>
-                </Center>
+            <Text fontSize="3xl" fontWeight="900" color="white">
+              Post a Package
+            </Text>
+          </Box>
+        </Box>
+
+        <Box maxW="520px" mx="auto" px={4} mt="-40px" pb={10}>
+          <Box bg="white" rounded="2xl" shadow="xl" p={6}>
+            <VStack spacing={6} align="stretch">
+
+              {/* IMAGE */}
+              <FormControl isRequired>
+                <FormLabel>Package Photo</FormLabel>
+
+                <input
+                  ref={fileRef}
+                  type="file"
+                  hidden
+                  onChange={handleFile}
+                />
+
+                {preview ? (
+                  <Box position="relative">
+                    <Image src={preview} />
+                    <Button onClick={() => setPreview(null)}>Remove</Button>
+                  </Box>
+                ) : (
+                  <Center onClick={() => fileRef.current.click()}>
+                    <Icon as={FiUploadCloud} />
+                    <Text>Upload</Text>
+                  </Center>
+                )}
+              </FormControl>
+
+              {/* WEIGHT */}
+              <FormControl isRequired>
+                <FormLabel>Weight</FormLabel>
+                <Input type="number" />
+              </FormControl>
+
+              {/* PICKUP */}
+              {pickupData.length > 0 && (
+                <MyPopover
+                  type="pickup"
+                  onSelect={(val) => {
+                    setIsSelectingPickup(true);
+                    setPickupAddress(val);
+                    setPickupData([]);
+                  }}
+                />
               )}
-            </FormControl>
 
-            {/* Divider Line */}
-            <Box h="1px" bg="gray.100" />
-
-            {/* Package Weight */}
-            <FormControl isRequired>
-              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
-                Package Weight (Kg)
-              </FormLabel>
-              <HStack>
-                <InputGroup>
-                  <InputLeftElement pointerEvents="none">
-                    <Icon as={LuWeight} color="gray.400" />
-                  </InputLeftElement>
-                  <Input
-                    type="number" defaultValue="0.0"
-                     border="1.5px solid" borderColor="gray.200"
-                    rounded="xl" _focus={{ borderColor: "blue.400",}}
-                  />
-                </InputGroup>
-                
-              </HStack>
-            </FormControl>
-
-            {/* Pickup Location */}
-            {pickupData?.length > 0 &&  (
-          <MyPopover type="pickup"  />
-          )}
-            <FormControl isRequired>
-           
-              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
-                Pickup Location
-              </FormLabel>
               <InputGroup>
-                <InputLeftElement pointerEvents="none">
-                  <Icon as={FiMapPin} color="green.400" />
+                <InputLeftElement>
+                  <Icon as={FiMapPin} />
                 </InputLeftElement>
                 <Input
-                value={pickupAddress}
-                  onChange={(e)=>{setPickupAddress(e.target.value); setPickupLoading(true) }}
-                  placeholder="Type and choose the pickup address"
-                  bg="" border="1.5px solid" borderColor="gray.200"
-                  rounded="xl" _focus={{ borderColor: "blue.400", }}
-                  _placeholder={{ color: "gray.400", fontSize: "md" }}
+                  value={pickupAddress}
+                  onChange={(e) => setPickupAddress(e.target.value)}
+                  placeholder="Pickup address"
                 />
-                {pickupLoading && (<InputRightElement>
-                <Spinner color="blue.600" />
-                </InputRightElement>)}
+                {pickupLoading && <Spinner />}
               </InputGroup>
-            </FormControl>
 
-            {/* Delivery Location */}
-                {deliveryData?.length > 0 && (
-          <MyPopover type="delivery"  />
-          )}
-            <FormControl isRequired>
-              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
-                Delivery Location
-              </FormLabel>
+              {/* DELIVERY */}
+              {deliveryData.length > 0 && (
+                <MyPopover
+                  type="delivery"
+                  onSelect={(val) => {
+                    setIsSelectingDelivery(true);
+                    setDeliveryAddress(val);
+                    setDeliveryData([]);
+                  }}
+                />
+              )}
+
               <InputGroup>
-                <InputLeftElement pointerEvents="none">
-                  <Icon as={FiMapPin} color="red.400" />
+                <InputLeftElement>
+                  <Icon as={FiMapPin} />
                 </InputLeftElement>
                 <Input
                   value={deliveryAddress}
-                  onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
-                  placeholder="Type and choose the delivery address"
-                   border="1.5px solid" borderColor="gray.200"
-                  rounded="xl" _focus={{ borderColor: "blue.400", }}
-                  _placeholder={{ color: "gray.400", fontSize: "sm" }}
+                  onChange={(e) => setDeliveryAddress(e.target.value)}
+                  placeholder="Delivery address"
                 />
-                {deliveryLoading && ( <InputRightElement>
-                <Spinner color="blue.600" />
-                </InputRightElement>)}
+                {deliveryLoading && <Spinner />}
               </InputGroup>
-            </FormControl>
 
-            {/* Service Price */}
-            <FormControl isRequired>
-              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
-                Service Price (₦)
-              </FormLabel>
-              <InputGroup>
-                <InputLeftElement pointerEvents="none">
-                  <Icon as={FiDollarSign} color="gray.400" />
-                </InputLeftElement>
-                <Input
-                  type="number" placeholder="e.g. 1500"
-                  border="1.5px solid" borderColor="gray.200"
-                  rounded="xl" _focus={{ borderColor: "blue.400", }}
-                  _placeholder={{ color: "gray.400", fontSize: "sm" }}
-                />
-              </InputGroup>
-            </FormControl>
+              {/* PRICE */}
+              <FormControl isRequired>
+                <FormLabel>Price</FormLabel>
+                <Input type="number" />
+              </FormControl>
 
-            {/* Package Description */}
-            <FormControl>
-              <FormLabel fontWeight="700" fontSize="sm" color={colorMode=="light" ? "gray.600" : "white"}>
-                Package Description
-              </FormLabel>
-              <Textarea
-                placeholder="Describe the contents, fragility, or any special handling notes..."
-                border="1.5px solid" borderColor="gray.200"
-                rounded="xl" rows={4} resize="none"
-                _focus={{ borderColor: "blue.400",  }}
-                _placeholder={{ color: "gray.400", fontSize: "sm" }}
-              />
-            </FormControl>
+              {/* DESC */}
+              <Textarea placeholder="Description" />
 
-            {/* CTA */}
+              <Button colorScheme="blue">Proceed</Button>
 
-            
-            <Button
-              size="lg" rounded="xl" fontWeight="700"
-              bgGradient="linear(to-r, blue.500, blue.700)"
-              color="white" mt={1}
-              _hover={{ bgGradient: "linear(to-r, blue.600, blue.800)", transform: "translateY(-1px)", shadow: "lg" }}
-              _active={{ transform: "translateY(0)" }}
-              transition="all 0.2s"
-            >
-              Proceed
-            </Button>
-
-          </VStack>
+            </VStack>
+          </Box>
         </Box>
       </Box>
-      
-    </Box>
+
       <Footer />
     </>
   );
