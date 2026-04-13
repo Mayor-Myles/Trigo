@@ -206,7 +206,7 @@ export default function PostPackage() {
 
               <InputGroup>
                 <InputLeftElement>
-                  <Icon as={FiMapPin} />
+                  <Icon color="lightgreen" as={FiMapPin} />
                 </InputLeftElement>
                 <Input
                   value={pickupAddress}
@@ -232,7 +232,7 @@ export default function PostPackage() {
 
               <InputGroup>
                 <InputLeftElement>
-                  <Icon as={FiMapPin} />
+                  <Icon color="red" as={FiMapPin} />
                 </InputLeftElement>
                 <Input
                   value={deliveryAddress}
