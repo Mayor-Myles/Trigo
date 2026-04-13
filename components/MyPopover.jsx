@@ -1,3 +1,31 @@
+"use client";
+
+import { useEffect } from "react";
+import {
+  Center,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  Box,
+  Text,
+  useBreakpointValue,
+  useDisclosure,
+} from "@chakra-ui/react";
+
+import { useAtom } from "jotai";
+
+import {
+  pickupDataAtom,
+  deliveryDataAtom,
+  pickupAddressAtom,
+  deliveryAddressAtom,
+} from "@/utils/jotai";
+
+
+
 export default function MyPopover({ type, onSelect }) {
   const modalSize = useBreakpointValue({ base: "xs", md: "md" });
   const { isOpen, onOpen, onClose } = useDisclosure();
