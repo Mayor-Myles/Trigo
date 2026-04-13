@@ -22,6 +22,7 @@ import {
   deliveryDataAtom,
   pickupAddressAtom,
   deliveryAddressAtom,
+  cordinatesAtom,
 } from "@/utils/jotai";
 
 
@@ -34,7 +35,8 @@ export default function MyPopover({ type, onSelect }) {
   const [deliveryData, setDeliveryData] = useAtom(deliveryDataAtom);
   const [, setPickupAddress] = useAtom(pickupAddressAtom);
   const [, setDeliveryAddress] = useAtom(deliveryAddressAtom);
-
+  const [,setCordinates] = useAtom(cordinatesAtom);
+  
   const chooseAddress = (item) => {
     const address = item.properties.formatted;
 
