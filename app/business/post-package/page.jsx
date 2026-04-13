@@ -5,7 +5,7 @@ import { useDebounce } from "use-debounce";
 import {
   Box, Button, FormControl, FormLabel, Input, InputGroup,
   InputLeftElement, Textarea, VStack, useToast, HStack,
-  Text, Icon, Image, Center, Badge, useColorMode,Center,
+  Text, Icon, Image, Center, Badge, useColorMode,
   Spinner, InputRightElement
 } from "@chakra-ui/react";
 import { FiMapPin, FiDollarSign, FiUploadCloud, FiX } from "react-icons/fi";
