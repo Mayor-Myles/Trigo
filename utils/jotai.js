@@ -10,5 +10,11 @@ export const isPickupAtom = atom(null);
 export const isDeliveryAtom = atom(null);
 export const deliveryAddressAtom = atom("");
 export const pickupAddressAtom = atom("");
+export const cordinatesAtom = atom({
+
+  pickup:{"lon":"","lat":""},
+  delivery:{"lon":"","lat":""},
+
+});
 
 
