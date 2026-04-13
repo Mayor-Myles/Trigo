@@ -13,7 +13,7 @@ import { LuWeight } from "react-icons/lu";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import {useAtom} from "jotai";
-import{pickupDataAtom,deliveryDataAtom,isPickupAtom,isDeliveryAtom,userDataAtom} from "@/utils/jotai";
+import{pickupDataAtom,deliveryDataAtom,isPickupAtom,isDeliveryAtom,userDataAtom,deliveryAddressAtom,pickupAddressAtom} from "@/utils/jotai";
 import {useRouter} from "next/navigation";
 import api from "@/utils/axios";
 import MyPopover from "@/components/MyPopover";
@@ -33,15 +33,15 @@ export default function PostPackage
  const[user,setUser] = useAtom(userDataAtom); 
  const[deliveryData,setDeliveryData] = useAtom(deliveryDataAtom);
   const[pickupData,setPickupData] = useAtom(pickupDataAtom);
-  const[deliveryAddress,setDeliveryAddress] = useState("");
-  const[pickupAddress,setPickupAddress] = useState("");
+  const[deliveryAddress,setDeliveryAddress] = useAtom(deliveryAddressAtom);
+  const[pickupAddress,setPickupAddress] = useAtom(pickupAddressAtom);
   const [debouncedDeliveryAddress] = useDebounce(deliveryAddress, 1400); // 1.8s delay
   const [debouncedPickupAddress] = useDebounce(pickupAddress, 1400); // 1.8s delay
   const[isPickup,setIsPickup] = useAtom(isPickupAtom);
     const[isDelivery,setIsDelivery] = useAtom(isDeliveryAtom);
     const router = useRouter();
    const toast = useToast();
-    
+    i
   const handleFile = (e) => {
     
     const file = e.target.files[0];
@@ -266,7 +266,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="green.400" />
                 </InputLeftElement>
                 <Input
-                value={isPickup}
+                value={pickupAddress}
                   onChange={(e)=>{setPickupAddress(e.target.value); setPickupLoading(true) }}
                   placeholder="e.g. 12 Broad Street, Lagos Island"
                   bg="" border="1.5px solid" borderColor="gray.200"
@@ -292,7 +292,7 @@ fetchUserData();
                   <Icon as={FiMapPin} color="red.400" />
                 </InputLeftElement>
                 <Input
-                  value={isDelivery}
+                  value={pickupAddress}
                   onChange={(e)=>{setDeliveryAddress(e.target.value); setDeliveryLoading(true)}}
                   placeholder="e.g. 5 Ikeja Avenue, Ikeja"
                    border="1.5px solid" borderColor="gray.200"
