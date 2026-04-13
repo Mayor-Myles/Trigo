@@ -27,17 +27,15 @@ export default function MyPopover({type}){
   });
 const { isOpen, onOpen, onClose } = useDisclosure();
 const[pickupData,setPickupData] = useAtom(pickupDataAtom);
-  const[deliveryData,setDeliveryData] = useAtom(deliveryDataAtom);
- const[isPickup,setIsPickup] = useAtom(isPickupAtom);
-  const[isDelivery,setIsDelivery] = useAtom(isDeliveryAtom);
+const[deliveryData,setDeliveryData] = useAtom(deliveryDataAtom);
+ const[pickupAddress,setIsPickupAddress] = useAtom(pickupAddressAtom);
+  const[deliveryAddress,setIsDeliveryAddress] = useAtom(deliveryAddressAtom);
 
   const chooseAddress = (item) => {
     
     const address = item.properties.formatted;
-
-    console.log(address);
     
-    type ==="pickup" ? setIsPickup(address) : setIsDelivery(address);   
+    type ==="pickup" ? setIsPickupAddress(address) : setIsDeliveryAddress(address);   
   
   }
   const handleClose = () => {
