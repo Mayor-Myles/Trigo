@@ -37,7 +37,10 @@ export default function PostPackage() {
   const { colorMode } = useColorMode();
   const toast = useToast();
   const router = useRouter();
-
+  const[price,setPrice] = useState(0);
+  const [weight, setWeight] = useState("");
+  const [distance, setDistance] = useState(0); // in KM
+  
   const [user, setUser] = useAtom(userDataAtom);
   const [deliveryData, setDeliveryData] = useAtom(deliveryDataAtom);
   const [pickupData, setPickupData] = useAtom(pickupDataAtom);
@@ -197,10 +200,20 @@ toast({
               </FormControl>
 
               {/* WEIGHT */}
-              <FormControl isRequired>
-                <FormLabel>Weight</FormLabel>
-                <Input type="number" placeholder="Package weight"/>
-              </FormControl>
+<FormControl isRequired>
+  <FormLabel>Weight</FormLabel>
+  <Select
+    placeholder="Select weight category"
+    value={weight}
+    onChange={(e) => setWeight(e.target.value)}
+  >
+    <option value="small">Small (0kg - 2kg)</option>
+    <option value="medium">Medium (2kg - 10kg)</option>
+    <option value="large">Large (10kg - 30kg)</option>
+    <option value="extra_large">Extra Large (30kg+)</option>
+  </Select>
+</FormControl>
+
 
               {/* PICKUP */}
               {pickupData.length > 0 && (
@@ -257,7 +270,7 @@ toast({
               {/* PRICE */}
               <FormControl isRequired>
                 <FormLabel>Price</FormLabel>
-                <Input type="number" />
+                <Input value={price} type="number" readOnly />
               </FormControl>
 
               {/* DESC */}
