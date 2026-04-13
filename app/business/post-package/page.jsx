@@ -41,7 +41,7 @@ export default function PostPackage
     const[isDelivery,setIsDelivery] = useAtom(isDeliveryAtom);
     const router = useRouter();
    const toast = useToast();
-    i
+    
   const handleFile = (e) => {
     
     const file = e.target.files[0];
